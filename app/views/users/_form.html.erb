@@ -2,29 +2,39 @@
 <% method = (user.persisted? ? "put" : "post") %>
 <% message = (user.persisted? ? "Update user" : "Create user") %>
 
+
+<div class="form">
+
 <form action="<%= action %>" method="post">
+
+  <h1 class='form-title'>Sign Up</h1>
+
   <input
      name="_method"
      type="hidden"
-     value="<%= method %>">
+     value="POST">
   <input
      name="authenticity_token"
      type="hidden"
      value="<%= form_authenticity_token %>">
 
-  <label for="user_username">Username</label>
   <input
      id="user_username"
      name="user[username]"
-     type="text">
-  <br>
+     type="text"
+     placeholder="Select A Username"
+  >
 
-  <label for="user_password">Password</label>
   <input
      id="user_password"
      name="user[password]"
-     type="password">
-  <br>
+     type="password"
+     placeholder="Select A Password"
+  >
 
   <input type="submit" value="<%= message %>">
 </form>
+
+</div>
+
+<p> Already have an account? <%=  link_to "Sign In", new_session_url %></p>

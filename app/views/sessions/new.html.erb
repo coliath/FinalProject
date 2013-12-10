@@ -1,24 +1,33 @@
-<h1>Sign In</h1>
+  
+<div class="form">
 
-<form action="<%= session_url %>" method="post">
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
+  <h1 class="form-title">Sign In</h1>
 
-  <label for="user_username">Username</label>
-  <input
-     id="user_username"
-     name="user[username]"
-     type="text">
-  <br>
+  <form action="<%= session_url %>" method="post">
 
-  <label for="user_password">Password</label>
-  <input
-     id="user_password"
-     name="user[password]"
-     type="password">
-  <br>
+    <input
+       name="authenticity_token"
+       type="hidden"
+       value="<%= form_authenticity_token %>">
 
-  <input type="submit" value="Log in">
-</form>
+        <input
+           id="user_username"
+           name="user[username]"
+           type="text"
+           placeholder="Enter Username"
+        >
+
+        <input
+           id="user_password"
+           name="user[password]"
+           type="password"
+           placeholder="Enter Password"
+        >
+
+    <input type="submit" value="Sign In">
+
+  </form>
+
+</div>
+
+<p> Don't have an account yet? <%=  link_to "Sign Up", new_user_url %></p>

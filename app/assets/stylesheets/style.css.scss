@@ -1,0 +1,177 @@
+$red: #e74c3c;
+
+$blue: #3498db;
+
+$lightest-gray: #e9e9e9;
+$gray: #bdc3c7;
+$dark-gray: #7f8c8d;
+$darkest-gray:  #3f3f3f;
+
+* {
+	font-family: "Times New Roman", "Times", "serif";
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+	letter-spacing: 1px;
+}
+
+@mixin border-radius($n) {
+	-webkit-border-radius: $n;
+	-moz-border-radius: $n;
+	border-radius: $n;
+}
+
+@mixin box-shadow($top, $left, $blur, $color, $inset: false) {
+  @if $inset {
+    -webkit-box-shadow:inset $top $left $blur $color;
+    -moz-box-shadow:inset $top $left $blur $color;
+    box-shadow:inset $top $left $blur $color;
+  } @else {
+    -webkit-box-shadow: $top $left $blur $color;
+    -moz-box-shadow: $top $left $blur $color;
+    box-shadow: $top $left $blur $color;
+  }
+}
+
+@mixin placeholder {
+  ::-webkit-input-placeholder {@content}
+  :-moz-placeholder           {@content}
+  ::-moz-placeholder          {@content}
+  :-ms-input-placeholder      {@content}  
+}
+
+.clickable:hover {
+	cursor: pointer;
+}
+
+.btn {
+	@extend .clickable;
+	border: 1px solid $lightest-gray;
+	background-color: $blue;
+	color: white;
+	padding: 10px;
+	font-weight: bold;
+
+	transition: border .7s;
+}
+
+.btn:hover {
+	border: 1px solid $darkest-gray;
+}
+
+.box {
+	padding: 5px;
+	margin: 5px;
+	border: 1px solid $gray;
+	background-color: $lightest-gray;
+	@include border-radius(4px);
+	@include box-shadow(0,0,2px, $gray)
+}
+
+.form {
+	@extend .box;
+	width: 300px;
+
+	input {
+		display: block;
+		border: 1px solid $lightest-gray;
+		@include border-radius(4px);
+		padding: 7px;
+		margin:  5px auto;
+		width: 90%;
+
+		transition: border .3s;
+	}
+
+	input:hover {
+		border: 1px solid $gray;
+	}
+
+	input[type=submit] {
+		width: 50%;
+		margin-top: 12px;
+		@extend .btn;
+	}
+
+	input:focus {
+	    outline: 0;
+	    @include box-shadow(0,0,5px, $darkest-gray);
+	}
+
+	input.error {
+		border: 3px solid $red;
+	}
+
+	@include placeholder {
+	    font-weight:100;
+	    text-align: center;
+	    color: $dark-gray;
+	}
+
+	.form-title {
+		margin-bottom: 12px;
+		text-align: center;
+		font-size: 1.4em;
+	}
+}
+
+input[type=submit] {
+	@extend .clickable;
+
+	background-color: inherit;
+}
+
+$top-nav-height: 30px;
+.top-nav {
+	@extend .box;
+	margin: -3px;
+	padding: 5px 20px;
+	height: $top-nav-height;
+	li {
+		@extend .clickable;
+		line-height: $top-nav-height;
+		display: inline-block;
+		margin: 0 5px;
+	}
+}
+.logo {
+	font-size: 1.4em;
+	margin-left: 20px;
+	font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
+	font-style: italic;
+	font-weight: bolder;
+}
+
+.right {
+	float: right;
+}
+
+.left {
+	float: left;
+}
+
+.content {
+	margin: 10px;
+	padding: 10px;
+}
+
+.rails-view {
+	width: 310px;
+	margin: 0 auto;
+	text-align: center;
+}
+
+
+
+
+
+
+
+
+
+
+
+
