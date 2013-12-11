@@ -1,5 +1,5 @@
 
-<section class="table-of-contents-wrapper">
+<section class="table-of-contents">
 
   <h3>Table of Contents</h3>
   <ul>
@@ -12,13 +12,13 @@
 
 </section>
 
-<section class="resource-wrapper">
+<section class="resource">
 
   <h1><%= @resource.title %></h1>
   <h5>By <%= @resource.author_name %><h5>
   <p>Description: <%= @resource.description %></p>
 
-  <section class="section-wrapper">
+  <section class="section">
 
     <% @resource.sorted_sections.each do |section| %>
 

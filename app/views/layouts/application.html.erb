@@ -18,10 +18,13 @@
       </ul>
     </nav>
 <% else %>
-    <ul class="top-nav">
-	  	<li class="logo">Resource Root</li>
-	  	<li class="right link"><%= link_to "login", new_session_url %></li>
-    </ul>
+    <nav class="top-nav">
+    	<p class="logo">Resource Root</p>
+
+      <ul>
+        <li class="right link"><%= link_to "login", new_session_url %></li>
+      </ul>
+    </nav>
 <% end %>
 
 	<div class='content'>
