@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131207224957) do
+ActiveRecord::Schema.define(:version => 20131211144259) do
 
   create_table "resources", :force => true do |t|
     t.string   "title"
@@ -20,10 +20,26 @@ ActiveRecord::Schema.define(:version => 20131207224957) do
     t.datetime "created_at",  :null => false
     t.datetime "updated_at",  :null => false
     t.text     "description"
+    t.string   "topic"
   end
 
   add_index "resources", ["author_name"], :name => "index_resources_on_author_name"
   add_index "resources", ["title"], :name => "index_resources_on_title"
+  add_index "resources", ["topic"], :name => "index_resources_on_topic"
+
+  create_table "sections", :force => true do |t|
+    t.integer  "resource_id",       :null => false
+    t.string   "title",             :null => false
+    t.text     "body"
+    t.integer  "parent_section_id"
+    t.integer  "prev_section_id"
+    t.integer  "next_section_id"
+    t.integer  "user_id"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
+
+  add_index "sections", ["resource_id"], :name => "index_sections_on_resource_id"
 
   create_table "users", :force => true do |t|
     t.string   "username",        :null => false

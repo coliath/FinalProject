@@ -3,8 +3,10 @@ class SessionsController < ApplicationController
   before_filter :require_current_user!, :only => [:destroy]
 
   def create
+    username = params[:user][:username].downcase
+
     user = User.find_by_credentials(
-      params[:user][:username],
+      username,
       params[:user][:password]
     )
 

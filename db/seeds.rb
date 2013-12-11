@@ -1,7 +1,17 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+
+
+
+# Demo User
+
+User.create!({username: "Coleman", password: "password"})
+
+#Demo Resource
+
+Rescource.create!({
+  title: "Eloquent JavaScript",
+  subtitle: "A Modern Intoduction to Programming",
+  author_name: "Marijn Haverbeke",
+  discription: "Eloquent JavaScript is a book providing an introduction to the JavaScript programming language and programming in general.",
+  topic: "Computer Science"
+})
+

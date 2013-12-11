@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(params[:user])
+    @user.username.downcase!
 
     if @user.save
       self.current_user = @user
