@@ -1,7 +1,17 @@
+
+# ****** All Attributes ****** #
+# user_id
+# resource_id
+# title
+# body
+# parent_section_id
+# prev_section_id
+# next_section_id
+
 class Section < ActiveRecord::Base
 
   # ****** User generated data ****** #
-  attr_accessible :resource_id, :title, :body, :parent_section_id, :prev_section_id, :next_section_id, :user_id
+  attr_accessible :resource_id, :title, :body, :parent_section_id, :prev_section_id, :next_section_id
 
 
   # ****** Validations ****** #

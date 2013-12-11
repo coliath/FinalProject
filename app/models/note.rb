@@ -11,7 +11,7 @@
 class Note < ActiveRecord::Base
 
   # ****** User generated data ****** #
-  attr_accessible :section_text, :body, :private
+  attr_accessible :section_text, :body, :private, :section_id, :resource_id
 
   # ****** Validations ****** #
   validates :body, :user_id, :resource_id, presence: true
