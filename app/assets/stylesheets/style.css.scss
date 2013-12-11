@@ -1,7 +1,7 @@
 $red: #e74c3c;
 
 $blue: #3498db;
-
+$almost-white: #fdfdfd;
 $lightest-gray: #e9e9e9;
 $gray: #bdc3c7;
 $dark-gray: #7f8c8d;
@@ -18,6 +18,7 @@ $darkest-gray:  #3f3f3f;
 	letter-spacing: 1px;
   text-decoration: none;
   list-style: none;
+  color: black;
 }
 
 @mixin border-radius($n) {
@@ -45,8 +46,18 @@ $darkest-gray:  #3f3f3f;
   :-ms-input-placeholder      {@content}
 }
 
+html {
+  background: $almost-white;
+}
+
 .clickable:hover {
 	cursor: pointer;
+}
+
+.group:after {
+  content: "";
+  display: block;
+  clear: both;
 }
 
 .btn {
@@ -126,25 +137,43 @@ input[type=submit] {
 	background-color: inherit;
 }
 
-$top-nav-height: 30px;
+$top-nav-height: 15px;
 .top-nav {
 	@extend .box;
-	margin: -3px;
-	padding: 5px 20px;
-	height: $top-nav-height;
+  @extend .group;
+	padding: 0;
+
+  ul {
+    float: right;
+  }
+
 	li {
 		@extend .clickable;
+    float: left;
+    height: $top-nav-height;
 		line-height: $top-nav-height;
 		display: inline-block;
-		margin: 0 5px;
+		padding: 5px 10px;
+    border-left: 1px solid $gray;
+    @include border-radius(4px);
+    transition: background .3s;
+    color: black;
+	}
+	li:hover {
+		background: $dark-gray;
+    color: white;
 	}
 }
 .logo {
-	font-size: 1.4em;
-	margin-left: 20px;
+  padding: 3px 10px;
+  float: left;
+  font-size: 1.4em;
 	font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
 	font-style: italic;
 	font-weight: bolder;
+  border: none !important;
+  height: $top-nav-height;
+  line-height: $top-nav-height;
 }
 
 .right {
@@ -156,18 +185,19 @@ $top-nav-height: 30px;
 }
 
 .content {
-	margin: 10px;
-	padding: 10px;
+	margin: 5px 30px;
 }
 
 .table-of-contents-wrapper {
   float: left;
   width: 200px;
+  @extend .box;
 }
 
 .resource-wrapper {
   float: left;
   width: 600px;
+  @extend .box;
 }
 // this should be way more specific
 //.rails-view {

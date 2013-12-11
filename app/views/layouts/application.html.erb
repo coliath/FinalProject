@@ -9,11 +9,14 @@
 <body>
 
 <% unless current_user.nil? %>
-    <ul class="top-nav">
-	  	<li class="logo">Resource Root</li>
-	  	<li class="right link"><%= button_to "logout", session_url, :method => :delete %></li>
-	    <li class="right">Welcome, <%= current_user.username %> |</li>
-    </ul>
+    <nav class="top-nav">
+	  	<p class="logo">Resource Root</p>
+
+      <ul>
+        <li class="right">Welcome, <%= current_user.username %></li>
+  	  	<li class="right link"><%= button_to "logout", session_url, :method => :delete %></li>
+      </ul>
+    </nav>
 <% else %>
     <ul class="top-nav">
 	  	<li class="logo">Resource Root</li>
