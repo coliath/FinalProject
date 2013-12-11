@@ -40,7 +40,7 @@ $darkest-gray:  #3f3f3f;
   ::-webkit-input-placeholder {@content}
   :-moz-placeholder           {@content}
   ::-moz-placeholder          {@content}
-  :-ms-input-placeholder      {@content}  
+  :-ms-input-placeholder      {@content}
 }
 
 .clickable:hover {
@@ -80,7 +80,7 @@ $darkest-gray:  #3f3f3f;
 		border: 1px solid $lightest-gray;
 		@include border-radius(4px);
 		padding: 7px;
-		margin:  5px auto;
+		margin:  10px auto;
 		width: 90%;
 
 		transition: border .3s;

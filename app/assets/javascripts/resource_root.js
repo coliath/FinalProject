@@ -4,10 +4,10 @@ window.App = {
   Views: {},
   Routers: {},
   initialize: function() {
-    
+
   }
 };
 
 $(document).ready(function(){
-  NewAuthDemo.initialize();
+  App.initialize();
 });

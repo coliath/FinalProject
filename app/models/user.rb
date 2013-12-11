@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
 
   # ****** Callbacks ****** #
   after_initialize :ensure_session_token
+  before_save :titleize_username!
 
   def self.find_by_credentials(username, password)
     user = User.find_by_username(username)
@@ -46,5 +47,9 @@ class User < ActiveRecord::Base
   private
   def ensure_session_token
     self.session_token ||= self.class.generate_session_token
+  end
+
+  def titleize_username!
+    self.username = self.username.titleize
   end
 end

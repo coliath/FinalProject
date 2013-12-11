@@ -3,7 +3,7 @@ class SessionsController < ApplicationController
   before_filter :require_current_user!, :only => [:destroy]
 
   def create
-    username = params[:user][:username].downcase
+    username = params[:user][:username].titleize
 
     user = User.find_by_credentials(
       username,
@@ -11,7 +11,7 @@ class SessionsController < ApplicationController
     )
 
     if user.nil?
-      render :json => "Credentials were wrong"
+      render_unprocessable("Credentials were wrong")
     else
       self.current_user = user
       redirect_to user_url(user)
@@ -25,4 +25,5 @@ class SessionsController < ApplicationController
 
   def new
   end
+
 end

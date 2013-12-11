@@ -3,14 +3,13 @@ class UsersController < ApplicationController
   before_filter :require_no_current_user!, :only => [:create, :new]
 
   def create
-    @user = User.new(params[:user])
-    @user.username.downcase!
+    user = User.new(params[:user])
 
-    if @user.save
-      self.current_user = @user
-      redirect_to user_url(@user)
+    if user.save
+      self.current_user = user
+      redirect_to user_url(user)
     else
-      render :json => @user.errors.full_messages
+      render_unprocessable(user)
     end
   end
 
@@ -25,4 +24,5 @@ class UsersController < ApplicationController
       redirect_to user_url(current_user)
     end
   end
+
 end

@@ -1,5 +1,6 @@
 class ResourcesController < ApplicationController
 
+  before_filter :require_current_user!
 
   def create
     resource = Resource.new(params[:resource])
@@ -8,7 +9,7 @@ class ResourcesController < ApplicationController
     if resource.save
       render json: resource
     else
-      render json: resource.errors.full_messages, status: 422
+      render_unprocessable(resource)
     end
   end
 
@@ -18,7 +19,7 @@ class ResourcesController < ApplicationController
     unless resource.nil?
       render json: resource
     else
-      render json: "Could not find resource.", status: 422
+      render_unprocessable("Could not locate resource.")
     end
   end
 
