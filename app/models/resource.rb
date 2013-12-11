@@ -8,6 +8,7 @@ class Resource < ActiveRecord::Base
 
   # ****** Relations ****** #
   has_many :sections
+  has_many :notes
 
   belongs_to :user
 

@@ -4,6 +4,7 @@
 # Demo User
 
 User.create!({username: "Coleman", password: "password"})
+User.create!({username: "Coliath", password: "password"})
 
 # Demo Resource
 
@@ -46,6 +47,17 @@ s3 = Section.create!({
 
 s2.next_section_id = s3.id
 s2.save!
+
+n1 = Note.new({
+  section_text: "content that will",
+  body: "Im pretty sure this will be on the exam",
+  private: true
+})
+
+n1.user_id = 2
+n1.section_id = 2
+n1.resource_id = 1
+n1.save!
 
 
 

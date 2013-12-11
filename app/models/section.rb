@@ -15,4 +15,6 @@ class Section < ActiveRecord::Base
   has_one :previous_section, class_name: "Section", foreign_key: :prev_section_id, primary_key: :id
   has_one :next_section, class_name: "Section", foreign_key: :next_section_id, primary_key: :id
 
+  has_many :notes
+
 end

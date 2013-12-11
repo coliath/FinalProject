@@ -13,6 +13,7 @@ class User < ActiveRecord::Base
   # ****** Relations ****** #
   has_many :resources
   has_many :sections
+  has_many :notes
 
   # ****** Callbacks ****** #
   after_initialize :ensure_session_token
