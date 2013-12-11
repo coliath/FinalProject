@@ -43,15 +43,29 @@ s1.save!
 
 s3 = Section.new({
   resource_id: 1,
-  title: "Functions",
-  body: "Here is some awesome information about JS functions.",
-  prev_section_id: s2.id
+  title: "Values",
+  body: "This is a subsection with more create sub content.",
+  prev_section_id: s2.id,
+  parent_section_id: s2.id
 })
 s3.user_id = 1
 s3.save!
 
 s2.next_section_id = s3.id
 s2.save!
+
+s4 = Section.new({
+  resource_id: 1,
+  title: "Functions",
+  body: "Here is some awesome information about JS functions.",
+  prev_section_id: s3.id
+})
+s4.user_id = 1
+s4.save!
+
+s3.next_section_id = s4.id
+s3.save!
+
 
 n1 = Note.new({
   section_text: "content that will",

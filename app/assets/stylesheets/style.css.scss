@@ -16,6 +16,8 @@ $darkest-gray:  #3f3f3f;
 	font: inherit;
 	vertical-align: baseline;
 	letter-spacing: 1px;
+  text-decoration: none;
+  list-style: none;
 }
 
 @mixin border-radius($n) {
@@ -158,11 +160,21 @@ $top-nav-height: 30px;
 	padding: 10px;
 }
 
-.rails-view {
-	width: 310px;
-	margin: 0 auto;
-	text-align: center;
+.table-of-contents-wrapper {
+  float: left;
+  width: 200px;
 }
+
+.resource-wrapper {
+  float: left;
+  width: 600px;
+}
+// this should be way more specific
+//.rails-view {
+//  width: 310px;
+//  margin: 0 auto;
+//  text-align: center;
+//}
 
 
 

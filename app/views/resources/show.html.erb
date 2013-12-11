@@ -1,0 +1,33 @@
+
+<section class="table-of-contents-wrapper">
+
+  <h3>Table of Contents</h3>
+  <ul>
+    <% @resource.sorted_sections.each do |section| %>
+    <li class="section indent-<%= section.nest_level %>">
+      <%= section.title %>
+    </li>
+    <% end %>
+  </ul>
+
+</section>
+
+<section class="resource-wrapper">
+
+  <h1><%= @resource.title %></h1>
+  <h5>By <%= @resource.author_name %><h5>
+  <p>Description: <%= @resource.description %></p>
+
+  <section class="section-wrapper">
+
+    <% @resource.sorted_sections.each do |section| %>
+
+      <h3><%= section.title %></h3>
+
+      <p><%= section.body %></p>
+
+    <% end %>
+
+  </section>
+
+</section>

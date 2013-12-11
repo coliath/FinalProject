@@ -14,13 +14,13 @@ class ResourcesController < ApplicationController
   end
 
   def show
-    resource = Resource.find_by_id(params[:id])
+    @resource = Resource.find_by_id(params[:id])
 
-    unless resource.nil?
-      render json: resource
-    else
-      render_unprocessable("Could not locate resource.")
-    end
+    # unless resource.nil?
+#       render json: resource
+#     else
+#       render_unprocessable("Could not locate resource.")
+#     end
   end
 
   def index
