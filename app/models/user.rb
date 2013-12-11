@@ -1,12 +1,20 @@
 class User < ActiveRecord::Base
+
+  # ****** User generated data ****** #
   attr_accessible :username, :password
   attr_reader :password
 
+  # ****** Validations ****** #
   validates :password_digest, :presence => { :message => "Password can't be blank" }
   validates :password, :length => { :minimum => 6, :allow_nil => true }
   validates :session_token, :presence => true
   validates :username, :presence => true
 
+  # ****** Relations ****** #
+  has_many :resources
+  has_many :sections
+
+  # ****** Callbacks ****** #
   after_initialize :ensure_session_token
 
   def self.find_by_credentials(username, password)

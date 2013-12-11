@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131211144259) do
+ActiveRecord::Schema.define(:version => 20131211144758) do
 
   create_table "resources", :force => true do |t|
     t.string   "title"
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(:version => 20131211144259) do
     t.datetime "updated_at",  :null => false
     t.text     "description"
     t.string   "topic"
+    t.integer  "user_id",     :null => false
   end
 
   add_index "resources", ["author_name"], :name => "index_resources_on_author_name"

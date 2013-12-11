@@ -7,5 +7,8 @@ class Resource < ActiveRecord::Base
   validates :title, :author_name, presence: true
 
   # ****** Relations ****** #
+  has_many :sections
+
+  belongs_to :user
 
 end

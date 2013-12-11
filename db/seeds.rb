@@ -12,6 +12,9 @@ Rescource.create!({
   subtitle: "A Modern Intoduction to Programming",
   author_name: "Marijn Haverbeke",
   discription: "Eloquent JavaScript is a book providing an introduction to the JavaScript programming language and programming in general.",
-  topic: "Computer Science"
+  topic: "Computer Science",
+  user_id: 1
 })
+
+
 
