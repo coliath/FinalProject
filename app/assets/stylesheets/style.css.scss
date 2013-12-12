@@ -221,19 +221,25 @@ $top-nav-height: 15px;
   float: left;
   width: 600px;
   margin: 5px;
-  padding: 5px;
+  padding: 10px 20px;
   border: none;
   @include box-shadow(0,4px,15px, $darkest-gray);
   background: white;
   height: 700px;
   @extend .group;
+
+  .title-page {
+    h1, h2, h3 {
+      margin: 0;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    h2 {
+
+    }
+  }
 }
-// this should be way more specific
-//.rails-view {
-//  width: 310px;
-//  margin: 0 auto;
-//  text-align: center;
-//}
 
 
 

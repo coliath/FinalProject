@@ -4,7 +4,8 @@ window.App = {
   Views: {},
   Routers: {},
   initialize: function() {
-    App.sections = new App.Collections.Sections();
+
+    App.resources = new App.Collections.Resources();
 
     new App.Routers.Resources({
       $rootEl: $('#content')

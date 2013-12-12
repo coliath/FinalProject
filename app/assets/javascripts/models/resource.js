@@ -7,5 +7,10 @@ App.Models.Resource = Backbone.Model.extend({
     delete json.sections;
 
     return json;
-  }
+  },
+
+  firstSection: function () {
+    return this.sections.findWhere({prev_section_id: null});
+  },
+
 });

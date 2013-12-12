@@ -1,7 +1,20 @@
-<section class="section">
+<section class="section" data-section-id="<%= section.get("id") %>" >
 
   <h3><%= section.get("title") %></h3>
 
   <p><%= section.get("body") %></p>
 
 </section>
+
+<% if (section.getNextSection()) { %>
+
+  <% var sectionView = new App.Views.SectionShow({ model: section.getNextSection() }) %>
+
+  <%= sectionView.render().$el.html() %>
+
+<% } else { %>
+
+  <footer class="resource-footer">Congratulations on finishing this resource, come back soon!</p>
+
+<% } %>
+

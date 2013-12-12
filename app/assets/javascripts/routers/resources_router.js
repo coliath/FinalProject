@@ -10,10 +10,11 @@ App.Routers.Resources = Backbone.Router.extend({
   },
 
   show: function ( id ) {
-    var that = this
-    var resource = new App.Models.Resource({ id: id })
+    var that = this;
+    var resource = new App.Models.Resource({ id: id });
     resource.fetch({
       success: function (resp) {
+        App.resources.add(resource);
         var showView = new App.Views.ResourceShow({ model: resource });
         that._swapView(showView);
       }

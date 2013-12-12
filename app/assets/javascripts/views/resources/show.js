@@ -1,6 +1,6 @@
 App.Views.ResourceShow = Backbone.View.extend({
 
-  tagName: 'section.resource-wrapper',
+  tagName: 'section',
 
   template: JST['resources/show'],
 
@@ -9,7 +9,7 @@ App.Views.ResourceShow = Backbone.View.extend({
       resource: this.model
     });
 
-    this.$el.html(renderedContent);
+    this.$el.html(renderedContent).addClass('resource-wrapper');
 
     return this;
   }
