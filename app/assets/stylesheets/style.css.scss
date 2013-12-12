@@ -21,6 +21,8 @@ $darkest-gray:  #3f3f3f;
   color: black;
 }
 
+
+
 @mixin border-radius($n) {
 	-webkit-border-radius: $n;
 	-moz-border-radius: $n;
@@ -84,9 +86,18 @@ html {
 	@include box-shadow(0,0,2px, $gray)
 }
 
+#content {
+  width: 1600px;
+}
+
 .form {
 	@extend .box;
 	width: 300px;
+
+  textarea {
+    width: 100%;
+    min-height: 60px;
+  }
 
 	input {
 		display: block;
@@ -275,6 +286,13 @@ $top-nav-height: 15px;
   padding: 10px;
 }
 
+#social-content {
+  float: left;
+}
+
+.form {
+  width: 400px;
+}
 
 
 

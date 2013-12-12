@@ -15,4 +15,8 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def start
+    render "users/show"
+  end
+
 end

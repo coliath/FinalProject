@@ -10,6 +10,6 @@ NewAuthDemo::Application.routes.draw do
 
   resources :notes, only: [:create, :show, :index]
 
-  root :to => "users#new"
+  root :to => "application#start"
 
 end

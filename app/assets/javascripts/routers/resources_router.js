@@ -2,11 +2,11 @@ App.Routers.Resources = Backbone.Router.extend({
 
   routes: {
     "": "index",
-    "resources/:id": ""
+    "resources/:id": "showReaderView",
   },
 
   initialize: function () {
-    this.$resourceEl = $("#resource-content");
+    this.$resourceEl = $('#resource-content');
     this.$socialEl = $("#social-content");
   },
 
@@ -16,11 +16,34 @@ App.Routers.Resources = Backbone.Router.extend({
     resource.fetch({
       success: function (resp) {
         App.resources.add(resource);
+        App.CurrentState.resource = resource;
         var showView = new App.Views.ResourceShow({ model: resource });
-        that._swapView(showView);
+        that._swapView(that.$resourceEl, showView);
       }
     });
   },
+
+  indexNotes: function () {
+    var notesIndex = new App.Views.NoteIndex({collection: App.CurrentState.user.notes});
+    this._swapView(this.$socialEl, notesIndex);
+  },
+
+  showReaderView: function ( id ) {
+    App.CurrentState.user.notes = new App.Collections.Notes(); // change this to grab all previous notes
+    this.showResource(id);
+    this.indexNotes();
+  },
+
+  index: function () {
+    // ONLY FOR NOW!!
+    this.showReaderView(1);
+  },
+
+
+
+
+
+
 
   _swapView: function ( el, view ) {
     el.html(view.render().$el);
