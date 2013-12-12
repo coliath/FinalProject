@@ -1,0 +1,14 @@
+
+<li data-section-id="<%= section.get("id") %>" >
+
+  <%= section.get("title") %>
+
+</li>
+
+<% if (section.getNextSection()) { %>
+
+  <% var contentsItem = new App.Views.TableOfContentsItem({ model: section.getNextSection() }) %>
+
+  <%= contentsItem.render().$el.html() %>
+
+<% } %>

@@ -1,3 +1,13 @@
+
+
+
+<section class="table-of-contents">
+  <ul>
+    <% var contentsItem = new App.Views.TableOfContentsItem({ model: resource.firstSection() }) %>
+    <%= contentsItem.render().$el.html() %>
+  </ul>
+</section>
+
 <section class="resource" data-resource-id="<%= resource.get("id") %>">
 
   <section class="title-page">
@@ -13,7 +23,7 @@
 
   <section class="sections-wrapper">
 
-    <% sectionView = new App.Views.SectionShow({ model: resource.firstSection() }) %>
+    <% var sectionView = new App.Views.SectionShow({ model: resource.firstSection() }) %>
     <%= sectionView.render().$el.html() %>
 
   </section>
