@@ -24,7 +24,7 @@ r1.save!
 s1 = Section.new({
   resource_id: 1,
   title: "Introduction",
-  body: "This is the content that would be in the introduction chapter."
+  body: "When personal computers were first introduced, most of them came equipped with a simple programming language, usually a variant of BASIC. Interacting with the computer was closely integrated with this language, and thus every computer-user, whether he wanted to or not, would get a taste of it. Now that computers have become plentiful and cheap, typical users don't get much further than clicking things with a mouse. For most people, this works very well. But for those of us with a natural inclination towards technological tinkering, the removal of programming from every-day computer use presents something of a barrier."
 })
 s1.user_id = 1
 s1.save!
