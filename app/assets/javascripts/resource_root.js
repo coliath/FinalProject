@@ -4,7 +4,13 @@ window.App = {
   Views: {},
   Routers: {},
   initialize: function() {
+    App.sections = new App.Collections.Sections();
 
+    new App.Routers.Resources({
+      $rootEl: $('#content')
+    });
+
+    Backbone.history.start();
   }
 };
 

@@ -1,0 +1,47 @@
+<section class="resource">
+
+  <section class="title-page">
+
+    <h1><%= resource.get("title") %>         </h1>
+    <h2><%= resource.get("sub_title") %>     </h2>
+    <h3>By <%= resource.get("author_name") %></h3>
+    <p><%= resource.get("description") %>    </p>
+
+  </section>
+
+  <section class="sections-wrapper">
+    <% console.log(App.sections.where({ resource_id: resource.get("id") })) %>
+
+    sections = self.sections
+    sorted_sections = []
+    first = sections.select { |s| s.prev_section_id.nil? }[0]
+    sorted_sections << first
+
+    next_section = first.next_from_array(sections)
+    until next_section.nil?
+      sorted_sections << next_section
+      next_section = next_section.next_from_array(sections)
+    end
+
+    sorted_sections
+
+
+    <% var sections = App.sections.where({ resource_id: resource.get("id") }) %>
+    <% while (typeof nextSection != nil) { %>
+
+    <% } %>
+
+
+
+
+
+    <% _.each(App.sections.where({ resource_id: resource.get("id") }), function (section) {  %>
+
+      <% sectionView = new App.Views.SectionShow({ model: section }) %>
+      <%= sectionView.render().$el.html() %>
+
+    <% }); %>
+
+  </section>
+
+</section>

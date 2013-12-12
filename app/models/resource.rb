@@ -45,7 +45,7 @@ class Resource < ActiveRecord::Base
 
   def as_json(options = {})
     orig = self.attributes
-    orig[:sections] = self.sections.map { |s| s.to_json }
+    orig[:sections] = self.sections.map { |s| s.as_json }
 
     orig
   end
