@@ -219,11 +219,10 @@ $top-nav-height: 15px;
 
 .resource {
   float: left;
-  width: 600px;
+  width: 700px;
   margin: 5px;
-  //padding: 10px 20px;
   border: none;
-  @include box-shadow(0,4px,15px, $darkest-gray);
+  @include box-shadow(0,6px,15px, $darkest-gray);
   background: white;
   @extend .group;
 

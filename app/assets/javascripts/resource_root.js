@@ -6,12 +6,12 @@ window.App = {
   initialize: function() {
 
     App.resources = new App.Collections.Resources();
+    App.notes = new App.Collections.Notes();
 
-    new App.Routers.Resources({
-      $rootEl: $('#content')
-    });
+    new App.Routers.Resources();
 
     Backbone.history.start();
+
   }
 };
 

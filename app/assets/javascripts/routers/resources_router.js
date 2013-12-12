@@ -2,14 +2,15 @@ App.Routers.Resources = Backbone.Router.extend({
 
   routes: {
     "": "index",
-    "resources/:id": "show"
+    "resources/:id": ""
   },
 
-  initialize: function ( options ) {
-    this.$rootEl = options.$rootEl;
+  initialize: function () {
+    this.$resourceEl = $("#resource-content");
+    this.$socialEl = $("#social-content");
   },
 
-  show: function ( id ) {
+  showResource: function ( id ) {
     var that = this;
     var resource = new App.Models.Resource({ id: id });
     resource.fetch({
@@ -21,8 +22,8 @@ App.Routers.Resources = Backbone.Router.extend({
     });
   },
 
-  _swapView: function ( newView ) {
-    this.$rootEl.html(newView.render().$el);
+  _swapView: function ( el, view ) {
+    el.html(view.render().$el);
   },
 
 
