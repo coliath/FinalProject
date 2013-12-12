@@ -78,7 +78,6 @@ html {
 }
 
 .box {
-	padding: 5px;
 	margin: 5px;
 	border: 1px solid $gray;
 	background-color: $lightest-gray;
@@ -95,7 +94,7 @@ html {
 	width: 300px;
 
   textarea {
-    width: 100%;
+    min-width: 100%;
     min-height: 60px;
   }
 
@@ -288,10 +287,30 @@ $top-nav-height: 15px;
 
 #social-content {
   float: left;
+  @extend .box;
+  min-width: 400px;
 }
 
 .form {
   width: 400px;
+}
+
+.notes {
+
+  form {
+    textarea {
+      width: 100%;
+
+    }
+    button {
+      display: block;
+    }
+  }
+
+}
+
+.basic-note-form {
+
 }
 
 

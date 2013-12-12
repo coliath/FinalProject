@@ -12,11 +12,12 @@ App.Views.NoteIndex = Backbone.View.extend({
 
     var note = new App.Models.Note(attrs);
 
+    var that = this;
     note.save(null, {
       success: function (resp) {
-        console.log("success!");
+        that.collection.add(note);
       }
-    })
+    });
 
     console.log(note);
   },

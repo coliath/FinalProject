@@ -6,9 +6,9 @@
   <% var noteForm = new App.Views.NoteForm() %>
   <%= noteForm.render().$el.html() %>
 
-  <% _.each(notes, function (note) { %>
+  <% _.each(notes.models, function (note) { %>
 
-
+    <p><%= note.get("body") %></p>
 
   <% }) %>
 
