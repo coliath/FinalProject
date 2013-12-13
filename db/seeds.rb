@@ -77,5 +77,14 @@ n1 = Note.new({
 n1.user_id = 1
 n1.save!
 
+q1 = Question.new({
+  section_text: "content that will",
+  body: "Can anyone explain closures a little better???",
+  section_id: 2,
+  resource_id: 1
+})
+q1.user_id = 2
+q1.save!
+
 
 

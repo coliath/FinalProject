@@ -27,6 +27,8 @@ App.Routers.Resources = Backbone.Router.extend({
   indexNotes: function () {
     var notesIndex = new App.Views.NoteIndex({collection: App.CurrentState.user.notes});
     this._swapView(this.$socialEl, notesIndex);
+    var socialNav = new App.Views.SocialNav();
+    this.$socialEl.prepend(socialNav.render().$el);
   },
 
   showReaderView: function ( id ) {
@@ -43,12 +45,6 @@ App.Routers.Resources = Backbone.Router.extend({
     // ONLY FOR NOW!!
     this.showReaderView(1);
   },
-
-
-
-
-
-
 
   _swapView: function ( el, view ) {
     el.html(view.render().$el);

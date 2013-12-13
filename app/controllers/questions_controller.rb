@@ -3,7 +3,7 @@ class QuestionsController < ApplicationController
   before_filter :require_current_user!
 
   def create
-    question = question.new(params[:question])
+    question = Question.new(params[:question])
     question.user_id = current_user.id
 
     if question.save
@@ -14,7 +14,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    question = question.find_by_id(params[:id])
+    question = Question.find_by_id(params[:id])
 
     unless question.nil?
       render json: question
@@ -24,7 +24,7 @@ class QuestionsController < ApplicationController
   end
 
   def index
-    questions = question.where({ resource_id: params[:resource_id] })
+    questions = Question.where({ resource_id: params[:resource_id] })
 
     render json: questions
   end

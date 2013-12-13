@@ -70,11 +70,12 @@ html {
 	padding: 10px;
 	font-weight: bold;
   @include border-radius(4px);
-	transition: border .7s;
+	transition: all .4s;
 }
 
 .btn:hover {
-	border: 1px solid $darkest-gray;
+	border: 1px solid $dark-gray;
+  background-color: darken($blue, 5%);
 }
 $small-height: 30px;
 .small {
@@ -312,14 +313,17 @@ $top-nav-height: 18px;
 #social-content {
   float: left;
   @extend .box;
-  min-width: 400px;
+  width: 400px;
+
+
+
 }
 
 .form {
   width: 400px;
 }
 
-.notes {
+.notes, .questions {
 
   h1 {
     font-size: 1.2em;
@@ -359,6 +363,30 @@ $top-nav-height: 18px;
     border-bottom: 1px solid $gray;
   }
 
+}
+
+.social-nav {
+  @extend .group;
+  ul {
+    @extend .group;
+    width: 100%;
+    border-bottom: 2px solid $gray;
+  }
+  li {
+    @extend .clickable;
+    float: left;
+    padding: 5px;
+    transition: all .4s;
+    border-right: 1px solid $gray;
+  }
+	li:hover {
+		background: darken($lightest-gray, 5%);
+	}
+  li.hide {
+    border-right: none;
+    border-left: 1px solid $gray;
+    float: right;
+  }
 }
 
 
