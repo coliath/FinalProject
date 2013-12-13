@@ -1,6 +1,6 @@
 $red: #e74c3c;
 
-$blue: #3498db;
+$blue: lighten(#3498db, 5%);
 $almost-white: darken(white, 1.5%);
 $lightest-gray: #e9e9e9;
 $gray: #bdc3c7;
@@ -80,7 +80,7 @@ html {
 }
 $small-height: 30px;
 .small {
-  padding: 0 5px;
+  padding: 0 10px;
   height: $small-height;
   line-height: $small-height;
   font-size: .8em;
@@ -156,7 +156,22 @@ input[type=submit] {
 	background-color: inherit;
 }
 
-$top-nav-height: 15px;
+textarea {
+  border-top: 1px solid white;
+  border-bottom: 1px solid white;
+}
+
+textarea:focus {
+  outline: 0;
+  @include box-shadow(0,0,5px, $darkest-gray);
+}
+
+textarea:hover {
+  border-top: 1px solid $gray;
+  border-bottom: 1px solid $gray;
+}
+
+$top-nav-height: 18px;
 .top-nav {
 	@extend .box;
   @extend .group;
@@ -183,7 +198,7 @@ $top-nav-height: 15px;
 	}
 }
 .logo {
-  padding: 3px 10px;
+  padding: 4px 10px;
   float: left;
   font-size: 1.4em;
 	font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
