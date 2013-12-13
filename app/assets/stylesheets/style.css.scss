@@ -52,6 +52,8 @@ html {
   background: $almost-white;
 }
 
+
+
 .clickable:hover {
 	cursor: pointer;
 }
@@ -69,12 +71,19 @@ html {
 	color: white;
 	padding: 10px;
 	font-weight: bold;
-
+  @include border-radius(4px);
 	transition: border .7s;
 }
 
 .btn:hover {
 	border: 1px solid $darkest-gray;
+}
+$small-height: 30px;
+.small {
+  padding: 0 5px;
+  height: $small-height;
+  line-height: $small-height;
+  font-size: .8em;
 }
 
 .box {
@@ -193,8 +202,10 @@ $top-nav-height: 15px;
 	float: left;
 }
 
-.content {
+#content {
 	margin: 5px 30px;
+  height: 100%;
+  @extend .group;
 }
 
 .table-of-contents {
