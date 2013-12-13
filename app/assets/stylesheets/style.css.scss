@@ -254,7 +254,7 @@ $top-nav-height: 18px;
   border: none;
   height: 900px;
   overflow-y: scroll;
-  @include box-shadow(0,6px,15px, $darkest-gray);
+  @include box-shadow(0,1px,5px, $darkest-gray);
   background: white;
   @extend .group;
 
