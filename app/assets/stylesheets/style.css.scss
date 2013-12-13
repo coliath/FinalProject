@@ -297,19 +297,43 @@ $top-nav-height: 15px;
 
 .notes {
 
+  h1 {
+    font-size: 1.2em;
+    padding: 5px;
+  }
+
+  h3 {
+    font-size: 1.1em;
+    padding: 5px;
+  }
+
   form {
+    margin-bottom: 10px;
     textarea {
       width: 100%;
-
     }
     button {
       display: block;
+      margin: auto;
     }
   }
 
-}
+  ul {
+    li {
+      border-bottom: 1px solid $gray;
+    }
+    li:first-child {
+      border-top: 1px solid $gray;
+    }
+    li:last-child {
+      border-bottom: none;
+    }
+  }
 
-.basic-note-form {
+  .note {
+    padding: 5px;
+    border-bottom: 1px solid $gray;
+  }
 
 }
 

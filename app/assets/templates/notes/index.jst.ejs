@@ -6,10 +6,13 @@
   <% var noteForm = new App.Views.NoteForm() %>
   <%= noteForm.render().$el.html() %>
 
+  <h3>My notes for <%= App.CurrentState.resource.get("title") %></h3>
+  <ul>
   <% var noteCount = 0 %>
   <% _.each(notes.models, function (note) { %>
     <% noteCount++ %>
-    <p class="note"><span class="noteCount"><%= noteCount %>: </span><%= note.get("body") %></p>
+    <li class="note" data-note-id="<%= note.get('id') %>"><span class="noteCount"><%= noteCount %>: </span><%= note.get("body") %></li>
   <% }) %>
+  </ul>
 
 </section>

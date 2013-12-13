@@ -19,6 +19,7 @@ App.Routers.Resources = Backbone.Router.extend({
         App.CurrentState.resource = resource;
         var showView = new App.Views.ResourceShow({ model: resource });
         that._swapView(that.$resourceEl, showView);
+        that.indexNotes();
       }
     });
   },
@@ -34,7 +35,6 @@ App.Routers.Resources = Backbone.Router.extend({
     App.CurrentState.user.notes.fetch({ // getUserResourceNotes(id); for later
       success: function (collection, resp, opt) {
         that.showResource(id);
-        that.indexNotes();
       }
     });
   },
