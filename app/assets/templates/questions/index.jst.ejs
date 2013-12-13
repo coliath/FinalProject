@@ -1,0 +1,15 @@
+
+
+<section class="questions">
+
+  <% var questionForm = new App.Views.QuestionForm() %>
+  <%= qesutionForm.render().$el.html() %>
+
+  <h3>Questions for <%= App.CurrentState.resource.get("title") %></h3>
+  <ul>
+  <% _.each(questions.models, function (q) { %>
+    <li><%= new App.Views.QuestionShow({model: q}).render().$el.html %></li>
+  <% }) %>
+  </ul>
+
+</section>

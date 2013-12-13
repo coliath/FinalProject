@@ -21,8 +21,6 @@ $darkest-gray:  #3f3f3f;
   color: black;
 }
 
-
-
 @mixin border-radius($n) {
 	-webkit-border-radius: $n;
 	-moz-border-radius: $n;
