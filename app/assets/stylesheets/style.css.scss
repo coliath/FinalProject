@@ -50,8 +50,6 @@ html {
   background: $almost-white;
 }
 
-
-
 .clickable:hover {
 	cursor: pointer;
 }
@@ -91,10 +89,6 @@ $small-height: 30px;
 	background-color: $lightest-gray;
 	@include border-radius(4px);
 	@include box-shadow(0,0,2px, $gray)
-}
-
-#content {
-  width: 1600px;
 }
 
 .form {
@@ -175,6 +169,8 @@ $top-nav-height: 18px;
 	@extend .box;
   @extend .group;
 	padding: 0;
+  background-color: $lightest-gray;
+  background: -webkit-linear-gradient(lighten($lightest-gray, 5%), darken($lightest-gray, 8%));
 
   ul {
     float: right;
@@ -188,7 +184,6 @@ $top-nav-height: 18px;
 		display: inline-block;
 		padding: 5px 10px;
     border-left: 1px solid $gray;
-    @include border-radius(4px);
     transition: background .4s;
     color: black;
 	}
@@ -219,6 +214,7 @@ $top-nav-height: 18px;
 #content {
 	margin: 5px 30px;
   height: 100%;
+  width: 1430px;
   @extend .group;
 }
 
@@ -227,7 +223,6 @@ $top-nav-height: 18px;
   width: 200px;
   text-align: center;
   margin: 5px;
-
 
   ul {
     @extend .box;
@@ -254,9 +249,11 @@ $top-nav-height: 18px;
 
 .resource {
   float: left;
-  width: 700px;
+  width: 800px;
   margin: 5px;
   border: none;
+  height: 900px;
+  overflow-y: scroll;
   @include box-shadow(0,6px,15px, $darkest-gray);
   background: white;
   @extend .group;
@@ -279,10 +276,11 @@ $top-nav-height: 18px;
 
     h2 {
       margin: 30px 0;
-      font-size: 1.3em;
+      font-size: 1.5em;
     }
 
     h3 {
+      font-size: 1.2em;
       font-weight: bolder;
     }
   }
@@ -293,13 +291,15 @@ $top-nav-height: 18px;
   padding: 0 20px;
 
   h3 {
-    font-size: 1.2em;
+    font-size:25px;
     font-weight: bold;
     margin-bottom: 20px;
   }
 
   p {
     margin-bottom: 15px;
+    font-size: 20px;
+    line-height: 150%;
   }
 }
 
@@ -313,17 +313,8 @@ $top-nav-height: 18px;
 #social-content {
   float: left;
   @extend .box;
-  width: 400px;
-
-
-
-}
-
-.form {
-  width: 400px;
-}
-
-.notes, .questions {
+  width: 300px;
+  margin: 5px 10px;
 
   h1 {
     font-size: 1.2em;
@@ -333,18 +324,34 @@ $top-nav-height: 18px;
   h3 {
     font-size: 1.1em;
     padding: 5px;
+    border-top: 1px solid $gray;
   }
 
   form {
-    margin-bottom: 10px;
+    position: relative;
+    @extend .group;
+
     textarea {
       width: 100%;
+      min-height: 100px;
+      float: left;
     }
+
     button {
+      position: absolute;
+      bottom: -2px;
+      right: -2px;
       display: block;
-      margin: auto;
+      float: right;
     }
   }
+}
+
+.form {
+  width: 400px;
+}
+
+.notes, .questions {
 
   ul {
     li {
@@ -366,11 +373,13 @@ $top-nav-height: 18px;
 }
 
 .social-nav {
+  background-color: $lightest-gray;
+  background: -webkit-linear-gradient(lighten($lightest-gray, 5%), darken($lightest-gray, 10%));
   @extend .group;
   ul {
     @extend .group;
     width: 100%;
-    border-bottom: 2px solid $gray;
+    border-bottom: 1px solid $gray;
   }
   li {
     @extend .clickable;
