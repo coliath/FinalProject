@@ -10,16 +10,7 @@ App.Views.NoteIndex = Backbone.View.extend({
     var attrs = $(e.target).closest('form').serializeJSON(); // this is a good place for a view prototype getFormData Function
     attrs.note.resource_id = App.CurrentState.resource.get("id");
 
-    var note = new App.Models.Note(attrs);
-
-    var that = this;
-    note.save(null, {
-      success: function (resp) {
-        that.collection.add(note);
-      }
-    });
-
-    console.log(note);
+    App.CurrentState.user.notes.create(attrs);
   },
 
   initialize: function () {

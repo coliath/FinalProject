@@ -9,7 +9,6 @@ window.App = {
   initialize: function() {
 
     App.resources = new App.Collections.Resources();
-    App.notes = new App.Collections.Notes();
 
     var router = new App.Routers.Resources();
 

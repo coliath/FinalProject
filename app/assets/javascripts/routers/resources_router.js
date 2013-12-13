@@ -29,9 +29,14 @@ App.Routers.Resources = Backbone.Router.extend({
   },
 
   showReaderView: function ( id ) {
-    App.CurrentState.user.notes = new App.Collections.Notes(); // change this to grab all previous notes
-    this.showResource(id);
-    this.indexNotes();
+    App.CurrentState.user.notes = new App.Collections.Notes([], {resource_id: id}); // change this to grab all previous notes
+    var that = this;
+    App.CurrentState.user.notes.fetch({ // getUserResourceNotes(id); for later
+      success: function (collection, resp, opt) {
+        that.showResource(id);
+        that.indexNotes();
+      }
+    });
   },
 
   index: function () {

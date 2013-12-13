@@ -74,7 +74,7 @@ n1 = Note.new({
   section_id: 2,
   resource_id: 1
 })
-n1.user_id = 2
+n1.user_id = 1
 n1.save!
 
 

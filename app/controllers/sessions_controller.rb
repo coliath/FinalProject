@@ -14,8 +14,12 @@ class SessionsController < ApplicationController
       render_unprocessable("Credentials were wrong")
     else
       self.current_user = user
-      redirect_to :root
+      render "users/show"
     end
+  end
+
+  def start
+
   end
 
   def destroy

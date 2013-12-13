@@ -24,7 +24,7 @@ class NotesController < ApplicationController
   end
 
   def index
-    notes = Note.all
+    notes = Note.where({user_id: current_user.id, resource_id: params[:resource_id] })
 
     render json: notes
   end

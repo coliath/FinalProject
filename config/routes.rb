@@ -4,12 +4,13 @@ NewAuthDemo::Application.routes.draw do
 
   resource :session, only: [:create, :destroy, :new]
 
-  resources :resources, only: [:create, :show, :index]
+  resources :resources, only: [:create, :show, :index] do
+    resources :notes, only: [:create, :index]
+    resources :sections, only: [:create, :show, :index]
+  end
 
-  resources :sections, only: [:create, :show, :index]
 
-  resources :notes, only: [:create, :show, :index]
 
-  root :to => "application#start"
+  root :to => "sessions#new"
 
 end
