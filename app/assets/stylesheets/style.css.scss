@@ -67,7 +67,7 @@ html {
 	color: white;
 	padding: 10px;
 	font-weight: bold;
-  @include border-radius(4px);
+  @include border-radius(2px);
 	transition: all .4s;
 }
 
@@ -87,7 +87,7 @@ $small-height: 30px;
 	margin: 5px;
 	border: 1px solid $gray;
 	background-color: $lightest-gray;
-	@include border-radius(4px);
+	@include border-radius(2px);
 	@include box-shadow(0,0,2px, $gray)
 }
 
@@ -402,19 +402,14 @@ $top-nav-height: 18px;
 		background: darken($lightest-gray, 5%);
 	}
   li.hide {
-    background-color: darken($lightest-gray, 5%);
-    background: -webkit-linear-gradient(lighten($lightest-gray, 5%), darken($lightest-gray, 10%));
     color: $dark-gray;
-    margin: -7px;
-    font-size: 20px;
-    padding: 0 5px 2px 7px;
-    border-radius: 15px;
     border-right: none;
     float: right;
     transition: all .4s;
   }
   li.hide:hover {
-    background-color: darken($lightest-gray, 10%);
+    background-color: $lightest-gray;
+    background: -webkit-linear-gradient(lighten($lightest-gray, 5%), darken($lightest-gray, 10%));
     color: black;
   }
 }

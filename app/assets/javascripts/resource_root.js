@@ -7,15 +7,7 @@ window.App = {
     user: {}
   }, // i am not how sure if this is the best way to handle this
   initialize: function() {
-
-    App.resources = new App.Collections.Resources();
-
-    var router = new App.Routers.Resources();
-
+    new App.Routers.Resources();
     Backbone.history.start();
   }
 };
-
-// $(document).ready(function(){
-//   App.initialize();
-// });

@@ -5,6 +5,7 @@ App.Views.QuestionIndex = Backbone.View.extend({
   },
 
   initialize: function () {
+    console.log("initialzie qI");
     var renderCB = this.render.bind(this);
 
     this.listenTo(this.collection, "add", renderCB);

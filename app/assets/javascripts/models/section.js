@@ -4,8 +4,8 @@ App.Models.Section = Backbone.Model.extend({
 
   },
 
-  getResource: function () { // make robust by fetching model if needed
-    return App.resources.get(this.get("resource_id"));
+  resource: function () { // make robust by fetching model if needed
+    return App.CurrentState.resource;
   },
 
   hasNextSection: function () { // make ternary?
@@ -18,7 +18,7 @@ App.Models.Section = Backbone.Model.extend({
 
   getNextSection: function () {
     if (this.hasNextSection()) {
-      var nextSection = this.getResource().sections.findWhere({ id: this.get("next_section_id") });
+      var nextSection = this.resource().sections.findWhere({ id: this.get("next_section_id") });
       return nextSection;
     } else {
       return false; // ??? something else here
