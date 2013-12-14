@@ -1,9 +1,9 @@
 App.Views.SocialNav = Backbone.View.extend({
 
   events: {
-    "click #show-notes":     "showNotes",
+    "click #show-notes": "showNotes",
     "click #show-questions": "showQuestions",
-    "click .hide":           "hideSocial",
+    "click #hide-social": "hideSocial",
   },
 
   initialize: function () {
@@ -32,7 +32,16 @@ App.Views.SocialNav = Backbone.View.extend({
   },
 
   hideSocial: function ( e ) {
-    $("#social-content").slideUp("fast");
+    var that = this;
+    $("#social-content").slideUp("fast", function () {
+      $("#social-content").prev().append('<span class="show" id="show-social"></span>');
+      $("#show-social").click(that.showSocial);
+    });
+  },
+
+  showSocial: function ( e ) {
+    $("#show-social").remove();
+    $("#social-content").slideDown("fast");
   },
 
   template: JST['social_nav'],

@@ -273,6 +273,19 @@ $top-nav-height: 30px;
   }
 }
 
+.show {
+  @extend .box;
+  @extend .clickable;
+  position: absolute;
+  font-size: 20px;
+  font-weight: bolder;
+  padding: 1px 3px;
+}
+
+.show:after {
+  content: "→";
+}
+
 #content {
   @extend .group;
 	margin: 15px auto;
@@ -280,7 +293,7 @@ $top-nav-height: 30px;
   width: 1345px;
 }
 
-.table-of-contents {
+#table-of-contents {
   float: left;
   width: 200px;
   text-align: center;
