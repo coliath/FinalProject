@@ -11,4 +11,6 @@ class Question < ActiveRecord::Base
   belongs_to :resource
   belongs_to :user
 
+  has_many :answers
+
 end

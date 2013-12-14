@@ -14,6 +14,7 @@ class User < ActiveRecord::Base
   has_many :resources
   has_many :sections
   has_many :notes
+  has_many :answers
 
   # ****** Callbacks ****** #
   after_initialize :ensure_session_token
