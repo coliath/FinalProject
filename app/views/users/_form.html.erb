@@ -1,40 +1,42 @@
 <% action = (user.persisted? ? user_url(user) : users_url) %>
 <% method = (user.persisted? ? "put" : "post") %>
-<% message = (user.persisted? ? "Update user" : "Create user") %>
+<% message = (user.persisted? ? "Update" : "Submit") %>
 
+<div class="form-wrapper">
+  <div class="form-box">
 
-<div class="form">
+  <form action="<%= action %>" method="post">
 
-<form action="<%= action %>" method="post">
+    <h1 class='form-title'>Sign Up</h1>
 
-  <h1 class='form-title'>Sign Up</h1>
+    <input
+       name="_method"
+       type="hidden"
+       value="POST">
+    <input
+       name="authenticity_token"
+       type="hidden"
+       value="<%= form_authenticity_token %>">
 
-  <input
-     name="_method"
-     type="hidden"
-     value="POST">
-  <input
-     name="authenticity_token"
-     type="hidden"
-     value="<%= form_authenticity_token %>">
+    <input
+       id="user_username"
+       name="user[username]"
+       type="text"
+       placeholder="Select A Username"
+    >
 
-  <input
-     id="user_username"
-     name="user[username]"
-     type="text"
-     placeholder="Select A Username"
-  >
+    <input
+       id="user_password"
+       name="user[password]"
+       type="password"
+       placeholder="Select A Password"
+    >
 
-  <input
-     id="user_password"
-     name="user[password]"
-     type="password"
-     placeholder="Select A Password"
-  >
+    <input type="submit" value="<%= message %>">
+  </form>
 
-  <input type="submit" value="<%= message %>">
-</form>
+  </div>
+
+  <p> Already have an account? <%=  link_to "Sign In", new_session_url %></p>
 
 </div>
-
-<p> Already have an account? <%=  link_to "Sign In", new_session_url %></p>

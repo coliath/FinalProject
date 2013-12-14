@@ -1,11 +1,3 @@
-$red: #e74c3c;
-
-$blue: lighten(#3498db, 5%);
-$almost-white: darken(white, 1.5%);
-$lightest-gray: #e9e9e9;
-$gray: #bdc3c7;
-$dark-gray: #7f8c8d;
-$darkest-gray:  #3f3f3f;
 
 * {
 	font-family: "Times New Roman", "Times", "serif";
@@ -19,6 +11,7 @@ $darkest-gray:  #3f3f3f;
   text-decoration: none;
   list-style: none;
   color: black;
+  -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; // this is swell :)>-<
 }
 
 @mixin border-radius($n) {
@@ -46,15 +39,43 @@ $darkest-gray:  #3f3f3f;
   :-ms-input-placeholder      {@content}
 }
 
-html {
-  background: $almost-white;
+$red: red; // for now, lets not go color crazy!
+
+$blue: #4aa3df;
+$dark-blue: darken($blue, 5%);
+$light-blue: lighten($blue, 5%);
+
+$almost-white: darken(white, 3.5%);
+
+$gray: #bdc3c7;
+$dark-gray: darken($gray, 5%);
+$darker-gray: darken($gray, 10%);
+$darkest-gray: darken($gray, 15%);
+$light-gray: lighten($gray, 5%);
+$ligher-gray: lighten($gray, 10%);
+$lightest-gray: lighten($gray, 15%);
+
+$stn-back-color: $lightest-gray;
+
+$stn-border-color: $gray;
+$stn-border-width: 1px;
+$stn-border: $stn-border-width solid $stn-border-color;
+
+$stn-margin: 5px;
+$stn-padding: 5px;
+
+.stn-border {
+  @include border-radius(2px);
+  border: $stn-border;
 }
 
-.clickable:hover {
-	cursor: pointer;
-}
+.stn-transition { transition: all .4s; }
 
-.group:after {
+html { background-color: $almost-white; }
+
+.clickable:hover { cursor: pointer; }
+
+.group:after { // for containers that hold floating elements
   content: "";
   display: block;
   clear: both;
@@ -62,19 +83,19 @@ html {
 
 .btn {
 	@extend .clickable;
-	border: 1px solid $lightest-gray;
+  @extend .stn-transition;
+  border: 1px solid $blue;
 	background-color: $blue;
 	color: white;
-	padding: 10px;
+	padding: 5px 15px;
 	font-weight: bold;
-  @include border-radius(2px);
-	transition: all .4s;
 }
 
 .btn:hover {
-	border: 1px solid $dark-gray;
-  background-color: darken($blue, 5%);
+	border: 1px solid $dark-blue;
+  background-color: $dark-blue;
 }
+
 $small-height: 30px;
 .small {
   padding: 0 10px;
@@ -84,47 +105,53 @@ $small-height: 30px;
 }
 
 .box {
-	margin: 5px;
-	border: 1px solid $gray;
-	background-color: $lightest-gray;
-	@include border-radius(2px);
-	@include box-shadow(0,0,2px, $gray)
+  @extend .stn-border;
+  @include box-shadow(0,0,2px, $gray);
+	margin: $stn-margin;
+	background-color: $stn-back-color;
 }
 
-.form {
-	@extend .box;
-	width: 300px;
+form {
 
-  textarea {
-    min-width: 100%;
-    min-height: 60px;
+  
+}
+
+.form-wrapper {
+  display: inline-block;
+  min-width: 300px;
+
+  p {
+    text-align: center;
+  }
+} 
+
+.form-box {
+	@extend .box;
+
+  input {
+    @extend .stn-transition;
+    @include border-radius(4px);
+    border: 1px solid $stn-back-color;
+    display: block;
+    padding: 7px;
+    margin:  10px auto;
+    width: 90%;
   }
 
-	input {
-		display: block;
-		border: 1px solid $lightest-gray;
-		@include border-radius(4px);
-		padding: 7px;
-		margin:  10px auto;
-		width: 90%;
+  input:hover {
+    border: $stn-border;
+  }
 
-		transition: border .3s;
-	}
-
-	input:hover {
-		border: 1px solid $gray;
-	}
-
+  input:focus {
+    outline: 0;
+    @include box-shadow(0,0,5px, $darkest-gray);
+  }
+	
 	input[type=submit] {
-		width: 50%;
-		margin-top: 12px;
-		@extend .btn;
-	}
-
-	input:focus {
-	    outline: 0;
-	    @include box-shadow(0,0,5px, $darkest-gray);
-	}
+    @extend .btn;
+    width: 50%;
+    margin-top: 12px;
+  }
 
 	input.error {
 		border: 3px solid $red;
@@ -150,8 +177,7 @@ input[type=submit] {
 }
 
 textarea {
-  border-top: 1px solid white;
-  border-bottom: 1px solid white;
+  border: 1px solid white;
 }
 
 textarea:focus {
@@ -160,62 +186,77 @@ textarea:focus {
 }
 
 textarea:hover {
-  border-top: 1px solid $gray;
-  border-bottom: 1px solid $gray;
+  border: 1px solid $gray;
 }
 
-$top-nav-height: 18px;
-.top-nav {
-	@extend .box;
+nav {
   @extend .group;
-	padding: 0;
-  background-color: $lightest-gray;
-  background: -webkit-linear-gradient(lighten($lightest-gray, 5%), darken($lightest-gray, 8%));
+  background-color: $stn-back-color;
+  background: -webkit-linear-gradient(lighten($lightest-gray, 5%), $light-gray); // so I guess thats not the lighest gray eh??
+  border-bottom: $stn-border;
+  
+  ul {
 
+  }
+
+  li {
+    @extend .clickable;
+    @extend .stn-transition;
+    float: left;
+  }
+}
+
+$top-nav-height: 30px;
+.top-nav {
+  
   ul {
     float: right;
   }
 
 	li {
-		@extend .clickable;
-    float: left;
-    height: $top-nav-height;
 		line-height: $top-nav-height;
-		display: inline-block;
 		padding: 5px 10px;
-    border-left: 1px solid $gray;
-    transition: background .4s;
-    color: black;
+    border-left: $stn-border;
 	}
 	li:hover {
 		background: darken($lightest-gray, 5%);
 	}
 }
+
 .logo {
-  padding: 4px 10px;
+  padding: 7px 10px;
   float: left;
   font-size: 1.4em;
 	font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
 	font-style: italic;
 	font-weight: bolder;
-  border: none !important;
-  height: $top-nav-height;
-  line-height: $top-nav-height;
 }
 
-.right {
-	float: right;
-}
+.social-nav {
 
-.left {
-	float: left;
+  li {
+    padding: 5px;
+    border-right: 1px solid $gray;
+  }
+
+  li.hide {
+    color: $dark-gray;
+    border-right: none;
+    float: right;
+  }
+
+  li.hide:hover {
+    background-color: $lightest-gray;
+    background: -webkit-linear-gradient(lighten($lightest-gray, 5%), darken($lightest-gray, 10%));
+    color: black;
+  }
 }
 
 #content {
-	margin: 5px 30px;
-  height: 100%;
-  width: 1430px;
   @extend .group;
+	margin: 5px auto;
+  height: 100%;
+  width: 1345px;
 }
 
 .table-of-contents {
@@ -226,15 +267,14 @@ $top-nav-height: 18px;
 
   ul {
     @extend .box;
-    padding: 0;
   }
 
   li {
-    text-align: left;
     @extend .clickable;
+    @extend .stn-transition;
+    text-align: left;
     padding: 3px 5px;
-    border-bottom: 1px solid $gray;
-    transition: .4s;
+    border-bottom: $stn-border;
   }
 
   li:last-child {
@@ -250,7 +290,7 @@ $top-nav-height: 18px;
 .resource {
   float: left;
   width: 800px;
-  margin: 5px;
+  margin: $stn-margin;
   border: none;
   height: 900px;
   overflow-y: scroll;
@@ -311,8 +351,8 @@ $top-nav-height: 18px;
 }
 
 #social-content {
-  float: left;
   @extend .box;
+  float: left;
   width: 300px;
   margin: 5px 10px;
 
@@ -328,16 +368,12 @@ $top-nav-height: 18px;
   }
 
   form {
-    position: relative;
     @extend .group;
-
-    h1 {
-      text-align: center;
-    }
+    position: relative;
 
     textarea {
-      width: 96%;
-      padding: 2%;
+      width: 100%;
+      padding: 4%;
       min-height: 100px;
       float: left;
     }
@@ -349,16 +385,10 @@ $top-nav-height: 18px;
 
     button {
       position: absolute;
-      bottom: -2px;
-      right: -2px;
-      display: block;
-      float: right;
+      bottom: 1px;
+      right: 1px;
     }
   }
-}
-
-.form {
-  width: 400px;
 }
 
 .notes, .questions {
@@ -382,37 +412,7 @@ $top-nav-height: 18px;
 
 }
 
-.social-nav {
-  background-color: $lightest-gray;
-  background: -webkit-linear-gradient(lighten($lightest-gray, 5%), darken($lightest-gray, 10%));
-  @extend .group;
-  ul {
-    @extend .group;
-    width: 100%;
-    border-bottom: 1px solid $gray;
-  }
-  li {
-    @extend .clickable;
-    float: left;
-    padding: 5px;
-    transition: all .4s;
-    border-right: 1px solid $gray;
-  }
-	li:hover {
-		background: darken($lightest-gray, 5%);
-	}
-  li.hide {
-    color: $dark-gray;
-    border-right: none;
-    float: right;
-    transition: all .4s;
-  }
-  li.hide:hover {
-    background-color: $lightest-gray;
-    background: -webkit-linear-gradient(lighten($lightest-gray, 5%), darken($lightest-gray, 10%));
-    color: black;
-  }
-}
+
 
 
 

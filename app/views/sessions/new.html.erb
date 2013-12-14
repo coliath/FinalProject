@@ -1,33 +1,37 @@
-  
-<div class="form">
 
-  <h1 class="form-title">Sign In</h1>
+<div class="form-wrapper">
 
-  <form action="<%= session_url %>" method="post">
+  <div class="form-box">
 
-    <input
-       name="authenticity_token"
-       type="hidden"
-       value="<%= form_authenticity_token %>">
+    <h1 class="form-title">Sign In</h1>
 
-        <input
-           id="user_username"
-           name="user[username]"
-           type="text"
-           placeholder="Enter Username"
-        >
+    <form action="<%= session_url %>" method="post">
 
-        <input
-           id="user_password"
-           name="user[password]"
-           type="password"
-           placeholder="Enter Password"
-        >
+      <input
+         name="authenticity_token"
+         type="hidden"
+         value="<%= form_authenticity_token %>">
 
-    <input type="submit" value="Sign In">
+          <input
+             id="user_username"
+             name="user[username]"
+             type="text"
+             placeholder="Enter Username"
+          >
 
-  </form>
+          <input
+             id="user_password"
+             name="user[password]"
+             type="password"
+             placeholder="Enter Password"
+          >
+
+      <input type="submit" value="Sign In">
+
+    </form>
+
+  </div>
+
+  <p> Don't have an account yet? <%=  link_to "Sign Up", new_user_url %></p>
 
 </div>
-
-<p> Don't have an account yet? <%=  link_to "Sign Up", new_user_url %></p>

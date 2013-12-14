@@ -29,6 +29,7 @@ App.Routers.Resources = Backbone.Router.extend({
   },
 
   initNotes: function () {
+	console.log("initiailizing notes");
     var that = this;
     App.CurrentState.user.notes = new App.Collections.Notes([], {resource_id: App.CurrentState.resource.get("id")});
     App.CurrentState.user.notes.fetch({
@@ -40,13 +41,16 @@ App.Routers.Resources = Backbone.Router.extend({
   },
 
   showNotes: function () {
+	  console.log("showing notes");
     var notesIndex = new App.Views.NoteIndex({collection: App.CurrentState.user.notes});
     this._swapView(this.$socialEl, notesIndex);
   },
 
   initQuestions: function () {
+    console.log("initiailizing questions");
+
     var that = this;
-    App.CurrentState.resource.questions = App.Collections.Questions([],{ resource_id: App.CurrentState.resource.get("id") });
+    App.CurrentState.resource.questions = new App.Collections.Questions([],{ resource_id: App.CurrentState.resource.get("id") });
     App.CurrentState.resource.questions.fetch({
       success: function (collection, resp, opt) {
         that.addQuestions();
@@ -56,8 +60,8 @@ App.Routers.Resources = Backbone.Router.extend({
   },
 
   addQuestions: function () {
-    var questionIndex = App.Views.QuestionIndex({collection: App.CurrentState.resource.questions});
     console.log("add questions");
+    var questionIndex = new App.Views.QuestionIndex({collection: App.CurrentState.resource.questions});
     var hiddenEl = questionIndex.render().$el.hide();
     this.$socialEl.append(hiddenEl);
   },
