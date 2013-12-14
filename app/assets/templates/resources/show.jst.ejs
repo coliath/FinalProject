@@ -1,7 +1,12 @@
 
 <section class="table-of-contents">
-  <h3> Table of Contents </h3>
-  <ul>
+  <nav class="table-of-contents-nav"> 
+    <ul>
+      <li class="tbl-header"> Table of Contents </li>
+      <li class="hide" id="hide-table-of-contents">&#10006</li>
+    <ul>
+  </nav>
+  <ul class="list">
     <% var contentsItem = new App.Views.TableOfContentsItem({ model: resource.firstSection() }) %>
     <%= contentsItem.render().$el.html() %>
   </ul>

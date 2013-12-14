@@ -189,10 +189,20 @@ textarea:hover {
   border: 1px solid $gray;
 }
 
+.selected {
+  background: darken($lightest-gray, 5%);
+}
+
+.un-selected {
+  background-color: $lightest-gray;
+  background: -webkit-linear-gradient(lighten($lightest-gray, 5%), darken($lightest-gray, 10%));
+  color: black;
+  cursor: default;
+}
+
 nav {
   @extend .group;
-  background-color: $stn-back-color;
-  background: -webkit-linear-gradient(lighten($lightest-gray, 5%), $light-gray); // so I guess thats not the lighest gray eh??
+  @extend .un-selected;
   border-bottom: $stn-border;
   
   ul {
@@ -203,6 +213,10 @@ nav {
     @extend .clickable;
     @extend .stn-transition;
     float: left;
+  }
+
+  li:hover {
+    @extend .selected;
   }
 }
 
@@ -218,9 +232,7 @@ $top-nav-height: 30px;
 		padding: 5px 10px;
     border-left: $stn-border;
 	}
-	li:hover {
-		background: darken($lightest-gray, 5%);
-	}
+	
 }
 
 .logo {
@@ -264,27 +276,35 @@ $top-nav-height: 30px;
   width: 200px;
   text-align: center;
   margin: 5px;
+  @extend .box;
 
-  ul {
-    @extend .box;
-  }
+  ul.list {
+    
 
-  li {
+    li {
     @extend .clickable;
     @extend .stn-transition;
     text-align: left;
     padding: 3px 5px;
     border-bottom: $stn-border;
-  }
+    }
 
-  li:last-child {
-    border-bottom: none;
-  }
+    li:last-child {
+      border-bottom: none;
+    }
 
-  li:hover {
-    background: darken($lightest-gray, 5%);
+    li:hover {
+      background: darken($lightest-gray, 5%);
+    }
   }
+}
 
+.table-of-contents-nav {
+  @extend .social-nav;
+
+  li.tbl-header:hover {
+    @extend .un-selected;
+  }
 }
 
 .resource {
