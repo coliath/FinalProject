@@ -39,18 +39,19 @@
   :-ms-input-placeholder      {@content}
 }
 
-$red: red; // for now, lets not go color crazy!
+$red: red; // for now, lets not go color crazy...!
 
 $blue: #4aa3df;
 $dark-blue: darken($blue, 5%);
 $light-blue: lighten($blue, 5%);
 
 $almost-white: darken(white, 3.5%);
+$almost-black: lighten(black, 40%);
 
 $gray: #bdc3c7;
 $dark-gray: darken($gray, 5%);
 $darker-gray: darken($gray, 10%);
-$darkest-gray: darken($gray, 15%);
+$darkest-gray: darken($gray, 25%);
 $light-gray: lighten($gray, 5%);
 $ligher-gray: lighten($gray, 10%);
 $lightest-gray: lighten($gray, 15%);
@@ -215,6 +216,12 @@ nav {
     float: left;
   }
 
+  li.drop-down:after {
+    content: " ▾";
+    color: $darkest-gray;
+    font-size: 13px;
+  }
+
   li:hover {
     @extend .selected;
   }
@@ -224,6 +231,7 @@ $top-nav-height: 30px;
 .top-nav {
   
   ul {
+    padding: 0 20px;
     float: right;
   }
 
@@ -236,6 +244,7 @@ $top-nav-height: 30px;
 }
 
 .logo {
+  @extend .clickable;
   padding: 7px 10px;
   float: left;
   font-size: 1.4em;
@@ -266,7 +275,7 @@ $top-nav-height: 30px;
 
 #content {
   @extend .group;
-	margin: 5px auto;
+	margin: 15px auto;
   height: 100%;
   width: 1345px;
 }
@@ -308,16 +317,16 @@ $top-nav-height: 30px;
 }
 
 .resource {
+  @extend .group;
+  @include box-shadow(0,3px,10px, $almost-black);
   float: left;
   width: 800px;
   margin: $stn-margin;
   border: none;
   height: 900px;
   overflow-y: scroll;
-  @include box-shadow(0,1px,5px, $darkest-gray);
   background: white;
-  @extend .group;
-
+  
   .title-page {
 
     margin-bottom: 100px;

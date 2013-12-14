@@ -62,8 +62,7 @@ App.Routers.Resources = Backbone.Router.extend({
   addQuestions: function () {
     console.log("add questions");
     var questionIndex = new App.Views.QuestionIndex({collection: App.CurrentState.resource.questions});
-    var hiddenEl = questionIndex.render().$el.hide();
-    this.$socialEl.append(hiddenEl);
+    this.$socialEl.append(questionIndex.render().$el);
   },
 
   addSocialNav: function () {
