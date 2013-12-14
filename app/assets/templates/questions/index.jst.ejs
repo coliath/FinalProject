@@ -1,6 +1,15 @@
 
 
-<section class="questions" style="display: none">
+<% 
+console.log(typeof hidden);
+if (hidden) {
+	var style = "display:none";
+} else {
+	var style = "";
+} %>
+
+
+<section class="questions" style="<%= style %>">
 
   <% var questionForm = new App.Views.QuestionForm() %>
   <%= questionForm.render().$el.html() %>

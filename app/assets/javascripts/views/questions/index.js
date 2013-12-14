@@ -5,7 +5,6 @@ App.Views.QuestionIndex = Backbone.View.extend({
   },
 
   initialize: function () {
-    console.log("initialzie qI");
     var renderCB = this.render.bind(this);
 
     this.listenTo(this.collection, "add", renderCB);
@@ -23,9 +22,12 @@ App.Views.QuestionIndex = Backbone.View.extend({
 
   template: JST['questions/index'],
 
-  render: function () {
+  render: function ( hidden ) {
+    if (hidden != true) { hidden = false; }
+
     var renderedContent = this.template({
-      questions: this.collection
+      questions: this.collection,
+      hidden: hidden
     });
 
     this.$el.html(renderedContent);
