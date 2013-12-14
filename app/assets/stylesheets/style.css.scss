@@ -72,7 +72,10 @@ $stn-padding: 5px;
 
 .stn-transition { transition: all .4s; }
 
-html { background-color: $almost-white; }
+html { 
+  background-color: $almost-white;
+  z-index: 2;
+}
 
 .clickable:hover { cursor: pointer; }
 
@@ -333,6 +336,10 @@ $top-nav-height: 30px;
 .table-of-contents-nav {
   @extend .social-nav;
 
+  li {
+    border: none;
+  }
+
   li.tbl-header:hover {
     @extend .un-selected;
   }
@@ -405,7 +412,6 @@ $top-nav-height: 30px;
   @extend .box;
   float: left;
   width: 300px;
-  margin: 5px 10px;
 
   h1 {
     font-size: 1.2em;
@@ -456,9 +462,8 @@ $top-nav-height: 30px;
     }
   }
 
-  .note {
+  .note, .question {
     padding: 5px;
-    border-bottom: 1px solid $gray;
   }
 
 }
