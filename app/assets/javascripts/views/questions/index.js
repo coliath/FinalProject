@@ -31,16 +31,8 @@ App.Views.QuestionIndex = Backbone.View.extend({
     var fullView = new App.Views.QuestionFullShow({model: question});
 
     $('#content').append(fullView.render().$el);
-
-
-    $('.question-modal').reveal({
-      animation: 'fadeAndPop',                   //fade, fadeAndPop, none
-      animationspeed: 300,                       //how fast animtions are
-      closeonbackgroundclick: true,              //if you click background will modal close?
-      dismissmodalclass: 'close-reveal-modal'    //the class of a button or element that will close an open modal
-    });
-
-
+    $('.question-modal').reveal();
+    $(document).on('reveal:close', '.question-modal', function () { $(this).remove(); });
   },
 
   template: JST['questions/index'],

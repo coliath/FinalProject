@@ -332,7 +332,7 @@ $top-nav-height: 30px;
     }
 
     li:hover {
-      background: darken($lightest-gray, 5%);
+      background-color: darken($lightest-gray, 5%);
     }
   }
 }
@@ -456,6 +456,8 @@ $top-nav-height: 30px;
 
   ul {
     li {
+      @extend .clickable;
+      @extend .stn-transition;
       border-bottom: 1px solid $gray;
     }
     li:first-child {
@@ -463,6 +465,10 @@ $top-nav-height: 30px;
     }
     li:last-child {
       border-bottom: none;
+    }
+
+    li:hover {
+      background-color: darken($lightest-gray, 5%);
     }
   }
 
