@@ -1,6 +1,6 @@
 
 
-App.Views.answerIndex = Backbone.View.extend({
+App.Views.AnswerIndex = Backbone.View.extend({
 
   events: {
     'click #submit-answer': 'submit',

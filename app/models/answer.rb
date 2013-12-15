@@ -1,5 +1,5 @@
 class Answer < ActiveRecord::Base
-  attr_accessible :body, :question_id, :body, :correct
+  attr_accessible :body, :question_id, :correct
 
   # ****** Relations ****** #
   belongs_to :user

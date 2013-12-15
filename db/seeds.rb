@@ -79,12 +79,31 @@ n1.save!
 
 q1 = Question.new({
   section_text: "content that will",
-  body: "Can anyone explain closures a little better???",
+  title: "Can anyone explain closures a little better???",
+  body: "I have having a great deal of trouble wrapping my head around what is actually being set if you hold reference or not.  Does each function closure return create new objects or are they held by the same reference??? HELP ME!!!",
   section_id: 2,
   resource_id: 1
 })
-q1.user_id = 2
+q1.user_id = 1
 q1.save!
+
+a1 = Answer.new({
+  question_id: q1.id,
+  body: "they are just like regular methods, not really used in fact, disregard everything you read/hear about them",
+  correct: false
+});
+
+a1.user_id = 2
+a1.save!
+
+a2 = Answer.new({
+  question_id: q1.id,
+  body: "Here is a great post on closures from stack overflow http://stackoverflow.com/questions/111102/how-do-javascript-closures-work",
+  correct: true
+});
+
+a2.user_id = 1
+a2.save!
 
 
 
