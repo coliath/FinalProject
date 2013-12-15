@@ -27,11 +27,11 @@ App.Views.QuestionIndex = Backbone.View.extend({
 
     var question = App.CurrentState.resource.questions.get(qid);
     var fullView = new App.Views.QuestionFullShow({model: question});
-    App.CurrentState.answers = new App.Collections.Answers([],{resource_id: App.CurrentState.resource.get("id"), question_id: question.get("id")});
-    App.CurrentState.answers.fetch({
+    App.CurrentState.resource.answers = new App.Collections.Answers([],{resource_id: App.CurrentState.resource.get("id"), question_id: question.get("id")});
+    App.CurrentState.resource.answers.fetch({
       success: function (collection, resp, opts) {
         $('#content').append(fullView.render().$el);
-        var answersView = new App.Views.AnswerIndex({collection: App.CurrentState.answers});
+        var answersView = new App.Views.AnswerIndex({collection: App.CurrentState.resource.answers});
         $('.question-modal').append(answersView.render().$el);
         $('.question-modal').reveal();
         $(document).on('reveal:close', '.question-modal', function () { $(this).remove(); });

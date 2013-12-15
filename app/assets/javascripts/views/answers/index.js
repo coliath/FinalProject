@@ -11,7 +11,7 @@ App.Views.AnswerIndex = Backbone.View.extend({
 
     var attrs = $(e.target).closest('form').serializeJSON();
 
-    App.CurrentState.answers.create(attrs, {wait: true});
+    App.CurrentState.resource.answers.create(attrs, {wait: true});
   },
 
   initialize: function () {
