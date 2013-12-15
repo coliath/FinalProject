@@ -39,11 +39,16 @@
   :-ms-input-placeholder      {@content}
 }
 
-$red: red; // for now, lets not go color crazy...!
+$red: #eb3d35;
+
+$green: #2ecc71;
+$faded-green: lighten($green, 42%);
+$faded-red: lighten($red, 36%);
 
 $blue: #4aa3df;
 $dark-blue: darken($blue, 5%);
 $light-blue: lighten($blue, 5%);
+$faded-blue: lighten($blue, 36%);
 
 $almost-white: darken(white, 3.5%);
 $almost-black: lighten(black, 40%);
@@ -299,8 +304,15 @@ $top-nav-height: 30px;
 }
 
 #show-table-of-contents {
-  left: 6px;
+  top: 0;
+  left: 0;
 }
+
+#show-social {
+  top: 0;
+  right: 0;
+}
+
 
 #content {
   @extend .group;
@@ -349,10 +361,15 @@ $top-nav-height: 30px;
   }
 }
 
+.resource-wrapper {
+  @extend .group;
+  float: left;
+  position: relative;
+}
+
 .resource {
   @extend .group;
   @include box-shadow(0,3px,10px, $almost-black);
-  float: left;
   width: 800px;
   margin: $stn-margin;
   border: none;
@@ -474,6 +491,68 @@ $top-nav-height: 30px;
 
   .note, .question {
     padding: 5px;
+  }
+
+}
+
+.question-modal {
+
+  overflow-y: scroll;
+  max-height: 90%;
+
+  h1 {  // question title
+    font-size: 1.5em;
+    font-weight: bold;
+    margin: 0;
+    border-bottom: $stn-border;
+  }
+
+  h3 {  // num answers display
+    font-size: 1.3em;
+    font-weight: bold;
+    border-bottom: $stn-border;
+    padding-bottom: 5px;
+  }
+
+  p.question-body, p.answer-body {  // question body
+    margin-top: 20px;
+    font-size: 1.2em;
+    padding: 20px;
+    margin: 0;
+    margin: 10px 0;
+  }
+
+  p.answer-body {
+    background-color: $faded-green;
+  }
+
+}
+
+.answer-form {
+
+  button {
+    border: 1px solid $green;
+    background-color: $green;
+  }
+
+  button:hover {
+    border: 1px solid darken($green, 10%);
+    background-color: darken($green, 10%);
+  }
+
+  label {
+    display: block;
+    font-weight: bold;
+    font-size: 1.3em;
+    margin-top: 15px;
+    padding-bottom: 5px;
+  }
+
+  textarea {
+    width: 100%;
+    min-height: 130px;
+    border: $stn-border;
+    padding: 2%;
   }
 
 }

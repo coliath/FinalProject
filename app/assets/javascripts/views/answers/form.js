@@ -1,6 +1,6 @@
 
 
-App.Views.QuestionForm = Backbone.View.extend({
+App.Views.AnswerForm = Backbone.View.extend({
 
   template: JST['answers/form'],
 

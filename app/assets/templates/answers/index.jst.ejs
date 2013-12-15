@@ -1,7 +1,10 @@
 
-<% console.log(answers) %>
+<ul class="answers">
 <% _.each(answers.models, function (answer) { %>
 
-	<p class="answer"> <%= answer.get("body") %> </p>
+	<li class="answer-body"> <%= answer.get("body") %> </li>
 
 <% }); %>
+</ul>
+
+<%= new App.Views.AnswerForm().render().$el.html() %>

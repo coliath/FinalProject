@@ -80,7 +80,7 @@ n1.save!
 q1 = Question.new({
   section_text: "content that will",
   title: "Can anyone explain closures a little better???",
-  body: "I have having a great deal of trouble wrapping my head around what is actually being set if you hold reference or not.  Does each function closure return create new objects or are they held by the same reference??? HELP ME!!!",
+  body: "I am having a great deal of trouble wrapping my head around what is being set and whether or not it holds reference.  Does each function closure return create new objects or are they held by the same reference??? HELP ME!!!",
   section_id: 2,
   resource_id: 1
 })

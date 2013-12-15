@@ -16,17 +16,17 @@
 	
 	.reveal-modal {
 		visibility: hidden;
-		top: 100px; 
+		top: 60px; 
 		left: 50%;
 		margin-left: -300px;
 		width: 520px;
-		background: #eee no-repeat -200px -80px;
+		background: white no-repeat -200px -80px;
 		position: absolute;
 		z-index: 101;
 		padding: 30px 40px 34px;
-		-moz-border-radius: 5px;
-		-webkit-border-radius: 5px;
-		border-radius: 5px;
+		-moz-border-radius: 3px;
+		-webkit-border-radius: 3px;
+		border-radius: 3px;
 		-moz-box-shadow: 0 0 10px rgba(0,0,0,.4);
 		-webkit-box-shadow: 0 0 10px rgba(0,0,0,.4);
 		-box-shadow: 0 0 10px rgba(0,0,0,.4);

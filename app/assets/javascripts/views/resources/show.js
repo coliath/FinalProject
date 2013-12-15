@@ -11,7 +11,7 @@ App.Views.ResourceShow = Backbone.View.extend({
   hideTableOfContents: function ( e ) {
     var that = this;
     $("#table-of-contents").slideUp("fast", function () {
-      $("#resource-content").prepend('<span class="show" id="show-table-of-contents"></span>');
+      $(".resource").append('<span class="show" id="show-table-of-contents"></span>');
       $("#show-table-of-contents").click(that.showTableOfContents);
     });
   },

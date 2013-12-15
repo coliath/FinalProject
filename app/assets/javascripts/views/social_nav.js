@@ -34,7 +34,7 @@ App.Views.SocialNav = Backbone.View.extend({
   hideSocial: function ( e ) {
     var that = this;
     $("#social-content").slideUp("fast", function () {
-      $("#resource-content").append('<span class="show" id="show-social"></span>');
+      $(".resource-wrapper").append('<span class="show" id="show-social"></span>');
       $("#show-social").click(that.showSocial);
     });
   },
