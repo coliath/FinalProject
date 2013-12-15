@@ -243,6 +243,10 @@ $top-nav-height: 30px;
 		padding: 5px 10px;
     border-left: $stn-border;
 	}
+
+  li:last-child {
+    border-right: $stn-border;
+  }
 	
 }
 

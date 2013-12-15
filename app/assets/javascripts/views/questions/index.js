@@ -2,6 +2,7 @@ App.Views.QuestionIndex = Backbone.View.extend({
 
   events: {
     'click #submit-question': 'submit',
+    'click .question': 'showFullQuestion'
   },
 
   initialize: function () {
@@ -18,6 +19,28 @@ App.Views.QuestionIndex = Backbone.View.extend({
     attrs.question.resource_id = App.CurrentState.resource.get("id");
 
     App.CurrentState.resource.questions.create(attrs, {wait: true});
+  },
+
+  showFullQuestion: function ( e ) {
+
+
+
+    var qid = $(e.target).data("question-id");
+
+    var question = App.CurrentState.resource.questions.get(qid);
+    var fullView = new App.Views.QuestionFullShow({model: question});
+
+    $('#content').append(fullView.render().$el);
+
+
+    $('.question-modal').reveal({
+      animation: 'fadeAndPop',                   //fade, fadeAndPop, none
+      animationspeed: 300,                       //how fast animtions are
+      closeonbackgroundclick: true,              //if you click background will modal close?
+      dismissmodalclass: 'close-reveal-modal'    //the class of a button or element that will close an open modal
+    });
+
+
   },
 
   template: JST['questions/index'],
