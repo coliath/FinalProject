@@ -5,6 +5,7 @@ class AnswersController < ApplicationController
   def create
     answer = Answer.new(params[:answer])
     answer.user_id = current_user.id
+    answer.question_id = params[:question_id]
 
     if answer.save
       render json: answer

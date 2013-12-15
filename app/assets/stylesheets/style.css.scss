@@ -514,7 +514,7 @@ $top-nav-height: 30px;
     padding-bottom: 5px;
   }
 
-  p.question-body, p.answer-body {  // question body
+  p.question-body, li.answer-body {  // question body
     margin-top: 20px;
     font-size: 1.2em;
     padding: 20px;
@@ -522,7 +522,7 @@ $top-nav-height: 30px;
     margin: 10px 0;
   }
 
-  p.answer-body {
+  li.answer-body {
     background-color: $faded-green;
   }
 

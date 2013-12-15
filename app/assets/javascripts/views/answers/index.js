@@ -11,14 +11,14 @@ App.Views.AnswerIndex = Backbone.View.extend({
 
     var attrs = $(e.target).closest('form').serializeJSON();
 
-    console.log(attrs);
-    //attrs.answer.question_id = App.CurrentState.question.get("id");
-
-    //App.CurrentState.question.answers.create(attrs, {wait: true});
+    App.CurrentState.answers.create(attrs, {wait: true});
   },
 
   initialize: function () {
+  	var renderCB = this.render.bind(this);
 
+    this.listenTo(this.collection, "add", renderCB);
+    this.listenTo(this.collection, "remove", renderCB);
   },
 
   template: JST['answers/index'],
