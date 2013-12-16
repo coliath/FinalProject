@@ -13,7 +13,7 @@ class CommentsController < ApplicationController
   end
 
   def index
-    comments = Comment.where({ commentable_type: params[:type], commentable_id: params[:id] })
+    comments = Comment.where({commentable_type: params[:type], commentable_id: params[:id]})
 
     render json: comments
   end

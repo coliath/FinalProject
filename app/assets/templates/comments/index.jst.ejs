@@ -1,0 +1,9 @@
+
+<ul class="comments">
+
+<% _.each(comments.models, function (comment) { %>
+
+  <li class="comment"><%= comment.escape("body") %></li>
+
+<% }) %>
+</ul>

@@ -1,15 +1,17 @@
-App.Views.QuestionIndex = Backbone.View.extend({
+App.Views.CommentIndex = Backbone.View.extend({
 
   events: {
-    'click #submit-answer': 'submit',
+    'click .submit-comment': 'submit',
   },
 
   submit: function ( e ) {
     e.preventDefault();
 
     var attrs = $(e.target).closest('form').serializeJSON();
+    attrs.comment.commentable_id = this.collection.commentableId;
+    attrs.comment.commentable_type = this.collection.commentable_type;
 
-    App.CurrentState.resource.answers.create(attrs, {wait: true});
+    this.collection.create(attrs, {wait: true});
   },
 
   initialize: function () {
@@ -19,11 +21,11 @@ App.Views.QuestionIndex = Backbone.View.extend({
     this.listenTo(this.collection, "remove", renderCB);
   },
 
-  template: JST['answers/index'],
+  template: JST['comments/index'],
 
   render: function () {
     var renderedContent = this.template({
-      answers: this.collection
+      comments: this.collection
     });
 
     this.$el.html(renderedContent);

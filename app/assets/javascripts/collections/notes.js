@@ -12,7 +12,7 @@ App.Collections.Notes = Backbone.Collection.extend({
 
   getUserResourceNotes: function ( resource_id ) { // this is redundent at this point in the project
     $.ajax({
-      url: "/resources/"+ resource_id +"/notes",
+      url: "/resources/" + resource_id + "/notes",
       success: function (resp) {
         console.log(resp);
       },

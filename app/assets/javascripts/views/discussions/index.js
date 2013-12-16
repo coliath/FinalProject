@@ -22,14 +22,22 @@ App.Views.DiscussionIndex = Backbone.View.extend({
   },
 
   showDiscussion: function ( e ) {
-    var discussionId = $(e.target).data("discussion-id");
-
-    var discussion = App.CurrentState.resource.discussions.get(discussionId);
-    var fullView = new App.Views.DiscussionShow({ model: discussion });
-
-    $('#content').append(fullView.render().$el);
-    $('.show-modal').reveal();
-    $(document).on('reveal:close', '.show-modal', function () { $(this).remove(); });
+    var dId = $(e.target).data("discussion-id");
+    var discussion = this.collection.get(dId);
+    var comments = new App.Collections.Comments({ commentable_id: dId, type: "Discussion" });
+    comments.fetch({
+      success: function (collection, resp, opts) {
+        var commentIndex = new App.Views.CommentIndex({ collection: comments });
+        var discussionShow = new App.Views.DiscussionShow({ model: discussion });
+        $('#content').append(discussionShow.render().$el);
+        $('.show-modal').append(commentIndex.render().$el);
+        $('.show-modal').reveal();
+        $(document).on('reveal:close', '.show-modal', function () { $(this).remove(); });
+      },
+      error: function (collectio, resp, opts) {
+        console.log(resp);
+      }
+    });
   },
 
   template: JST['discussions/index'],
