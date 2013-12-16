@@ -48,7 +48,7 @@ App.Routers.Resources = Backbone.Router.extend({
     App.CurrentState.resource.questions.fetch({
       success: function (collection, resp, opt) {
         that.addQuestions();
-        that.addSocialNav();
+        that.initDiscussions();
       }
     });
   },
@@ -56,6 +56,22 @@ App.Routers.Resources = Backbone.Router.extend({
   addQuestions: function () {
     var questionIndex = new App.Views.QuestionIndex({collection: App.CurrentState.resource.questions});
     this.$socialEl.append(questionIndex.render(true).$el);
+  },
+
+  initDiscussions: function () {
+    var that = this;
+    App.CurrentState.resource.discussions = new App.Collections.Discussions([],{ resource_id: App.CurrentState.resource.get("id") });
+    App.CurrentState.resource.discussions.fetch({
+      success: function (collection, resp, opt) {
+        that.addDiscussions();
+        that.addSocialNav();
+      }
+    });
+  },
+
+  addDiscussions: function () {
+    var discussionIndex = new App.Views.DiscussionIndex({collection: App.CurrentState.resource.discussions});
+    this.$socialEl.append(discussionIndex.render(true).$el);
   },
 
   addSocialNav: function () {

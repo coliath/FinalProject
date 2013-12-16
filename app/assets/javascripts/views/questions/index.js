@@ -2,7 +2,7 @@ App.Views.QuestionIndex = Backbone.View.extend({
 
   events: {
     'click #submit-question': 'submit',
-    'click .question': 'showFullQuestion'
+    'click .question': 'showQuestion'
   },
 
   initialize: function () {
@@ -21,18 +21,18 @@ App.Views.QuestionIndex = Backbone.View.extend({
     App.CurrentState.resource.questions.create(attrs, {wait: true});
   },
 
-  showFullQuestion: function ( e ) {
+  showQuestion: function ( e ) {
 
-    var qid = $(e.target).data("question-id");
+    var qId = $(e.target).data("question-id");
 
-    var question = App.CurrentState.resource.questions.get(qid);
-    var fullView = new App.Views.QuestionFullShow({model: question});
+    var question = App.CurrentState.resource.questions.get(qId);
+    var showView = new App.Views.QuestionShow({model: question});
     App.CurrentState.resource.answers = new App.Collections.Answers([],{resource_id: App.CurrentState.resource.get("id"), question_id: question.get("id")});
     App.CurrentState.resource.answers.fetch({
       success: function (collection, resp, opts) {
-        $('#content').append(fullView.render().$el);
-        var answersView = new App.Views.AnswerIndex({collection: App.CurrentState.resource.answers});
-        $('.question-modal').append(answersView.render().$el);
+        $('#content').append(showView.render().$el); // hidden by default
+        var answersIndex = new App.Views.AnswerIndex({collection: App.CurrentState.resource.answers});
+        $('.question-modal').append(answersIndex.render().$el);
         $('.question-modal').reveal();
         $(document).on('reveal:close', '.question-modal', function () { $(this).remove(); });
       }

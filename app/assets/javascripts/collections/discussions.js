@@ -7,7 +7,7 @@ App.Collections.Discussions = Backbone.Collection.extend({
   },
 
   url: function () {
-    return "/resources/" + this.resource_id + "/discussions"
+    return "/resources/" + this.resource_id + "/discussions";
   },
 
 });

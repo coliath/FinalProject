@@ -15,7 +15,7 @@
 
   <ul>
   <% _.each(discussions.models, function (discussion) { %>
-    <li><%= new App.Views.QuestionShow({model: discussion}).render().$el.html() %></li>
+    <li class="discussion" data-discussion-id="<%= discussion.get('id') %>"><%= discussion.escape("title") %></li>
   <% }) %>
   </ul>
 

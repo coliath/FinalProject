@@ -1,4 +1,4 @@
-App.Views.QuestionFullShow = Backbone.View.extend({
+App.Views.QuestionShow = Backbone.View.extend({
 
   template: JST['questions/fullShow'],
 

@@ -3,6 +3,7 @@ App.Views.SocialNav = Backbone.View.extend({
   events: {
     "click #show-notes": "showNotes",
     "click #show-questions": "showQuestions",
+    "click #show-discussions": "showDiscussions",
     "click #hide-social": "hideSocial",
   },
 
@@ -29,6 +30,10 @@ App.Views.SocialNav = Backbone.View.extend({
 
   showQuestions: function ( e ) {
     this._swapView("#show-questions", ".questions");
+  },
+
+  showDiscussions: function ( e ) {
+    this._swapView("#show-discussions", ".discussions");
   },
 
   hideSocial: function ( e ) {

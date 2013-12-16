@@ -91,7 +91,7 @@ a1 = Answer.new({
   question_id: q1.id,
   body: "they are just like regular methods, not really used in fact, disregard everything you read/hear about them",
   correct: false
-});
+})
 
 a1.user_id = 2
 a1.save!
@@ -100,10 +100,21 @@ a2 = Answer.new({
   question_id: q1.id,
   body: "Here is a great post on closures from stack overflow http://stackoverflow.com/questions/111102/how-do-javascript-closures-work",
   correct: true
-});
+})
 
 a2.user_id = 1
 a2.save!
+
+d1 = Discussion.new({
+  section_text: "content that will",
+  title: "Javascript VS Coffee Script: Thoughts?",
+  body: "I've recently learned about Coffee Script, it looks way better than JS from first glance, can this be true?",
+  section_id: 2,
+  resource_id: 1
+})
+
+d1.user_id = 1
+d1.save!
 
 
 

@@ -17,7 +17,7 @@
 
   <ul>
   <% _.each(questions.models, function (q) { %>
-    <li><%= new App.Views.QuestionShow({model: q}).render().$el.html() %></li>
+    <li class='question' data-question-id="<%= q.get('id') %>"><%= q.escape("title") %></li>
   <% }) %>
   </ul>
 
