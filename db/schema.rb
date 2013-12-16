@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131215195758) do
+ActiveRecord::Schema.define(:version => 20131216151259) do
 
   create_table "answers", :force => true do |t|
     t.integer  "user_id"
@@ -24,6 +24,21 @@ ActiveRecord::Schema.define(:version => 20131215195758) do
 
   add_index "answers", ["question_id"], :name => "index_answers_on_question_id"
   add_index "answers", ["user_id"], :name => "index_answers_on_user_id"
+
+  create_table "discussions", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "section_id"
+    t.text     "section_text"
+    t.string   "title"
+    t.text     "body"
+    t.integer  "resource_id"
+    t.datetime "created_at",   :null => false
+    t.datetime "updated_at",   :null => false
+  end
+
+  add_index "discussions", ["resource_id"], :name => "index_discussions_on_resource_id"
+  add_index "discussions", ["section_id"], :name => "index_discussions_on_section_id"
+  add_index "discussions", ["user_id"], :name => "index_discussions_on_user_id"
 
   create_table "notes", :force => true do |t|
     t.integer  "user_id",      :null => false

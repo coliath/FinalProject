@@ -77,7 +77,7 @@ $stn-padding: 5px;
 
 .stn-transition { transition: all .4s; }
 
-html { 
+html {
   background-color: $almost-white;
   z-index: 2;
 }
@@ -122,7 +122,7 @@ $small-height: 30px;
 
 form {
 
-  
+
 }
 
 .form-wrapper {
@@ -132,7 +132,7 @@ form {
   p {
     text-align: center;
   }
-} 
+}
 
 .form-box {
 	@extend .box;
@@ -155,7 +155,7 @@ form {
     outline: 0;
     @include box-shadow(0,0,5px, $darkest-gray);
   }
-	
+
 	input[type=submit] {
     @extend .btn;
     width: 50%;
@@ -213,7 +213,7 @@ nav {
   @extend .group;
   @extend .un-selected;
   border-bottom: $stn-border;
-  
+
   ul {
 
   }
@@ -237,7 +237,7 @@ nav {
 
 $top-nav-height: 30px;
 .top-nav {
-  
+
   ul {
     padding: 0 20px;
     float: right;
@@ -252,7 +252,7 @@ $top-nav-height: 30px;
   li:last-child {
     border-right: $stn-border;
   }
-	
+
 }
 
 .logo {
@@ -305,14 +305,13 @@ $top-nav-height: 30px;
 
 #show-table-of-contents {
   top: 0;
-  left: 0;
+  left: -25px;
 }
 
 #show-social {
   top: 0;
-  right: 0;
+  right: -25px;
 }
-
 
 #content {
   @extend .group;
@@ -329,7 +328,6 @@ $top-nav-height: 30px;
   @extend .box;
 
   ul.list {
-    
 
     li {
     @extend .clickable;
@@ -376,7 +374,7 @@ $top-nav-height: 30px;
   height: 740px;
   overflow-y: scroll;
   background: white;
-  
+
   .title-page {
 
     margin-bottom: 100px;
