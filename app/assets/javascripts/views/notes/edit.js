@@ -7,9 +7,6 @@ App.Views.NoteEdit = Backbone.View.extend({
 
   update: function ( e ) {
     e.preventDefault();
-
-    console.log(this);
-
     var attrs = $(e.target).closest('form').serializeJSON();
     this.model.save(attrs, {wait: true});
     $('.edit-note-modal').trigger("reveal:close");

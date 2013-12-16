@@ -17,11 +17,10 @@ App.Views.NoteIndex = Backbone.View.extend({
   editNote: function ( e ) {
     var noteId = $(e.target).data("note-id");
     var note = App.CurrentState.user.notes.get(noteId);
-    console.log(note);
     var noteEdit = new App.Views.NoteEdit({ model: note });
     $('#content').append(noteEdit.render().$el);
     $('.edit-note-modal').reveal();
-    $(document).on('reveal:close', '.edit-note-modal', function () { $(this).remove(); console.log("closed"); });
+    $(document).on('reveal:close', '.edit-note-modal', function () { $(this).remove(); });
   },
 
   initialize: function () {
