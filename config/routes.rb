@@ -4,6 +4,8 @@ NewAuthDemo::Application.routes.draw do
 
   resource :session, only: [:create, :destroy, :new]
 
+  resources :comments, only: [:create, :index]
+
   resources :resources, only: [:create, :show, :index] do
 
     resources :discussions, only: [:create, :show, :index]
