@@ -210,6 +210,12 @@ input[type=checkbox] {
 	position: relative;
   float: left;
   margin-right: 5px;
+  border: 1px solid white;
+}
+
+input[type=checkbox]:hover {
+  @extend .clickable;
+  border: 1px solid $blue;
 }
 
 input[type=checkbox]:checked:after {

@@ -5,10 +5,10 @@ class User < ActiveRecord::Base
   attr_reader :password
 
   # ****** Validations ****** #
-  validates :password_digest, :presence => { :message => "Password can't be blank" }
-  validates :password, :length => { :minimum => 6, :allow_nil => true }
-  validates :session_token, :presence => true
-  validates :username, :presence => true
+  validates :password_digest, presence: { message: "Password can't be blank" }
+  validates :password, length: { minimum: 6, allow_nil: true }
+  validates :session_token, presence: true
+  validates :username, presence: true
 
   # ****** Relations ****** #
   has_many :resources
