@@ -1,7 +1,8 @@
 App.Views.NoteIndex = Backbone.View.extend({
 
   events: {
-    'click #submit-note': 'submit',
+    'click .submit-note': 'submit',
+    'click .note': 'editNote'
   },
 
   submit: function ( e ) {
@@ -13,11 +14,22 @@ App.Views.NoteIndex = Backbone.View.extend({
     App.CurrentState.user.notes.create(attrs, {wait: true});
   },
 
+  editNote: function ( e ) {
+    var noteId = $(e.target).data("note-id");
+    var note = App.CurrentState.user.notes.get(noteId);
+    console.log(note);
+    var noteEdit = new App.Views.NoteEdit({ model: note });
+    $('#content').append(noteEdit.render().$el);
+    $('.edit-note-modal').reveal();
+    $(document).on('reveal:close', '.edit-note-modal', function () { $(this).remove(); console.log("closed"); });
+  },
+
   initialize: function () {
     var renderCB = this.render.bind(this);
 
     this.listenTo(this.collection, "add", renderCB);
     this.listenTo(this.collection, "remove", renderCB);
+    this.listenTo(this.collection, "change", renderCB);
   },
 
   template: JST['notes/index'],

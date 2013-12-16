@@ -3,7 +3,7 @@ App.Views.DiscussionShow = Backbone.View.extend({
   template: JST['discussions/show'],
 
   render: function () {
-    var renderedContent = this.template({ question: this.model });
+    var renderedContent = this.template({ discussion: this.model });
 
     this.$el.html(renderedContent);
 

@@ -8,7 +8,7 @@ NewAuthDemo::Application.routes.draw do
 
     resources :discussions, only: [:create, :show, :index]
 
-    resources :notes, only: [:create, :index]
+    resources :notes, only: [:create, :index, :update]
 
     resources :sections, only: [:create, :show, :index]
 

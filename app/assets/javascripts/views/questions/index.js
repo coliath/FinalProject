@@ -32,9 +32,9 @@ App.Views.QuestionIndex = Backbone.View.extend({
       success: function (collection, resp, opts) {
         $('#content').append(showView.render().$el); // hidden by default
         var answersIndex = new App.Views.AnswerIndex({collection: App.CurrentState.resource.answers});
-        $('.question-modal').append(answersIndex.render().$el);
-        $('.question-modal').reveal();
-        $(document).on('reveal:close', '.question-modal', function () { $(this).remove(); });
+        $('.show-modal').append(answersIndex.render().$el);
+        $('.show-modal').reveal();
+        $(document).on('reveal:close', '.show-modal', function () { $(this).remove(); });
       }
     });
   },

@@ -1,0 +1,38 @@
+
+
+<%
+if (note.get('private')) {
+  var checked = "checked";
+} else {
+  var checked = "";
+}
+console.log(note);
+%>
+
+<section class="edit-note-modal large reveal-modal">
+
+	<a class="close-reveal-modal">&#215</a>
+
+  <form class="edit-note-form">
+    <h1> Edit Note </h1>
+
+    <label> Source Text
+      <textarea name="note[section_text]" > <%= note.escape("section_text") %></textarea>
+    </label>
+
+    <label> Note Text
+      <textarea name="note[body]"> <%= note.escape("body") %></textarea>
+    </label>
+
+    <div class="group">
+      <label class="check-label">
+        <input type="checkbox" name="note[private]" <%= checked %>>
+        Private?
+      </label>
+    </div>
+
+    <button class="submit-note">Save</button>
+
+  </form>
+
+</section>

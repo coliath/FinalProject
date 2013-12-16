@@ -13,6 +13,16 @@ class NotesController < ApplicationController
     end
   end
 
+  def update
+    note = Note.find(params[:id]);
+
+    if note.update_attributes(params[:note]);
+      render json: note
+    else
+      render_unprocessable(note)
+    end
+  end
+
   def show
     note = Note.find_by_id(params[:id])
 

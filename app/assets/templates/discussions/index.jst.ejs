@@ -11,7 +11,7 @@
 
   <% var discussionForm = new App.Views.DiscussionForm() %>
   <%= discussionForm.render().$el.html() %>
-  <h3> Discussions about <%= App.CurrentState.resource.get("title") %> </h3>
+  <h3> Discussions on <%= App.CurrentState.resource.get("title") %> </h3>
 
   <ul>
   <% _.each(discussions.models, function (discussion) { %>

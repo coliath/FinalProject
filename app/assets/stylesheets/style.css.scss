@@ -187,16 +187,40 @@ input[type=submit] {
 
 textarea {
   border: 1px solid white;
+  width: 100%;
+  padding: 2%;
 }
 
 textarea:focus {
   outline: 0;
-  @include box-shadow(0,0,5px, $darkest-gray);
+  border: 1px solid $blue;
+  @include box-shadow(0,0,15px, $blue);
 }
 
 textarea:hover {
-  border: 1px solid $gray;
+  border: 1px solid $blue;
 }
+
+input[type=checkbox] {
+-webkit-appearance: none;
+  outline: none;
+	background-color: $faded-blue;
+	width: 23px;
+  height: 23px;
+	position: relative;
+  float: left;
+  margin-right: 5px;
+}
+
+input[type=checkbox]:checked:after {
+	content: ' \2714';
+	font-size: 14px;
+	color: black;
+  position: absolute;
+  top: 5px;
+  left: 5px;
+}
+
 
 .selected {
   background: darken($lightest-gray, 5%);
@@ -324,7 +348,7 @@ $top-nav-height: 30px;
   float: left;
   width: 200px;
   text-align: center;
-  margin: 5px;
+  margin: 5px 10px;
   @extend .box;
 
   ul.list {
@@ -467,6 +491,33 @@ $top-nav-height: 30px;
   }
 }
 
+.edit-note-form {
+  h1 {
+    font-size: 1.5em;
+    border-bottom: $stn-border;
+  }
+
+  label {
+    display: block;
+    margin-top: 10px;
+    font-size: 1.2em;
+  }
+
+  textarea {
+    display: block;
+    background-color: $faded-blue;
+    width: 100%;
+    min-height: 100px;
+  }
+
+  button {
+    @extend .btn;
+    margin-top: 10px;
+    display: block;
+    clear: both;
+  }
+}
+
 .notes, .questions, .discussions {
 
   ul {
@@ -493,7 +544,7 @@ $top-nav-height: 30px;
 
 }
 
-.question-modal {
+.show-modal {
 
   overflow-y: scroll;
   max-height: 90%;
@@ -512,7 +563,7 @@ $top-nav-height: 30px;
     padding-bottom: 5px;
   }
 
-  p.question-body, li.answer-body {  // question body
+  p, li.response-body {  // question body
     margin-top: 20px;
     font-size: 1.2em;
     padding: 20px;
@@ -520,7 +571,7 @@ $top-nav-height: 30px;
     margin: 10px 0;
   }
 
-  li.answer-body {
+  li.response-body {
     background-color: $faded-green;
   }
 
@@ -542,20 +593,26 @@ $top-nav-height: 30px;
     display: block;
     font-weight: bold;
     font-size: 1.3em;
-    margin-top: 15px;
+    margin-top: 10px;
     padding-bottom: 5px;
+    line-height: 40px;
   }
 
   textarea {
-    width: 100%;
+    border: 1px solid $green;
     min-height: 130px;
-    border: $stn-border;
-    padding: 2%;
+  }
+
+  textarea:focus {
+    border: 1px solid $green;
+    @include box-shadow(0,0,5px, $green);
   }
 
 }
 
-
+.check-label {
+  float: left;
+}
 
 
 

@@ -1,5 +1,12 @@
 
+<section class="show-modal xlarge reveal-modal">
 
-<p class="discussion" data-discussion-id="<%= discussion.get('id') %>">
-  <%= discussion.get("title")%>
-</p>
+	<a class="close-reveal-modal">&#215</a>
+
+	<h1> <%= discussion.escape("title") %> </h1>
+
+	<p> <%= discussion.escape("body") %> </p>
+
+	<h3>Comments</h3>
+
+</section>
