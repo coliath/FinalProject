@@ -1,0 +1,22 @@
+<%
+	if (hidden) {
+		var style = "display:none";
+	} else {
+		var style = "";
+	}
+%>
+
+
+<section class="discussions" style="<%= style %>">
+
+  <% var discussionForm = new App.Views.DiscussionForm() %>
+  <%= discussionForm.render().$el.html() %>
+  <h3> Discussions about <%= App.CurrentState.resource.get("title") %> </h3>
+
+  <ul>
+  <% _.each(discussions.models, function (discussion) { %>
+    <li><%= new App.Views.QuestionShow({model: discussion}).render().$el.html() %></li>
+  <% }) %>
+  </ul>
+
+</section>
