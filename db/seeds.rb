@@ -116,5 +116,13 @@ d1 = Discussion.new({
 d1.user_id = 1
 d1.save!
 
+c1 = Comment.new({
+  body: "JS ALL THE WAY BABAY",
+  commentable_type: "Discussion",
+  commentable_id: 1
+})
+c1.user_id = 1
+c1.save!
+
 
 

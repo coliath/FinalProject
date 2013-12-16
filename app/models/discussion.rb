@@ -11,4 +11,6 @@ class Discussion < ActiveRecord::Base
   belongs_to :resource
   belongs_to :user
 
+  has_many :comments, as: :commentable
+
 end
