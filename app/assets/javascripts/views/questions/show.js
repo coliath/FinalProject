@@ -1,6 +1,6 @@
 App.Views.QuestionShow = Backbone.View.extend({
 
-  template: JST['questions/fullShow'],
+  template: JST['questions/show'],
 
   render: function () {
     var renderedContent = this.template({ question: this.model });
