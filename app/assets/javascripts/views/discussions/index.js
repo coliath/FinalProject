@@ -18,7 +18,7 @@ App.Views.DiscussionIndex = Backbone.View.extend({
     var attrs = $(e.target).closest('form').serializeJSON();
     attrs.discussion.resource_id = App.CurrentState.resource.get("id");
 
-    App.CurrentState.resource.discussions.create(attrs, {wait: true});
+    this.collection.create(attrs, {wait: true});
   },
 
   showDiscussion: function ( e ) {

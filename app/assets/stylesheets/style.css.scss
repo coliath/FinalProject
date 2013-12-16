@@ -607,6 +607,9 @@ $top-nav-height: 30px;
   textarea {
     border: 1px solid $green;
     min-height: 130px;
+    font-size: 1em;
+    font-weight: normal;
+    line-height: 1em;
   }
 
   textarea:focus {

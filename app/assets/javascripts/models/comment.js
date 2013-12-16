@@ -1,4 +1,4 @@
-App.Models.Answer = Backbone.Model.extend({
+App.Models.Comment = Backbone.Model.extend({
 
 
 

@@ -1,6 +1,4 @@
-
-
-App.Views.AnswerIndex = Backbone.View.extend({
+App.Views.QuestionIndex = Backbone.View.extend({
 
   events: {
     'click #submit-answer': 'submit',
@@ -11,7 +9,7 @@ App.Views.AnswerIndex = Backbone.View.extend({
 
     var attrs = $(e.target).closest('form').serializeJSON();
 
-    this.collection.create(attrs, {wait: true});
+    App.CurrentState.resource.answers.create(attrs, {wait: true});
   },
 
   initialize: function () {

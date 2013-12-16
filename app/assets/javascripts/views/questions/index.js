@@ -18,7 +18,12 @@ App.Views.QuestionIndex = Backbone.View.extend({
     var attrs = $(e.target).closest('form').serializeJSON(); // this is a good place for a view prototype getFormData Function
     attrs.question.resource_id = App.CurrentState.resource.get("id");
 
-    App.CurrentState.resource.questions.create(attrs, {wait: true});
+    this.collection.create(attrs, {
+      wait: true,
+      error: function (model, resp, opts) {
+        console.log(resp);
+      }
+    });
   },
 
   showQuestion: function ( e ) {
@@ -35,6 +40,9 @@ App.Views.QuestionIndex = Backbone.View.extend({
         $('.show-modal').append(answersIndex.render().$el);
         $('.show-modal').reveal();
         $(document).on('reveal:close', '.show-modal', function () { $(this).remove(); });
+      },
+      error: function (resp) {
+        console.log(resp);
       }
     });
   },
