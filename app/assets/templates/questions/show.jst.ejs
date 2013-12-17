@@ -1,14 +1,20 @@
 
 
 
-<section class="show-modal xlarge reveal-modal">
+<section class="show-modal question xlarge reveal-modal">
 
 	<a class="close-reveal-modal">&#215</a>
 
 	<h1> <%= question.get("title") %> </h1>
 
-	<p> <%= question.get("body") %> </p>
+	<p class="body"> <%= question.get("body") %> </p>
 
-	<h3># Answers</h3>
+  <div class="group">
+
+    <h3># Answers</h3>
+
+    <h5 class="add-comment"> add comment </h5>
+
+  </div>
 
 </section>

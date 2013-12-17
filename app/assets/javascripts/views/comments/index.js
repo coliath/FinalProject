@@ -1,7 +1,7 @@
 App.Views.CommentIndex = Backbone.View.extend({
 
   events: {
-    'click .submit-comment': 'submit',
+    'click #submit-comment': 'submit',
   },
 
   submit: function ( e ) {
@@ -11,10 +11,15 @@ App.Views.CommentIndex = Backbone.View.extend({
     attrs.comment.commentable_id = this.collection.commentableId;
     attrs.comment.commentable_type = this.collection.commentable_type;
 
-    this.collection.create(attrs, {wait: true});
+    this.collection.create(attrs, {
+      wait: true,
+      error: function (model, resp, opts) {
+        console.log(resp);
+      }
+    });
   },
 
-  initialize: function () {
+  initialize: function ( collection ) {
   	var renderCB = this.render.bind(this);
 
     this.listenTo(this.collection, "add", renderCB);
@@ -23,9 +28,14 @@ App.Views.CommentIndex = Backbone.View.extend({
 
   template: JST['comments/index'],
 
-  render: function () {
+  render: function ( options ) {
+    console.log("RENDERING");
+
+    var form = (typeof options === "undefined") ? true : options.form;
+    console.log(this.collection)
     var renderedContent = this.template({
-      comments: this.collection
+      comments: this.collection,
+      form: form
     });
 
     this.$el.html(renderedContent);

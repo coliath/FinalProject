@@ -538,7 +538,6 @@ $top-nav-height: 30px;
     li:last-child {
       border-bottom: none;
     }
-
     li:hover {
       background-color: darken($lightest-gray, 5%);
     }
@@ -562,14 +561,25 @@ $top-nav-height: 30px;
     border-bottom: $stn-border;
   }
 
+  div.group {
+    border-bottom: $stn-border;
+  }
+
   h3 {  // num answers display
     font-size: 1.3em;
     font-weight: bold;
-    border-bottom: $stn-border;
     padding-bottom: 5px;
+    float: left;
   }
 
-  p, li.response-body {  // question body
+  h5 {
+    @extend .clickable;
+    float: right;
+    color: $gray;
+    font-size: 1.1em;
+  }
+
+  p.body, li.response-body {
     margin-top: 20px;
     font-size: 1.2em;
     padding: 20px;
@@ -577,23 +587,49 @@ $top-nav-height: 30px;
     margin: 10px 0;
   }
 
-  li.response-body {
-    background-color: $faded-green;
-  }
-
 }
 
-.answer-form {
+.add-comment {
+  @extend .clickable;
+  float: right;
+  color: $gray;
+  font-size: 1.1em;
+  height: auto;
+  margin: 4px;
+  padding: 0;
+}
 
-  button {
-    border: 1px solid $green;
-    background-color: $green;
-  }
+.add-comment:hover {
+  @extend .clickable;
+  color: black;
+}
 
-  button:hover {
-    border: 1px solid darken($green, 10%);
-    background-color: darken($green, 10%);
+.show-modal.question {
+  li.answer { background-color: $faded-green; }
+  li.comment {
+    font-size: .95em;
+    border-bottom: 1px dotted $gray;
+    padding: 5px 15px;
+    height: auto;
   }
+  li.comment:first-child {
+    border-top: 1px dotted $gray;
+  }
+}
+.show-modal.discussion {
+  li.response { background-color: $faded-blue; }
+  li.comment {
+    font-size: .95em;
+    border-bottom: 1px dotted $gray;
+    padding: 5px 15px;
+    height: auto;
+  }
+  li.comment:first-child {
+    border-top: 1px dotted $gray;
+  }
+}
+
+.modal-form {
 
   label {
     display: block;
@@ -605,22 +641,60 @@ $top-nav-height: 30px;
   }
 
   textarea {
-    border: 1px solid $green;
     min-height: 130px;
     font-size: 1em;
     font-weight: normal;
     line-height: 1em;
   }
 
-  textarea:focus {
-    border: 1px solid $green;
-    @include box-shadow(0,0,5px, $green);
-  }
-
 }
 
 .check-label {
   float: left;
+}
+
+.green-form {
+
+  button {
+    border: 1px solid $green;
+    background-color: $green;
+  }
+
+  button:hover {
+    border: 1px solid darken($green, 10%);
+    background-color: darken($green, 10%);
+  }
+
+  textarea {
+    border: 1px solid $green;
+  }
+
+  textarea:focus {
+    border: 1px solid $green;
+    @include box-shadow(0,0,5px, $green);
+  }
+}
+
+.blue-form {
+
+  button {
+    border: 1px solid $blue;
+    background-color: $blue;
+  }
+
+  button:hover {
+    border: 1px solid darken($blue, 10%);
+    background-color: darken($blue, 10%);
+  }
+
+  textarea {
+    border: 1px solid $blue;
+  }
+
+  textarea:focus {
+    border: 1px solid $blue;
+    @include box-shadow(0,0,5px, $blue);
+  }
 }
 
 

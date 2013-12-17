@@ -3,7 +3,10 @@ class CommentsController < ApplicationController
   before_filter :require_current_user!
 
   def create
-    comment = Comment.new(params[:comment]);
+    comment = Comment.new(params[:comment])
+    comment.commentable_type = params[:type]
+    comment.commentable_id = params[:id]
+    comment.user_id = current_user.id
 
     if comment.save
       render json: comment
