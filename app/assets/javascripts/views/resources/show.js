@@ -1,8 +1,16 @@
 App.Views.ResourceShow = Backbone.View.extend({
 
+  initialize: function () {
+    this.highlighter = rangy.createCssClassApplier("highlighted", {normalize: true});
+    this.errorer = rangy.createCssClassApplier("marked-as-error", {normalize: true});
+    this.confusinger = rangy.createCssClassApplier("marked-as-confusing", {normalize: true});
+  },
+
   tagName: 'section',
 
   template: JST['resources/show'],
+
+  toolbarHtml: JST['resources/toolbar'](),
 
   events: {
   	"click #hide-table-of-contents": "hideTableOfContents",
@@ -13,6 +21,15 @@ App.Views.ResourceShow = Backbone.View.extend({
     var sectionId = $(e.target).closest('section').data("section-id");
     console.log(sectionId);
     console.log(rangy.getSelection().toHtml());
+    this.confusinger.applyToSelection(rangy.getSelection());
+
+    $('#content').append(this.toolbarHTML);
+
+    console.log($('#toolbar'));
+    $('#test').toolbar({ content: '#toolbar', position: "bottom" });
+
+
+
   },
 
   hideTableOfContents: function ( e ) {
@@ -34,8 +51,6 @@ App.Views.ResourceShow = Backbone.View.extend({
     });
 
     this.$el.html(renderedContent).addClass('resource-wrapper');
-
-
 
     return this;
   }

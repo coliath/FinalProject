@@ -1,5 +1,18 @@
+<p id=test>test</p>
 <script>
 $(document).ready(function(){
   App.initialize();
 });
+
+
+$('#test').toolbar({ content: '#toolbar', position: "bottom" });
 </script>
+
+<div id="user-options" class="toolbar-icons" style="display: none;">
+        <a href="#"><em class="icon-user"></em></a>
+        <a href="#"><em class="icon-edit"></em></a>
+        <a href="#"><em class="icon-comment"></em></a>
+        <a href="#"><em class="icon-picture"></em></a>
+        <a href="#"><em class="icon-facetime-video"></em></a>
+        <a href="#"><em class="icon-cog"></em></a>
+    </div>

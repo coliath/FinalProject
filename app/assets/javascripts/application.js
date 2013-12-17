@@ -17,6 +17,7 @@
 //= require underscore
 //= require backbone
 //= require_tree ../../../vendor/assets/javascripts/rangy/.
+//= require_tree ../../../vendor/assets/javascripts/.
 //= require resource_root
 //= require_tree ../templates
 //= require_tree ./models
