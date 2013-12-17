@@ -29,10 +29,8 @@ App.Views.CommentIndex = Backbone.View.extend({
   template: JST['comments/index'],
 
   render: function ( options ) {
-    console.log("RENDERING");
-
     var form = (typeof options === "undefined") ? true : options.form;
-    console.log(this.collection)
+
     var renderedContent = this.template({
       comments: this.collection,
       form: form

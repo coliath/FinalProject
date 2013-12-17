@@ -4,6 +4,11 @@ App.Views.AnswerIndex = Backbone.View.extend({
 
   events: {
     'click #submit-answer': 'submit',
+    'click .add-comment': 'showCommentForm'
+  },
+
+  showCommentForm: function ( e ) {
+    console.log("does this highjack my events?");
   },
 
   submit: function ( e ) {
