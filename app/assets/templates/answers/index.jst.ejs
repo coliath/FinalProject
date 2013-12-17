@@ -1,10 +1,9 @@
 
 <ul class="answers">
 <% _.each(answers.models, function (answer) { %>
-  <div class="group">
-  	<li class="response-body answer"> <%= answer.get("body") %> </li>
+
+  	<li class="response answer"> <%= answer.get("body") %> </li>
     <p class="add-comment"> add comment </p>
-  </div>
 
 <% }); %>
 </ul>

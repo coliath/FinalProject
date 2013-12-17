@@ -5,8 +5,12 @@
 
 	<h1> <%= discussion.escape("title") %> </h1>
 
-	<p> <%= discussion.escape("body") %> </p>
+	<div class="body-wrapper">
+    <p class="body"><%= discussion.escape("body") %><p>
+  </div>
 
-	<h3>Comments</h3>
+  <h5 class="add-comment"> add comment </h5>
+
+  <h3>Responses</h3>
 
 </section>

@@ -48,7 +48,7 @@ App.Views.QuestionShow = Backbone.View.extend({
     this.comments.fetch({
       success: function (collection, resp, opts) {
         that.commentsIndex = new App.Views.CommentIndex({collection: that.comments});
-        $('p.body').append(that.commentsIndex.render({form: false}).$el);
+        $('div.body-wrapper').append(that.commentsIndex.render({form: false}).$el);
         $('.show-modal').reveal();
         $(document).on('reveal:close', '.show-modal', function () { $(this).remove(); });
       },

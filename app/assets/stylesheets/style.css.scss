@@ -561,41 +561,46 @@ $top-nav-height: 30px;
     border-bottom: $stn-border;
   }
 
-  div.group {
-    border-bottom: $stn-border;
-  }
-
   h3 {  // num answers display
     font-size: 1.3em;
     font-weight: bold;
-    padding-bottom: 5px;
-    float: left;
+    padding: 5px 0 2px 0;
   }
 
-  h5 {
-    @extend .clickable;
-    float: right;
-    color: $gray;
-    font-size: 1.1em;
-  }
-
-  p.body, li.response-body {
-    margin-top: 20px;
+  p.body, li.response {
     font-size: 1.2em;
     padding: 20px;
     margin: 0;
-    margin: 10px 0;
+  }
+
+  p.body {
+    border-bottom: $stn-border;
+  }
+
+  li.comment {
+    font-size: .95em;
+    border-bottom: 1px dotted $gray;
+    padding: 5px 15px;
+    height: auto;
+  }
+
+  li.comment:last-child {
+    border-bottom: $stn-border;
+  }
+
+  li.comment:hover {
+    background-color: lighten($lightest-gray, 5%);
   }
 
 }
 
 .add-comment {
   @extend .clickable;
-  float: right;
+  text-align: right;
   color: $gray;
   font-size: 1.1em;
   height: auto;
-  margin: 4px;
+  margin: 0px 0px 25px 0px;
   padding: 0;
 }
 
@@ -606,27 +611,9 @@ $top-nav-height: 30px;
 
 .show-modal.question {
   li.answer { background-color: $faded-green; }
-  li.comment {
-    font-size: .95em;
-    border-bottom: 1px dotted $gray;
-    padding: 5px 15px;
-    height: auto;
-  }
-  li.comment:first-child {
-    border-top: 1px dotted $gray;
-  }
 }
 .show-modal.discussion {
   li.response { background-color: $faded-blue; }
-  li.comment {
-    font-size: .95em;
-    border-bottom: 1px dotted $gray;
-    padding: 5px 15px;
-    height: auto;
-  }
-  li.comment:first-child {
-    border-top: 1px dotted $gray;
-  }
 }
 
 .modal-form {
@@ -645,6 +632,17 @@ $top-nav-height: 30px;
     font-size: 1em;
     font-weight: normal;
     line-height: 1em;
+  }
+
+}
+
+.comment-form {
+
+  textarea {
+    height: 60px;
+    font-size: .95em;
+    font-weight: normal;
+    line-height: auto;
   }
 
 }
