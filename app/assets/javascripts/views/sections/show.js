@@ -1,5 +1,6 @@
 App.Views.SectionShow = Backbone.View.extend({
 
+
   template: JST['sections/show'],
 
   render: function () {

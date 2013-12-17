@@ -6,6 +6,13 @@ App.Views.ResourceShow = Backbone.View.extend({
 
   events: {
   	"click #hide-table-of-contents": "hideTableOfContents",
+    "mouseup": "showHighlightOptions",
+  },
+
+  showHighlightOptions: function ( e ) {
+    var sectionId = $(e.target).closest('section').data("section-id");
+    console.log(sectionId);
+    console.log(rangy.getSelection().toHtml());
   },
 
   hideTableOfContents: function ( e ) {
@@ -27,6 +34,8 @@ App.Views.ResourceShow = Backbone.View.extend({
     });
 
     this.$el.html(renderedContent).addClass('resource-wrapper');
+
+
 
     return this;
   }

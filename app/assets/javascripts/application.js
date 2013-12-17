@@ -16,6 +16,7 @@
 //= require serializeJSON
 //= require underscore
 //= require backbone
+//= require_tree ../../../vendor/assets/javascripts/rangy/.
 //= require resource_root
 //= require_tree ../templates
 //= require_tree ./models

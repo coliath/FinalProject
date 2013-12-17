@@ -1,13 +1,11 @@
 
 * {
-	font-family: "Times New Roman", "Times", "serif";
+	font: inherit;
 	margin: 0;
 	padding: 0;
 	border: 0;
 	font-size: 100%;
-	font: inherit;
 	vertical-align: baseline;
-	letter-spacing: 1px;
   text-decoration: none;
   list-style: none;
   color: black;
@@ -80,6 +78,10 @@ $stn-padding: 5px;
 html {
   background-color: $almost-white;
   z-index: 2;
+}
+
+body {
+  font-family: sans-serif;
 }
 
 .clickable:hover { cursor: pointer; }
@@ -274,6 +276,7 @@ $top-nav-height: 30px;
   }
 
 	li {
+    font-size: 14px;
 		line-height: $top-nav-height;
 		padding: 5px 10px;
     border-left: $stn-border;
@@ -298,7 +301,8 @@ $top-nav-height: 30px;
 .social-nav {
 
   li {
-    padding: 5px;
+    font-size: 14px;
+    padding: 5px 13px;
     border-right: 1px solid $gray;
   }
 
@@ -335,7 +339,7 @@ $top-nav-height: 30px;
 
 #show-table-of-contents {
   top: 0;
-  left: -25px;
+  left: 0px;
 }
 
 #show-social {
