@@ -37,6 +37,10 @@
   :-ms-input-placeholder      {@content}
 }
 
+$purple: #9b59b6;
+
+$yellow: #FFFF00;
+
 $red: #eb3d35;
 
 $green: #2ecc71;
@@ -48,7 +52,7 @@ $dark-blue: darken($blue, 5%);
 $light-blue: lighten($blue, 5%);
 $faded-blue: lighten($blue, 36%);
 
-$almost-white: darken(white, 3.5%);
+$almost-white: darken(white, 3%);
 $almost-black: lighten(black, 40%);
 
 $gray: #bdc3c7;
@@ -92,7 +96,7 @@ body {
 .btn {
 	@extend .clickable;
   @extend .stn-transition;
-  border: 1px solid $blue;
+  border: 1px solid transparent;
 	background-color: $blue;
 	color: white;
 	padding: 5px 15px;
@@ -100,8 +104,48 @@ body {
 }
 
 .btn:hover {
-	border: 1px solid $dark-blue;
-  background-color: $dark-blue;
+  background-color: darken($blue, 15%);
+}
+
+.btn.red {
+  background-color: $red;
+}
+
+.btn.red:hover {
+  background-color: darken($red, 18%);
+}
+
+.btn.yellow {
+  color: black;
+  background-color: $yellow;
+}
+
+.btn.yellow:hover {
+  background-color: darken($yellow, 4%);
+}
+
+.btn.green {
+  background-color: $green;
+}
+
+.btn.green:hover {
+  background-color: darken($green, 10%);
+}
+
+.btn.purple {
+  background-color: $purple;
+}
+
+.btn.purple:hover {
+  background-color: darken($purple, 10%);
+}
+
+.btn.gray {
+  background-color: $gray;
+}
+
+.btn.gray:hover {
+  background-color: darken($gray, 10%);
 }
 
 $small-height: 30px;
@@ -319,10 +363,13 @@ $top-nav-height: 30px;
 .show {
   @extend .box;
   @extend .clickable;
+  display: inline-block;
   position: absolute;
+  width: 25px;
+  height: 25px;
   font-size: 15px;
   font-weight: bolder;
-  padding: 1px 2px 1px 4px;
+  padding: 0px 4px 0px 6px;
   color: $dark-gray;
 }
 
@@ -341,7 +388,7 @@ $top-nav-height: 30px;
 
 #show-social {
   top: 0;
-  right: -25px;
+  right: -30px;
 }
 
 #content {
@@ -699,7 +746,6 @@ $top-nav-height: 30px;
   }
 }
 
-$selection-color: #FFFF00;
 ::selection {
 	background: lighten($blue, 30%);
 }
@@ -708,7 +754,7 @@ $selection-color: #FFFF00;
 }
 
 .highlighted {
-  background: #FFFF00;
+  background: $yellow;
 }
 
 .marked-as-error {
@@ -719,9 +765,51 @@ $selection-color: #FFFF00;
   background: lighten(#8e44ad, 30%);
 }
 
-#test {
-  background: white;
-  border: 1px solid black;
+// POP OVER STYLES
+
+.popover {
+  border-radius: 2px;
+  background: $almost-white;
+  max-width: 302px;
+  min-width: 302px;
+}
+
+.popover.bottom .arrow:after {
+  border-bottom-color: $almost-white;
+}
+
+.popover.top .arrow:after {
+  border-top-color: $almost-white;
+}
+
+.popover-content {
+
+  margin: 0;
+  padding: 5px;
+
+  h2.popover-header {
+    margin-bottom: 5px;
+    padding-bottom: 5px;
+    font-size: 20px;
+    text-align:center;
+    border-bottom: $stn-border;
+  }
+
+  ul.popover-buttons {
+    @extend .group;
+
+    li {
+      float: left;
+      margin:2px;
+
+      button {
+        font-size: 12px;
+        min-width: 140px;
+        padding: 4px 4px;
+      }
+    }
+  }
+
 }
 
 

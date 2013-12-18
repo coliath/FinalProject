@@ -6,9 +6,7 @@ App.Views.ResourceShow = Backbone.View.extend({
     this.confusinger = rangy.createCssClassApplier("marked-as-confusing", {normalize: true});
     this.selecter = rangy.createCssClassApplier("currently-selected", {normalize: true});
 
-
     $('#content').on('mouseup', this.controlPopover.bind(this));
-
     this.popupShowing = false;
   },
 
@@ -34,7 +32,7 @@ App.Views.ResourceShow = Backbone.View.extend({
       $elToPopover.popover({
         html: true,
         trigger: "manual",
-        placement: "top auto",
+        placement: "auto top",
         content: this.popupView.render().$el
       });
 
@@ -43,7 +41,7 @@ App.Views.ResourceShow = Backbone.View.extend({
       this.popupShowing = true;
 
     } else {
-      // handle invalid selection
+      // handle invalid selection, nothing for now
     }
   },
 
@@ -96,6 +94,5 @@ App.Views.ResourceShow = Backbone.View.extend({
 
     return this;
   }
-
 
 });
