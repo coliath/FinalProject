@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131218225354) do
+ActiveRecord::Schema.define(:version => 20131218230246) do
 
   create_table "answers", :force => true do |t|
     t.integer  "user_id"
@@ -61,7 +61,12 @@ ActiveRecord::Schema.define(:version => 20131218225354) do
     t.string   "mark_type"
     t.datetime "created_at",        :null => false
     t.datetime "updated_at",        :null => false
+    t.text     "additional_note"
   end
+
+  add_index "marks", ["resource_id"], :name => "index_marks_on_resource_id"
+  add_index "marks", ["section_id"], :name => "index_marks_on_section_id"
+  add_index "marks", ["user_id"], :name => "index_marks_on_user_id"
 
   create_table "notes", :force => true do |t|
     t.integer  "user_id",      :null => false
