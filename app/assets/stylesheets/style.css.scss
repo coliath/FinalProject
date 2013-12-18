@@ -75,13 +75,10 @@ $stn-padding: 5px;
 
 .stn-transition { transition: all .4s; }
 
-html {
-  background-color: $almost-white;
-  z-index: 2;
-}
 
 body {
   font-family: sans-serif;
+  background-color: $almost-white;
 }
 
 .clickable:hover { cursor: pointer; }
@@ -364,11 +361,12 @@ $top-nav-height: 30px;
   ul.list {
 
     li {
-    @extend .clickable;
-    @extend .stn-transition;
-    text-align: left;
-    padding: 3px 5px;
-    border-bottom: $stn-border;
+      @extend .clickable;
+      @extend .stn-transition;
+      text-align: left;
+      padding: 3px 5px;
+      border-bottom: $stn-border;
+      font-size: 13px;
     }
 
     li:last-child {

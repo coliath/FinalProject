@@ -4,6 +4,12 @@ App.Views.ResourceShow = Backbone.View.extend({
     this.highlighter = rangy.createCssClassApplier("highlighted", {normalize: true});
     this.errorer = rangy.createCssClassApplier("marked-as-error", {normalize: true});
     this.confusinger = rangy.createCssClassApplier("marked-as-confusing", {normalize: true});
+    this.selecter = rangy.createCssClassApplier("currently-selected", {normalize: true});
+
+
+    $('#content').on('mouseup', this.controlPopover.bind(this));
+
+    this.popupShowing = false;
   },
 
   tagName: 'section',
@@ -11,15 +17,61 @@ App.Views.ResourceShow = Backbone.View.extend({
   template: JST['resources/show'],
 
   events: {
-  	"click #hide-table-of-contents": "hideTableOfContents",
-    "mouseup": "showHighlightOptions",
+  	"click #hide-table-of-contents": "hideTableOfContents"
   },
 
-  showHighlightOptions: function ( e ) {
-    var sectionId = $(e.target).closest('section').data("section-id");
-    console.log(sectionId);
-    console.log(rangy.getSelection().toHtml());
-    this.confusinger.applyToSelection(rangy.getSelection());
+  showHighlightOptions: function ( e, $target ) {
+
+    var sectionId = $target.closest('section').data("section-id");
+    var selection = rangy.getSelection();
+
+    if (this.selectionIsValid(selection)) {
+
+      this.selecter.applyToSelection(selection);
+
+      this.popupView = new App.Views.ResourcePopup();
+      $elToPopover = $('.currently-selected').last();
+      $elToPopover.popover({
+        html: true,
+        trigger: "manual",
+        placement: "top auto",
+        content: this.popupView.render().$el
+      });
+
+      $elToPopover.popover('show');
+      this.selecter.undoToSelection(selection);
+      this.popupShowing = true;
+
+    } else {
+      // handle invalid selection
+    }
+  },
+
+  selectionIsValid: function ( selection ) {
+    var count = selection.toString().length; // there are many more validations to do!!!
+    if (count < 4 || count > 2500) {
+      return false;
+    } else {
+      return true;
+    }
+  },
+
+  controlPopover: function ( e ) {
+    $target = $(e.target);
+    if ($target.parents('.popover').length) {
+      // within popover, do nothing
+    } else {
+      // outside popover, check for close or show
+      if (this.popupShowing) {
+
+        this.popupView.remove();
+        $('.popover').remove();
+        this.popupShowing = false;
+
+      } else if ($target.parents(".section").length) {
+        this.showHighlightOptions(e, $target);
+      }
+    }
   },
 
   hideTableOfContents: function ( e ) {
