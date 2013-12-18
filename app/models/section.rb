@@ -31,6 +31,7 @@ class Section < ActiveRecord::Base
 
   has_many :child_sections, class_name: "Section", foreign_key: :parent_section_id, primary_key: :id
   has_many :notes
+  has_many :marks
 
 
   # ****** Class Methods ****** #
