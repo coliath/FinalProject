@@ -770,8 +770,8 @@ $top-nav-height: 30px;
 .popover {
   border-radius: 2px;
   background: $almost-white;
-  max-width: 302px;
-  min-width: 302px;
+  max-width: 306px;
+  min-width: 306px;
 }
 
 .popover.bottom .arrow:after {
@@ -800,16 +800,16 @@ $top-nav-height: 30px;
 
     li {
       float: left;
-      margin:2px;
+      margin:3px;
 
       button {
+        outline: none;
         font-size: 12px;
         min-width: 140px;
         padding: 4px 4px;
       }
     }
   }
-
 }
 
 

@@ -1,9 +1,6 @@
 App.Views.ResourceShow = Backbone.View.extend({
 
   initialize: function () {
-    this.highlighter = rangy.createCssClassApplier("highlighted", {normalize: true});
-    this.errorer = rangy.createCssClassApplier("marked-as-error", {normalize: true});
-    this.confusinger = rangy.createCssClassApplier("marked-as-confusing", {normalize: true});
     this.selecter = rangy.createCssClassApplier("currently-selected", {normalize: true});
 
     $('#content').on('mouseup', this.controlPopover.bind(this));
@@ -27,7 +24,7 @@ App.Views.ResourceShow = Backbone.View.extend({
 
       this.selecter.applyToSelection(selection);
 
-      this.popupView = new App.Views.ResourcePopup();
+      this.popupView = new App.Views.ResourcePopup({ selection: selection });
       $elToPopover = $('.currently-selected').last();
       $elToPopover.popover({
         html: true,
