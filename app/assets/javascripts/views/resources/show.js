@@ -23,7 +23,6 @@ App.Views.ResourceShow = Backbone.View.extend({
     if (this.selectionIsValid(selection)) {
 
       this.selecter.applyToSelection(selection);
-
       this.popupView = new App.Views.ResourcePopup({ selection: selection });
       $elToPopover = $('.currently-selected').last();
       $elToPopover.popover({

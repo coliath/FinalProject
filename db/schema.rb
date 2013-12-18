@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131216192819) do
+ActiveRecord::Schema.define(:version => 20131218225354) do
 
   create_table "answers", :force => true do |t|
     t.integer  "user_id"
@@ -51,6 +51,17 @@ ActiveRecord::Schema.define(:version => 20131216192819) do
   add_index "discussions", ["resource_id"], :name => "index_discussions_on_resource_id"
   add_index "discussions", ["section_id"], :name => "index_discussions_on_section_id"
   add_index "discussions", ["user_id"], :name => "index_discussions_on_user_id"
+
+  create_table "marks", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "resource_id"
+    t.integer  "section_id"
+    t.text     "section_text"
+    t.text     "serialized_string"
+    t.string   "mark_type"
+    t.datetime "created_at",        :null => false
+    t.datetime "updated_at",        :null => false
+  end
 
   create_table "notes", :force => true do |t|
     t.integer  "user_id",      :null => false

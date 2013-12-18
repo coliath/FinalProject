@@ -1,11 +1,15 @@
 App.Views.ResourcePopup = Backbone.View.extend({
 
   initialize: function ( options ) {
-    this.highlighter = rangy.createCssClassApplier("highlighted", {normalize: true});
+
+    this.highlightMarker = rangy.createCssClassApplier("highlighted", {normalize: true});
     this.errorizer = rangy.createCssClassApplier("marked-as-error", {normalize: true});
     this.confusingizer = rangy.createCssClassApplier("marked-as-confusing", {normalize: true});
 
     this.selection = options.selection;
+
+    this.highlighter = rangy.createHighlighter();
+    this.highlighter.addClassApplier(this.highlightMarker);
   },
 
   events: {
@@ -18,7 +22,18 @@ App.Views.ResourcePopup = Backbone.View.extend({
   },
 
   highlightText: function ( e ) {
-    this.highlighter.toggleSelection(this.selection);
+    //this.highlighter.toggleSelection(this.selection);
+    this.highlighter.highlightSelection("highlighted", this.selection);
+    var serialString = this.highlighter.serialize(this.selection);
+
+    console.log( serialString )
+
+
+    var aO = this.selection.anchorOffset;
+    var fO = this.selection.focusOffset;
+
+    console.log(fO);
+    console.log(aO);
   },
 
   errorizeText: function ( e ) {
