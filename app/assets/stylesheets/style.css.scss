@@ -266,10 +266,9 @@ input[type=checkbox]:checked:after {
 	font-size: 14px;
 	color: black;
   position: absolute;
-  top: 5px;
+  top: 2px;
   left: 5px;
 }
-
 
 .selected {
   background: darken($lightest-gray, 5%);
