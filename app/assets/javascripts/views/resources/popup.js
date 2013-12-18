@@ -22,18 +22,10 @@ App.Views.ResourcePopup = Backbone.View.extend({
   },
 
   highlightText: function ( e ) {
-    //this.highlighter.toggleSelection(this.selection);
+    //this.highlighter.toggleSelection(this.selection); maybe do this and only use the other for persistence?
     this.highlighter.highlightSelection("highlighted", this.selection);
-    var serialString = this.highlighter.serialize(this.selection);
+    var serialString = this.highlighter.serialize(this.selection); // this is what gets used to re highlight
 
-    console.log( serialString )
-
-
-    var aO = this.selection.anchorOffset;
-    var fO = this.selection.focusOffset;
-
-    console.log(fO);
-    console.log(aO);
   },
 
   errorizeText: function ( e ) {
