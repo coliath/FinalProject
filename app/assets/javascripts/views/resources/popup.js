@@ -18,15 +18,15 @@ App.Views.ResourcePopup = Backbone.View.extend({
   },
 
   highlightText: function ( e ) {
-    console.log(1);
+    this.highlighter.toggleSelection(this.selection);
   },
 
   errorizeText: function ( e ) {
-    console.log(2);
+    this.errorizer.toggleSelection(this.selection);
   },
 
   confusingizeText: function ( e ) {
-    console.log(3);
+    this.confusingizer.toggleSelection(this.selection);
   },
 
   createNoteWithText: function ( e ) {
@@ -45,10 +45,7 @@ App.Views.ResourcePopup = Backbone.View.extend({
 
   render: function () {
     var renderedContent = this.template();
-
     this.$el.html(renderedContent);
-    $('popover').removeAttr("style");
-
     return this;
   }
 
