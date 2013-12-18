@@ -10,8 +10,6 @@ App.Views.ResourceShow = Backbone.View.extend({
 
   template: JST['resources/show'],
 
-  toolbarHtml: JST['resources/toolbar'](),
-
   events: {
   	"click #hide-table-of-contents": "hideTableOfContents",
     "mouseup": "showHighlightOptions",
@@ -22,14 +20,6 @@ App.Views.ResourceShow = Backbone.View.extend({
     console.log(sectionId);
     console.log(rangy.getSelection().toHtml());
     this.confusinger.applyToSelection(rangy.getSelection());
-
-    $('#content').append(this.toolbarHTML);
-
-    console.log($('#toolbar'));
-    $('#test').toolbar({ content: '#toolbar', position: "bottom" });
-
-
-
   },
 
   hideTableOfContents: function ( e ) {
