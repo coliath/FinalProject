@@ -7,9 +7,7 @@ App.Views.ResourceShow = Backbone.View.extend({
     this.confusingizer = rangy.createCssClassApplier("marked-as-confusing", {normalize: true});
 
     $('#content').on('mouseup', this.controlPopover.bind(this));
-    this.popupShowing = false;
-
-
+    this.popoverShowing = false;
   },
 
   tagName: 'section',
@@ -24,15 +22,26 @@ App.Views.ResourceShow = Backbone.View.extend({
     var that = this;
     this.highlights = App.CurrentState.resource.highlights;
     _.each(this.highlights.models, function (highlight) {
-
+      var className = that.highlightClassFromType(highlight.get("highlight_type"))
       _.each(highlight.get("marks"), function (mark) {
-        console.log(mark);
         $('.section').markText(mark.paragraph_text, {
-          className: "highlighted"
+          className: className
         });
       });
 
     });
+  },
+
+  highlightClassFromType: function ( type ) { // make mapping objects for this when get chance
+    switch(type)
+    {
+    case "Highlight":
+      return "highlighted";
+    case "Error":
+      return "marked-as-error";
+    case "Confusing":
+      return "marked-as-confusing";
+    }
   },
 
   showHighlightOptions: function (e, $target) {
@@ -46,23 +55,25 @@ App.Views.ResourceShow = Backbone.View.extend({
     if (this.selectionIsValid(selection)) {
 
       this.selecter.applyToSelection(selection);
-      this.popupView = new App.Views.ResourcePopup({
+      this.popoverView = new App.Views.ResourcePopover({
         selectionHtml: selectionHtml,
-        sectionId: sectionId,
         selectionText: selectionText,
+        sectionId: sectionId,
+        selection: selection
       });
+      this.listenTo(this.popoverView, "actionTaken", this.removePopover.bind(this));
 
       $elToPopover = $('.currently-selected').last();
       $elToPopover.popover({
         html: true,
         trigger: "manual",
         placement: "auto top",
-        content: this.popupView.render().$el
+        content: this.popoverView.render().$el
       });
       $elToPopover.popover('show');
 
       this.selecter.undoToSelection(selection);
-      this.popupShowing = true;
+      this.popoverShowing = true;
 
     } else {
       // handle invalid selection, nothing for now
@@ -78,22 +89,24 @@ App.Views.ResourceShow = Backbone.View.extend({
     }
   },
 
-  controlPopover: function ( e ) {
+  controlPopover: function ( e, opts ) { // build out the validations when you get the chance
     $target = $(e.target);
     if ($target.parents('.popover').length) {
-      // within popover, do nothing
+      // within popover,  do nothing
     } else {
       // outside popover, check for close or show
-      if (this.popupShowing) {
-
-        this.popupView.remove();
-        $('.popover').remove();
-        this.popupShowing = false;
-
-      } else if ($target.parents(".section").length) {
-        this.test(e, $target);
+      if (this.popoverShowing) {
+        this.removePopover();
+      } else if ($target.parents(".section").length && $target.prop("tagName") != "H3") {
+        this.showHighlightOptions(e, $target);
       }
     }
+  },
+
+  removePopover: function () {
+    this.popoverView.remove();
+    $('.popover').remove();
+    this.popoverShowing = false;
   },
 
   hideTableOfContents: function ( e ) {
@@ -113,9 +126,7 @@ App.Views.ResourceShow = Backbone.View.extend({
     var renderedContent = this.template({
       resource: this.model
     });
-
-    this.$el.html(renderedContent).addClass('resource-wrapper');
-
+    this.$el.html(renderedContent).addClass('resource-wrapper'); // needed??
     return this;
   }
 
