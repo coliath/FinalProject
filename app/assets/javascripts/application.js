@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require reveal
 //= require serializeJSON
+//= require highlight
 //= require underscore
 //= require backbone
 //= require_tree ../../../vendor/assets/javascripts/rangy/.

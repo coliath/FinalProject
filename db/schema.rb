@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20131218230246) do
+ActiveRecord::Schema.define(:version => 20131219183331) do
 
   create_table "answers", :force => true do |t|
     t.integer  "user_id"
@@ -52,21 +52,27 @@ ActiveRecord::Schema.define(:version => 20131218230246) do
   add_index "discussions", ["section_id"], :name => "index_discussions_on_section_id"
   add_index "discussions", ["user_id"], :name => "index_discussions_on_user_id"
 
-  create_table "marks", :force => true do |t|
+  create_table "highlights", :force => true do |t|
     t.integer  "user_id"
     t.integer  "resource_id"
     t.integer  "section_id"
-    t.text     "section_text"
-    t.text     "serialized_string"
-    t.string   "mark_type"
-    t.datetime "created_at",        :null => false
-    t.datetime "updated_at",        :null => false
+    t.text     "full_text"
     t.text     "additional_note"
+    t.string   "highlight_type"
+    t.datetime "created_at",      :null => false
+    t.datetime "updated_at",      :null => false
   end
 
-  add_index "marks", ["resource_id"], :name => "index_marks_on_resource_id"
-  add_index "marks", ["section_id"], :name => "index_marks_on_section_id"
-  add_index "marks", ["user_id"], :name => "index_marks_on_user_id"
+  add_index "highlights", ["resource_id"], :name => "index_highlights_on_resource_id"
+  add_index "highlights", ["section_id"], :name => "index_highlights_on_section_id"
+  add_index "highlights", ["user_id"], :name => "index_highlights_on_user_id"
+
+  create_table "marks", :force => true do |t|
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
+    t.integer  "highlight_id"
+    t.text     "paragraph_text"
+  end
 
   create_table "notes", :force => true do |t|
     t.integer  "user_id",      :null => false

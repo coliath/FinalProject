@@ -21,9 +21,20 @@ App.Routers.Resources = Backbone.Router.extend({
     });
   },
 
+  initHighlights: function ( resourceView ) {
+    var that = this;
+    App.CurrentState.resource.highlights = new App.Collections.Highlights([], {resource_id: App.CurrentState.resource.get("id")});
+    App.CurrentState.resource.highlights.fetch({
+      success: function (collection, resp, opt) {
+        resourceView.displayHighlights();
+      }
+    });
+  },
+
   showResource: function () {
     var showView = new App.Views.ResourceShow({ model: App.CurrentState.resource });
     this._swapView(this.$resourceEl, showView);
+    this.initHighlights(showView);
   },
 
   initNotes: function () {

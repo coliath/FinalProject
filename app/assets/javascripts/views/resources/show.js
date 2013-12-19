@@ -2,9 +2,14 @@ App.Views.ResourceShow = Backbone.View.extend({
 
   initialize: function () {
     this.selecter = rangy.createCssClassApplier("currently-selected", {normalize: true});
+    this.highlighter = rangy.createCssClassApplier("highlighted", {normalize: true});
+    this.errorizer = rangy.createCssClassApplier("marked-as-error", {normalize: true});
+    this.confusingizer = rangy.createCssClassApplier("marked-as-confusing", {normalize: true});
 
     $('#content').on('mouseup', this.controlPopover.bind(this));
     this.popupShowing = false;
+
+
   },
 
   tagName: 'section',
@@ -15,15 +20,38 @@ App.Views.ResourceShow = Backbone.View.extend({
   	"click #hide-table-of-contents": "hideTableOfContents"
   },
 
-  showHighlightOptions: function ( e, $target ) {
+  displayHighlights: function () {
+    var that = this;
+    this.highlights = App.CurrentState.resource.highlights;
+    _.each(this.highlights.models, function (highlight) {
 
+      _.each(highlight.get("marks"), function (mark) {
+        console.log(mark);
+        $('.section').markText(mark.paragraph_text, {
+          className: "highlighted"
+        });
+      });
+
+    });
+  },
+
+  showHighlightOptions: function (e, $target) {
     var sectionId = $target.closest('section').data("section-id");
+
     var selection = rangy.getSelection();
+    var selectionHtml = _.clone(selection.toHtml());
+    var selectionText = _.clone(selection.toString());
+
 
     if (this.selectionIsValid(selection)) {
 
       this.selecter.applyToSelection(selection);
-      this.popupView = new App.Views.ResourcePopup({ selection: selection });
+      this.popupView = new App.Views.ResourcePopup({
+        selectionHtml: selectionHtml,
+        sectionId: sectionId,
+        selectionText: selectionText,
+      });
+
       $elToPopover = $('.currently-selected').last();
       $elToPopover.popover({
         html: true,
@@ -31,8 +59,8 @@ App.Views.ResourceShow = Backbone.View.extend({
         placement: "auto top",
         content: this.popupView.render().$el
       });
-
       $elToPopover.popover('show');
+
       this.selecter.undoToSelection(selection);
       this.popupShowing = true;
 
@@ -63,7 +91,7 @@ App.Views.ResourceShow = Backbone.View.extend({
         this.popupShowing = false;
 
       } else if ($target.parents(".section").length) {
-        this.showHighlightOptions(e, $target);
+        this.test(e, $target);
       }
     }
   },

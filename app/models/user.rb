@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   has_many :notes
   has_many :answers
   has_many :comments
-  has_many :marks
+  has_many :highlights
 
   # ****** Callbacks ****** #
   after_initialize :ensure_session_token

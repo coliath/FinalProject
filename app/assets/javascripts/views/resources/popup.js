@@ -2,14 +2,14 @@ App.Views.ResourcePopup = Backbone.View.extend({
 
   initialize: function ( options ) {
 
-    this.highlightMarker = rangy.createCssClassApplier("highlighted", {normalize: true});
+    this.highlighter = rangy.createCssClassApplier("highlighted", {normalize: true});
     this.errorizer = rangy.createCssClassApplier("marked-as-error", {normalize: true});
     this.confusingizer = rangy.createCssClassApplier("marked-as-confusing", {normalize: true});
 
-    this.selection = options.selection;
-
-    this.highlighter = rangy.createHighlighter();
-    this.highlighter.addClassApplier(this.highlightMarker);
+    this.sectionId = options.sectionId;
+    this.selectionHtml = options.selectionHtml;
+    this.selectionText = options.selectionText;
+    this.sectionEl = $('.section[data-section-id="1"]')[0];
   },
 
   events: {
@@ -21,11 +21,34 @@ App.Views.ResourcePopup = Backbone.View.extend({
     'click button#post-discussion-on-text': "postDiscussionOnText",
   },
 
-  highlightText: function ( e ) {
-    //this.highlighter.toggleSelection(this.selection); maybe do this and only use the other for persistence?
-    this.highlighter.highlightSelection("highlighted", this.selection);
-    var serialString = this.highlighter.serialize(this.selection); // this is what gets used to re highlight
+  parseSelection: function ( selectionHtml ) {
+    var fullText = _.clone(selectionHtml);
+    var texts = [];
+    _.each(fullText.split('</p><p>'), function (text) {  // this should be a regex but deadline approaches!
+      text = text.replace('<p>', ''); // needs to remove all tags!!!!
+      text = text.replace('</p>', '');
+      texts.push(text);
+    });
 
+    return texts;
+  },
+
+  highlightText: function ( e ) {
+    var attrs = {}
+    attrs.section_id = this.sectionId;
+    attrs.full_text = this.selectionText;
+    attrs.highlight_type = "Highlight";
+    attrs.marks = this.parseSelection(this.selectionHtml);
+    App.CurrentState.resource.highlights.create(attrs, {
+      success: function (collection, resp, opts) {
+        console.log(resp);
+        console.log(collection);
+      },
+      error: function (collection, resp, opts) {
+        console.log(resp);
+        console.log(collection);
+      }
+    });
   },
 
   errorizeText: function ( e ) {
