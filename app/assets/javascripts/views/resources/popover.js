@@ -76,17 +76,26 @@ App.Views.ResourcePopover = Backbone.View.extend({
       }
     });
   },
-
+  // DRY THIS UP when you get the chance
   createNoteWithText: function ( e ) {
-    console.log(4);
+    var noteModalForm = new App.Views.NoteModalForm({ selectionText: this.selectionText });
+    $('#content').append(noteModalForm.render().$el);
+    $('.note-modal-form').reveal();
+    $(document).on('reveal:close', '.note-modal-form', function () { $(this).remove(); });
   },
 
   askQuestionOnText: function ( e ) {
-    console.log(5);
+    var questionModalForm = new App.Views.QuestionModalForm({ selectionText: this.selectionText });
+    $('#content').append(questionModalForm.render().$el);
+    $('.question-modal-form').reveal();
+    $(document).on('reveal:close', '.question-modal-form', function () { $(this).remove(); });
   },
 
   postDiscussionOnText: function ( e ) {
-    console.log(6);
+    var discussionModalForm = new App.Views.DiscussionModalForm({ selectionText: this.selectionText });
+    $('#content').append(discussionModalForm.render().$el);
+    $('.discussion-modal-form').reveal();
+    $(document).on('reveal:close', '.discussion-modal-form', function () { $(this).remove(); });
   },
 
   template: JST['resources/popup'],

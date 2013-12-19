@@ -97,54 +97,63 @@ body {
 	@extend .clickable;
   @extend .stn-transition;
   border: 1px solid transparent;
-	background-color: $blue;
 	color: white;
 	padding: 5px 15px;
 	font-weight: bold;
 }
 
-.btn:hover {
-  background-color: darken($blue, 15%);
+.btn-blue {
+  @extend .btn;
+  background-color: $blue;
 }
 
-.btn.red {
+.btn-blue:hover {
+  background-color: darken($blue, 12%);
+}
+
+.btn-red {
+  @extend .btn;
   background-color: $red;
 }
 
-.btn.red:hover {
+.btn-red:hover {
   background-color: darken($red, 18%);
 }
 
-.btn.yellow {
+.btn-yellow {
+  @extend .btn;
   color: black;
   background-color: $yellow;
 }
 
-.btn.yellow:hover {
+.btn-yellow:hover {
   background-color: darken($yellow, 4%);
 }
 
-.btn.green {
+.btn-green {
+  @extend .btn;
   background-color: $green;
 }
 
-.btn.green:hover {
+.btn-green:hover {
   background-color: darken($green, 10%);
 }
 
-.btn.purple {
+.btn-purple {
+  @extend .btn;
   background-color: $purple;
 }
 
-.btn.purple:hover {
+.btn-purple:hover {
   background-color: darken($purple, 10%);
 }
 
-.btn.gray {
+.btn-gray {
+  @extend .btn;
   background-color: $gray;
 }
 
-.btn.gray:hover {
+.btn-gray:hover {
   background-color: darken($gray, 10%);
 }
 
@@ -684,6 +693,21 @@ $top-nav-height: 30px;
     line-height: 1em;
   }
 
+  input {
+    width: 100%;
+  }
+
+}
+
+.note-modal-form {
+  textarea {
+    min-height: 200px;
+  }
+}
+
+.question-modal-form {
+  @extend .modal-form;
+  @extend .green-form;
 }
 
 .comment-form {
@@ -704,45 +728,32 @@ $top-nav-height: 30px;
 .green-form {
 
   button {
-    border: 1px solid $green;
-    background-color: $green;
+    @extend .btn-green;
   }
 
-  button:hover {
-    border: 1px solid darken($green, 10%);
-    background-color: darken($green, 10%);
+  input {
+    @extend .input-green;
   }
 
   textarea {
-    border: 1px solid $green;
-  }
-
-  textarea:focus {
-    border: 1px solid $green;
-    @include box-shadow(0,0,5px, $green);
+    @extend .textarea-green;
   }
 }
 
 .blue-form {
 
   button {
-    border: 1px solid $blue;
-    background-color: $blue;
+    @extend .btn-blue;
   }
 
-  button:hover {
-    border: 1px solid darken($blue, 10%);
-    background-color: darken($blue, 10%);
+  input {
+    @extend .input-green;
   }
 
   textarea {
-    border: 1px solid $blue;
+    @extend .textarea-green;
   }
 
-  textarea:focus {
-    border: 1px solid $blue;
-    @include box-shadow(0,0,5px, $blue);
-  }
 }
 
 ::selection {

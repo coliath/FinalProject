@@ -15,11 +15,11 @@ if (note.get('private')) {
     <h1> Edit Note </h1>
 
     <label> Source Text
-      <textarea name="note[section_text]" > <%= note.escape("section_text") %></textarea>
+      <textarea name="note[section_text]"><%= note.escape("section_text") %></textarea>
     </label>
 
     <label> Note Text
-      <textarea name="note[body]"> <%= note.escape("body") %></textarea>
+      <textarea name="note[body]"><%= note.escape("body") %></textarea>
     </label>
 
     <div class="group">

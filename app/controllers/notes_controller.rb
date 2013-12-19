@@ -5,6 +5,8 @@ class NotesController < ApplicationController
   def create
     note = Note.new(params[:note])
     note.user_id = current_user.id
+    note.resource_id = params[:resource_id]
+    note.private = false unless params[:note][:private]
 
     if note.save
       render json: note
