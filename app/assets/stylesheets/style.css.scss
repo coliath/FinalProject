@@ -150,6 +150,7 @@ body {
 
 .btn-gray {
   @extend .btn;
+  color: black;
   background-color: $gray;
 }
 
@@ -260,6 +261,15 @@ input[type=text] {
   @include box-shadow(0,0,5px, $blue);
 }
 
+.input-gray {
+  border: 1px solid $gray;
+}
+
+.input-gray:focus {
+  outline: 0;
+  @include box-shadow(0,0,5px, $gray);
+}
+
 input[type=submit] {
 	@extend .clickable;
 	background-color: inherit;
@@ -292,6 +302,16 @@ textarea {
   outline: 0;
   border: 1px solid $blue;
   @include box-shadow(0,0,15px, $blue);
+}
+
+.textarea-gray {
+  border: 1px solid $gray;
+}
+
+.textarea-gray:focus {
+  outline: 0;
+  border: 1px solid $gray;
+  @include box-shadow(0,0,15px, $gray);
 }
 
 input[type=checkbox] {
@@ -596,10 +616,11 @@ $top-nav-height: 30px;
   }
 }
 
-.edit-note-form {
+.edit-note-form { // is this really neccessary???
   h1 {
     font-size: 1.5em;
     border-bottom: $stn-border;
+    margin-top: 0;
   }
 
   label {
@@ -645,7 +666,6 @@ $top-nav-height: 30px;
   }
 
   h3 {
-    text-align: center;
     font-weight: bold;
   }
 
@@ -657,7 +677,7 @@ $top-nav-height: 30px;
 
 .show-modal {
 
-  overflow-y: scroll;
+  overflow-y: auto;
   max-height: 90%;
 
   h1 {  // question title
@@ -698,6 +718,18 @@ $top-nav-height: 30px;
     background-color: lighten($lightest-gray, 5%);
   }
 
+  div.response-wrapper {
+
+    p.add-comment {
+      margin: 0;
+      margin-top: -21px;
+      margin-right: 5px;
+    }
+  }
+
+  div.response-all {
+    margin-bottom: 20px;
+  }
 }
 
 .add-comment {
@@ -738,20 +770,27 @@ $top-nav-height: 30px;
 
 .comment-form {
 
-  margin-top: 10px;
-  @extend .blue-form;
+  @extend .gray-form;
 
   textarea {
     font-size: .95em;
     font-weight: normal;
     line-height: auto;
     height: 60px;
+    border-top: none;
+  }
+
+  textarea:focus {
+    border-top: none;
+  }
+
+  button:hover {
+    color: black;
   }
 
   label {
     margin-bottom: 10px;
   }
-
 }
 
 .check-label {
@@ -793,6 +832,26 @@ $top-nav-height: 30px;
 
   textarea {
     @extend .textarea-blue;
+  }
+
+}
+
+.gray-form {
+
+  h1 {
+    border-bottom: 1px solid $gray;
+  }
+
+  button {
+    @extend .btn-gray;
+  }
+
+  input {
+    @extend .input-gray;
+  }
+
+  textarea {
+    @extend .textarea-gray;
   }
 
 }

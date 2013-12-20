@@ -4,7 +4,8 @@ App.Views.AnswerIndex = Backbone.View.extend({
 
   events: {
     'click #submit-answer': 'submit',
-    'click .add-comment': 'showCommentForm'
+    'click .add-comment': 'showCommentForm',
+    'click .submit-comment': 'submitComment'
   },
 
   showCommentForm: function ( e ) {
@@ -34,9 +35,20 @@ App.Views.AnswerIndex = Backbone.View.extend({
       answers: this.collection
     });
 
+    //this.renderAnswers();
+
     this.$el.html(renderedContent);
 
+    this.renderAnswers(this.$el.find('.answers'));
+
     return this;
-  }
+  },
+
+  renderAnswers: function ( $el ) {
+    _.each(this.collection.models.reverse(), function (model) {
+      var answerView = new App.Views.AnswerShow({ model: model });
+      $el.append(answerView.render().$el);
+    });
+  },
 
 });

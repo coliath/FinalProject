@@ -7,12 +7,16 @@
 
 	<h1> <%= question.get("title") %> </h1>
 
-  <div class="body-wrapper">
-	  <p class="body"> <%= question.get("body") %> </p>
+  <div class="response-wrapper">
+    <div class="body-wrapper">
+  	  <p class="body"> <%= question.get("body") %> </p>
+    </div>
+    <p class="add-comment"> add comment </p>
   </div>
 
-  <h5 class="add-comment"> add comment </h5>
+  <div class="comments-wrapper">
 
-  <h3>Answers</h3>
+  </div>
+
 
 </section>

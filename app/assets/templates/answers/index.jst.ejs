@@ -1,11 +1,5 @@
-
+<h3> <%= answers.models.length %> Answers </h3>
 <ul class="answers">
-<% _.each(answers.models, function (answer) { %>
 
-  	<li class="response answer" data-answer-id="<%= answer.get('id') %>"> <%= answer.escape("body") %> </li>
-    <p class="add-comment" data-answer-id="<%= answer.get('id') %>"> add comment </p>
-
-<% }); %>
 </ul>
-
 <%= new App.Views.AnswerForm().render().$el.html() %>

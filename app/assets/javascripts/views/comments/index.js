@@ -6,6 +6,7 @@ App.Views.CommentIndex = Backbone.View.extend({
 
   submit: function ( e ) {
     e.preventDefault();
+    e.stopPropagation();
 
     var attrs = $(e.target).closest('form').serializeJSON();
     attrs.comment.commentable_id = this.collection.commentableId;
