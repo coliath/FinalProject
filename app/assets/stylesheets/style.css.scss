@@ -378,7 +378,6 @@ $top-nav-height: 30px;
 .top-nav {
 
   ul {
-    padding: 0 20px;
     float: right;
   }
 
@@ -413,13 +412,13 @@ $top-nav-height: 30px;
     border-right: 1px solid $gray;
   }
 
-  li.hide {
+  li.minimize {
     color: $dark-gray;
     border-right: none;
     float: right;
   }
 
-  li.hide:hover {
+  li.minimize:hover {
     background-color: $lightest-gray;
     background: -webkit-linear-gradient(lighten($lightest-gray, 5%), darken($lightest-gray, 10%));
     color: black;
@@ -928,7 +927,6 @@ $top-nav-height: 30px;
       float: left;
       margin:3px;
       max-width: 140px;
-      text-indent: none;
 
       button {
         outline: none;
@@ -939,6 +937,15 @@ $top-nav-height: 30px;
     }
   }
 }
+
+.glyphicon {
+  color: $dark-gray;
+}
+
+.glyphicon:hover {
+  color: black;
+}
+
 
 
 
