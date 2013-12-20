@@ -2,8 +2,8 @@
 <ul class="answers">
 <% _.each(answers.models, function (answer) { %>
 
-  	<li class="response answer"> <%= answer.get("body") %> </li>
-    <p class="add-comment"> add comment </p>
+  	<li class="response answer" data-answer-id="<%= answer.get('id') %>"> <%= answer.escape("body") %> </li>
+    <p class="add-comment" data-answer-id="<%= answer.get('id') %>"> add comment </p>
 
 <% }); %>
 </ul>

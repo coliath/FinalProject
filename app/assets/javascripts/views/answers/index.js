@@ -8,14 +8,15 @@ App.Views.AnswerIndex = Backbone.View.extend({
   },
 
   showCommentForm: function ( e ) {
-    console.log("does this highjack my events?");
+    e.stopPropagation();
+    var answerId = $(e.target).data("answer-id");
+    var answer = this.collection.get(answerId);
+    console.log(answer);
   },
 
   submit: function ( e ) {
     e.preventDefault();
-
     var attrs = $(e.target).closest('form').serializeJSON();
-
     this.collection.create(attrs, {wait: true});
   },
 
