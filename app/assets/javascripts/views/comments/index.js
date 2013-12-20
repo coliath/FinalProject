@@ -1,7 +1,7 @@
 App.Views.CommentIndex = Backbone.View.extend({
 
   events: {
-    'click #submit-comment': 'submit',
+    'submit': 'submit',
   },
 
   submit: function ( e ) {
