@@ -1,0 +1,23 @@
+<section class="discussion-modal-form large reveal-modal">
+
+	<a class="close-reveal-modal">&#215</a>
+
+  <form>
+
+    <h1> Post Discussion </h1>
+
+    <label>Source Text<textarea name="discussion[section_text]" > <%= selectionText %></textarea></label>
+
+    <label> Discussion Topic
+      <input type="text" name="discussion[title]" placeholder=" The basic topic of your discussion."></input>
+    </label>
+
+    <label> Discussion Prompt
+      <textarea name="discussion[body]" placeholder=" A more detailed explaination of what you would like to discuss."></textarea>
+    </label>
+
+    <button class="submit-discussion">Post</button>
+
+  </form>
+
+</section>

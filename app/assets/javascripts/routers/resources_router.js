@@ -86,8 +86,8 @@ App.Routers.Resources = Backbone.Router.extend({
   },
 
   addSocialNav: function () {
-    var socialNav = new App.Views.SocialNav();
-    this.$socialEl.prepend(socialNav.render().$el);
+    App.socialNav = new App.Views.SocialNav();
+    this.$socialEl.prepend(App.socialNav.render().$el);
   },
 
   showReaderView: function ( id ) {

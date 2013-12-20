@@ -2,7 +2,7 @@
 
 	<a class="close-reveal-modal">&#215</a>
 
-  <form class="edit-note-form">
+  <form>
     <h1> Add Note </h1>
 
     <label> Source Text
@@ -14,8 +14,9 @@
     </label>
 
     <div class="group">
-      <label class="check-label">
-        <input type="checkbox" name="note[private]" checked>
+
+        <input type="checkbox" name="note[private]" id="private-check" checked>
+        <label class="check-label" for="private-check">
         Private?
       </label>
     </div>

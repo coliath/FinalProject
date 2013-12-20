@@ -78,6 +78,7 @@ App.Views.ResourcePopover = Backbone.View.extend({
   },
   // DRY THIS UP when you get the chance
   createNoteWithText: function ( e ) {
+    App.socialNav.showNotes();
     var noteModalForm = new App.Views.NoteModalForm({ selectionText: this.selectionText });
     $('#content').append(noteModalForm.render().$el);
     $('.note-modal-form').reveal();
@@ -85,6 +86,7 @@ App.Views.ResourcePopover = Backbone.View.extend({
   },
 
   askQuestionOnText: function ( e ) {
+    App.socialNav.showQuestions();
     var questionModalForm = new App.Views.QuestionModalForm({ selectionText: this.selectionText });
     $('#content').append(questionModalForm.render().$el);
     $('.question-modal-form').reveal();
@@ -92,6 +94,7 @@ App.Views.ResourcePopover = Backbone.View.extend({
   },
 
   postDiscussionOnText: function ( e ) {
+    App.socialNav.showDiscussions();
     var discussionModalForm = new App.Views.DiscussionModalForm({ selectionText: this.selectionText });
     $('#content').append(discussionModalForm.render().$el);
     $('.discussion-modal-form').reveal();

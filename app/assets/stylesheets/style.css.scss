@@ -172,11 +172,6 @@ $small-height: 30px;
 	background-color: $stn-back-color;
 }
 
-form {
-
-
-}
-
 .form-wrapper {
   display: inline-block;
   min-width: 300px;
@@ -231,42 +226,83 @@ form {
 	}
 }
 
+label {
+  @extend .clickable;
+  display: block;
+  margin-bottom: 20px;
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+input[type=text] {
+  width: 100%;
+  padding: 2%;
+  font-size: 14px;
+  line-height: normal;
+  margin-top: 0;
+}
+
+.input-green {
+  border: 1px solid $green;
+}
+
+.input-green:focus {
+  outline: 0;
+  @include box-shadow(0,0,5px, $green);
+}
+
+.input-blue {
+  border: 1px solid $blue;
+}
+
+.input-blue:focus {
+  outline: 0;
+  @include box-shadow(0,0,5px, $blue);
+}
+
 input[type=submit] {
 	@extend .clickable;
-
 	background-color: inherit;
 }
 
 textarea {
-  border: 1px solid white;
+  border: 1px solid transparent;
   width: 100%;
   padding: 2%;
+  margin-top: 0;
 }
 
-textarea:focus {
+.textarea-green {
+  border: 1px solid $green;
+}
+
+.textarea-green:focus {
+  outline: 0;
+  border: 1px solid $green;
+  @include box-shadow(0,0,15px, $green);
+}
+
+.textarea-blue {
+  border: 1px solid $blue;
+}
+
+.textarea-blue:focus {
   outline: 0;
   border: 1px solid $blue;
   @include box-shadow(0,0,15px, $blue);
 }
 
-textarea:hover {
-  border: 1px solid $blue;
-}
-
 input[type=checkbox] {
--webkit-appearance: none;
+  @extend .clickable;
+  -webkit-appearance: none;
   outline: none;
 	background-color: $faded-blue;
-	width: 23px;
-  height: 23px;
+	width: 23px !important;
+  height: 23px !important;
 	position: relative;
   float: left;
   margin-right: 5px;
   border: 1px solid white;
-}
-
-input[type=checkbox]:hover {
-  @extend .clickable;
   border: 1px solid $blue;
 }
 
@@ -373,11 +409,11 @@ $top-nav-height: 30px;
   @extend .clickable;
   display: inline-block;
   position: absolute;
-  width: 25px;
-  height: 25px;
+  width: 30px;
+  //height: 25px;
   font-size: 15px;
   font-weight: bolder;
-  padding: 0px 4px 0px 6px;
+  padding: 0px 3px 0px 8px;
   color: $dark-gray;
 }
 
@@ -395,8 +431,10 @@ $top-nav-height: 30px;
 }
 
 #show-social {
-  top: 0;
+  top: -1px;
   right: -30px;
+  height: 33px;
+  padding-top: 5px;
 }
 
 #content {
@@ -602,6 +640,11 @@ $top-nav-height: 30px;
     }
   }
 
+  h3 {
+    text-align: center;
+    font-weight: bold;
+  }
+
   .note, .question, .discussion {
     padding: 5px;
   }
@@ -677,13 +720,8 @@ $top-nav-height: 30px;
 
 .modal-form {
 
-  label {
-    display: block;
-    font-weight: bold;
-    font-size: 1.3em;
-    margin-top: 10px;
-    padding-bottom: 5px;
-    line-height: 40px;
+  h1 {
+    margin-top: 0;
   }
 
   textarea {
@@ -699,18 +737,11 @@ $top-nav-height: 30px;
 
 }
 
-.note-modal-form {
-  textarea {
-    min-height: 200px;
-  }
-}
 
-.question-modal-form {
-  @extend .modal-form;
-  @extend .green-form;
-}
 
 .comment-form {
+
+  margin-top: 10px;
 
   textarea {
     height: 60px;
@@ -727,6 +758,10 @@ $top-nav-height: 30px;
 
 .green-form {
 
+  h1 {
+    border-bottom: 1px solid $green;
+  }
+
   button {
     @extend .btn-green;
   }
@@ -742,18 +777,37 @@ $top-nav-height: 30px;
 
 .blue-form {
 
+  h1 {
+    border-bottom: 1px solid $blue;
+  }
+
   button {
     @extend .btn-blue;
   }
 
   input {
-    @extend .input-green;
+    @extend .input-blue;
   }
 
   textarea {
-    @extend .textarea-green;
+    @extend .textarea-blue;
   }
 
+}
+
+.note-modal-form {
+  @extend .modal-form;
+  @extend .blue-form;
+}
+
+.discussion-modal-form {
+  @extend .modal-form;
+  @extend .blue-form;
+}
+
+.question-modal-form {
+  @extend .modal-form;
+  @extend .green-form;
 }
 
 ::selection {

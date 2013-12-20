@@ -2,19 +2,17 @@
 
 	<a class="close-reveal-modal">&#215</a>
 
-  <form class="edit-question-form">
+  <form>
     <h1> Ask Question </h1>
 
-    <label> Source Text
-      <textarea name="question[section_text]" > <%= selectionText %></textarea>
-    </label>
+    <label>Source Text<textarea name="question[section_text]" > <%= selectionText %></textarea></label>
 
     <label> Question Title
-      <input name="question[title]"></textarea>
+      <input type="text" name="question[title]" placeholder=" The brief version of your question."></input>
     </label>
 
     <label> Additional Information
-      <textarea name="question[body]"></textarea>
+      <textarea name="question[body]" placeholder=" A more detailed explaination of your problem and what you would like to know."></textarea>
     </label>
 
     <button class="submit-question">Ask</button>
