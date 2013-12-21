@@ -712,10 +712,12 @@ $top-nav-height: 30px;
   }
 
   li.comment {
-    font-size: .95em;
+    font-size: 14px;
     border-bottom: 1px dotted $gray;
-    padding: 5px 15px;
-    height: auto;
+    height: 30px;
+    font-weight: normal;
+    line-height: 30px;
+    padding-left: 20px;
   }
 
   li.comment:last-child {
@@ -780,16 +782,31 @@ $top-nav-height: 30px;
 
   @extend .gray-form;
 
-  input {
-    font-size: .85em;
+  input {  // these styles are hard tied to comment form for now, fix later but just note for now
+    font-size: 14px;
+    border-bottom: 1px solid $gray;
+    height: 30px;
     font-weight: normal;
     line-height: normal;
-    height: 30px;
     border-top: none;
+    padding-left: 19px;
+    transition: .7s;
   }
 
   input:focus {
     border-top: none;
+  }
+
+  input.become-comment {
+    border: 1px solid transparent;
+    border-bottom: 1px solid $gray;
+    border-top: none;
+  }
+  input.become-comment:focus {
+    border: 1px solid transparent;
+    border-bottom: 1px solid $gray;
+    border-top: none;
+    box-shadow: none;
   }
 }
 

@@ -5,8 +5,10 @@
   <li class="comment"><%= comment.escape("body") %></li>
 
 <% }) %>
-</ul>
+
 
 <% if (form) { %>
-  <%= new App.Views.CommentForm().render().$el.html() %>
+  <li><%= new App.Views.CommentForm().render().$el.html() %></li>
 <% } %>
+
+</ul>

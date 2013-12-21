@@ -5,6 +5,7 @@ App.Views.CommentIndex = Backbone.View.extend({
   },
 
   submit: function ( e ) {
+
     e.preventDefault();
     e.stopPropagation();
 
@@ -12,10 +13,11 @@ App.Views.CommentIndex = Backbone.View.extend({
     attrs.comment.commentable_id = this.collection.commentableId;
     attrs.comment.commentable_type = this.collection.commentable_type;
 
+    var that = this;
     this.collection.create(attrs, {
       wait: true,
-      error: function (model, resp, opts) {
-        console.log(resp);
+      success: function (model, resp, opts) {
+        that.fadeInComment(model.get("body"));
       }
     });
   },
@@ -23,8 +25,17 @@ App.Views.CommentIndex = Backbone.View.extend({
   initialize: function ( collection ) {
   	var renderCB = this.render.bind(this);
 
-    this.listenTo(this.collection, "add", renderCB);
     this.listenTo(this.collection, "remove", renderCB);
+  },
+
+  fadeInComment: function ( body ) {
+    $li = $('<li class="comment">'+ body +'</li>');
+    $ul = this.$el.find('ul.comments');
+    $input = this.$el.find('.comment-form input');
+    $input.addClass("become-comment");
+    $input.one('webkitTransitionEnd transitionend', function () {
+      $ul.children().last().replaceWith($li);
+    });
   },
 
   template: JST['comments/index'],

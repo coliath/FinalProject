@@ -17,7 +17,6 @@ App.Modules.makeCommentable = function ( viewObj ) {
 		      success: function (collection, resp, opts) {
 		        that.commentsIndex = new App.Views.CommentIndex({ collection: that.comments });
 		        $wrapper.append(that.commentsIndex.render({ form: false }).$el);
-		        console.log(collection);
 		      },
 		      error: function (something, resp, opts) {
 		        console.log("ERROR");
