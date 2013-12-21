@@ -3,15 +3,12 @@
 App.Views.QuestionShow = Backbone.View.extend({
 
   initialize: function ( options ) {
-
+    this.type = "Question";
+    App.Modules.makeCommentable(this);
   },
 
   events: {
-    'click .add-comment': 'showCommentForm'
-  },
-
-  showCommentForm: function ( e ) {
-    this.commentsIndex.render();
+    
   },
 
   template: JST['questions/show'],
@@ -36,21 +33,6 @@ App.Views.QuestionShow = Backbone.View.extend({
         $('.show-modal').append(answersIndex.render().$el);
         that.reveal();
       },
-    });
-  },
-
-  renderComments: function ( $el ) {
-    var that = this;
-    this.comments = new App.Collections.Comments([], { commentable_id: this.model.get("id"), type: "Question" })
-    this.comments.fetch({
-      success: function (collection, resp, opts) {
-        that.commentsIndex = new App.Views.CommentIndex({ collection: that.comments });
-        $el.append(that.commentsIndex.render({ form: false }).$el);
-      },
-      error: function (something, resp, opts) {
-        console.log("ERROR");
-        console.log(resp);
-      }
     });
   },
 

@@ -15,7 +15,7 @@ App.Views.ResourceShow = Backbone.View.extend({
   template: JST['resources/show'],
 
   events: {
-  	"click #hide-table-of-contents": "hideTableOfContents"
+  	"click #hide-table-of-contents": "hideTableOfContents",
   },
 
   displayHighlights: function () {
