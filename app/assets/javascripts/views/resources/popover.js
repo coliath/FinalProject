@@ -66,10 +66,6 @@ App.Views.ResourcePopover = Backbone.View.extend({
     attrs.highlight_type = type;
     attrs.marks = this.parseSelection(this.selectionHtml);
     App.CurrentState.resource.highlights.create(attrs, {
-      success: function (collection, resp, opts) {
-        console.log(resp);
-        console.log(collection);
-      },
       error: function (collection, resp, opts) {
         console.log(resp);
         console.log(collection);

@@ -1,10 +1,7 @@
-
-
-App.Views.AnswerIndex = Backbone.View.extend({
+App.Views.ResponseIndex = Backbone.View.extend({
 
   events: {
-    'click #submit-answer': 'submit',
-
+    'click #submit-response': 'submit',
   },
 
   submit: function ( e ) {
@@ -20,24 +17,24 @@ App.Views.AnswerIndex = Backbone.View.extend({
     this.listenTo(this.collection, "remove", renderCB);
   },
 
-  template: JST['answers/index'],
+  template: JST['responses/index'],
 
   render: function () {
     var renderedContent = this.template({
-      answers: this.collection
+      responses: this.collection
     });
 
     this.$el.html(renderedContent);
 
-    this.renderAnswers(this.$el.find('.answers'));
+    this.renderResponses(this.$el.find('.responses'));
 
     return this;
   },
 
-  renderAnswers: function ( $el ) {
+  renderResponses: function ( $el ) {
     _.each(this.collection.models, function (model) {
-      var answerView = new App.Views.AnswerShow({ model: model });
-      $el.append(answerView.render().$el);
+      var responseView = new App.Views.ResponseShow({ model: model });
+      $el.append(responseView.render().$el);
     });
   },
 

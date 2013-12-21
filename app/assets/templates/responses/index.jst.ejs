@@ -1,0 +1,15 @@
+
+<% var responseCount = responses.models.length %>
+<% 
+if (responseCount === 1) {
+	var responses = "Response";
+} else {
+	var responses = "Responses";
+}
+%>
+
+<h3> <%= responseCount + " " + responses %> </h3>
+<ul class="responses">
+
+</ul>
+<%= new App.Views.ResponseForm().render().$el.html() %>

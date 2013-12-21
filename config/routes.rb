@@ -10,7 +10,9 @@ NewAuthDemo::Application.routes.draw do
 
     resources :highlights, only: [:create, :index]
 
-    resources :discussions, only: [:create, :show, :index]
+    resources :discussions, only: [:create, :show, :index] do
+      resources :responses, only: [:create, :show, :index]
+    end
 
     resources :notes, only: [:create, :index, :update]
 

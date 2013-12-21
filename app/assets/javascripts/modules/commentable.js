@@ -8,6 +8,7 @@ App.Modules.makeCommentable = function ( viewObj ) {
 		showCommentForm: function ( e ) {
 			e.stopPropagation();
 			this.commentsIndex.render();
+			this.commentsIndex.focus();
 		},
 
 		renderComments: function ( $wrapper ) {
@@ -31,6 +32,10 @@ App.Modules.makeCommentable = function ( viewObj ) {
 	}
 
 	_.extend(viewObj, commentFunctions);
+
+	if ( typeof viewObj.events === "undefined" ) {
+		viewObj.events = {};
+	}
 
 	for (var key in commentEvents) {
 		if (commentEvents.hasOwnProperty(key)) {

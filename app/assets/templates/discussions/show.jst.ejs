@@ -4,11 +4,22 @@
 	<a class="close-reveal-modal">&#215</a>
 
 	<h1> <%= discussion.escape("title") %> </h1>
+	<div class="response-all">
+		<div class="response-wrapper">
+		<% if (discussion.escape("body")) { %>
 
-	<div class="body-wrapper">
-    <p class="body"><%= discussion.escape("body") %><p>
-  </div>
+			<div class="body-wrapper">
+		    	<p class="body"><%= discussion.escape("body") %></p>
+		  	</div>
 
-  <h5 class="add-comment"> add comment </h5>
+	  	<% } %>
+	  	
+	  		<p class="add-comment"> add comment </p>
+	  	</div>
+	  	
+	  <div class="comments-wrapper">
+
+	  </div>
+	 </div>
 
 </section>

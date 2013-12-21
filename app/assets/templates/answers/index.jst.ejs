@@ -1,4 +1,14 @@
-<h3> <%= answers.models.length %> Answers </h3>
+
+<% var answerCount = answers.models.length %>
+<% 
+if (answerCount === 1) {
+	var answers = "Answer";
+} else {
+	var answers = "Answers";
+}
+%>
+
+<h3> <%= answerCount + " " + answers %> </h3>
 <ul class="answers">
 
 </ul>

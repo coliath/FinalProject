@@ -28,6 +28,10 @@ App.Views.CommentIndex = Backbone.View.extend({
     this.listenTo(this.collection, "remove", renderCB);
   },
 
+  focus: function () {
+    this.$el.find('input').focus();
+  },
+
   fadeInComment: function ( body ) {
     $li = $('<li class="comment">'+ body +'</li>');
     $ul = this.$el.find('ul.comments');

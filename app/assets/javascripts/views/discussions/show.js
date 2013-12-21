@@ -1,15 +1,17 @@
 App.Views.DiscussionShow = Backbone.View.extend({
 
-  template: JST['discussions/show'],
-
-  events: {
-    'click .add-comment': 'showCommentForm'
+  initialize: function () {
+    this.type = "Discussion";
+    App.Modules.makeCommentable(this);
   },
+
+  template: JST['discussions/show'],
 
   render: function () {
     var renderedContent = this.template({ discussion: this.model });
     this.$el.html(renderedContent);
 
+    this.renderComments(this.$el.find('.comments-wrapper'));
     this.renderResponses();
 
     return this;
@@ -17,10 +19,10 @@ App.Views.DiscussionShow = Backbone.View.extend({
 
   renderResponses: function () {
     var that = this;
-    var responses = new App.Collections.Comments([], { commentable_id: this.model.get("id"), type: "Discussion" });
+    var responses = new App.Collections.Responses([], {resource_id: App.CurrentState.resource.get("id"), question_id: this.model.get("id")});
     responses.fetch({
       success: function (collection, resp, opts) {
-        var responsesView = new App.Views.Responses({ collection: responses });
+        var responsesView = new App.Views.ResponseIndex({ collection: responses });
         $('.show-modal').append(responsesView.render().$el);
         that.reveal();
       },

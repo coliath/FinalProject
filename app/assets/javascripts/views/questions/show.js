@@ -7,10 +7,6 @@ App.Views.QuestionShow = Backbone.View.extend({
     App.Modules.makeCommentable(this);
   },
 
-  events: {
-    
-  },
-
   template: JST['questions/show'],
 
   render: function () {

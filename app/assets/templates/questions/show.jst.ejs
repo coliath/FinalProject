@@ -5,12 +5,19 @@
 
 	<a class="close-reveal-modal">&#215</a>
 
-	<h1> <%= question.get("title") %> </h1>
+	<h1> <%= question.escape("title") %> </h1>
   <div class="response-all">
     <div class="response-wrapper">
+
+    <% if (question.escape("body")) { %>
+
       <div class="body-wrapper">
-    	  <p class="body"> <%= question.get("body") %> </p>
+    	  <p class="body"> <%= question.escape("body") %> </p>
       </div>
+
+    <% } %>
+
+
       <p class="add-comment"> add comment </p>
     </div>
 

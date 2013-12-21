@@ -1,16 +1,18 @@
-App.Views.AnswerShow = Backbone.View.extend({
+App.Views.ResponseShow = Backbone.View.extend({
 
   initialize: function () {
-    this.type = "Answer";
+    this.type = "Response"
     App.Modules.makeCommentable(this);
   },
 
-  template: JST['answers/show'],
+  template: JST['responses/show'],
 
   render: function () {
-    var renderedContent = this.template({ answer: this.model });
+    var renderedContent = this.template({ response: this.model });
     this.$el.html(renderedContent);
+
     this.renderComments(this.$el.find('.comments-wrapper'));
+
     return this;
   },
 
