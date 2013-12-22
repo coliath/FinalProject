@@ -14,6 +14,7 @@ App.Views.QuestionShow = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     this.renderComments(this.$el.find('.comments-wrapper'));
+    this.renderVotes(this.$el.find('.votes-wrapper'));
 
     $('#content').append(this.$el);
     this.renderAnswers();
@@ -29,6 +30,16 @@ App.Views.QuestionShow = Backbone.View.extend({
         $('.show-modal').append(answersIndex.render().$el);
         that.reveal();
       },
+    });
+  },
+
+  renderVotes: function ( $wrapper ) {
+    var votes = new App.Collections.Votes([], {voteable_id: this.model.get("id"), voteable_type: this.type });
+    votes.fetch({
+      success: function (collection, resp, opts) {
+        var voteView = new App.Views.Vote({ collection: votes });
+        $wrapper.append(voteView.render().$el);
+      }
     });
   },
 
