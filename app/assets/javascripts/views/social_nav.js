@@ -41,6 +41,7 @@ App.Views.SocialNav = Backbone.View.extend({
     $("#social-content").slideUp("fast", function () {
       $(".resource-wrapper").append('<span class="show" id="show-social"></span>');
       $("#show-social").click(that.showSocial);
+      $('#content').trigger('click');
     });
   },
 

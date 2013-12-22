@@ -35,6 +35,7 @@ App.Routers.Resources = Backbone.Router.extend({
     var showView = new App.Views.ResourceShow({ model: App.CurrentState.resource });
     this._swapView(this.$resourceEl, showView);
     this.initHighlights(showView);
+    showView.resize();
   },
 
   initNotes: function () {

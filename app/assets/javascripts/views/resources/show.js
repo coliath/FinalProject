@@ -7,6 +7,9 @@ App.Views.ResourceShow = Backbone.View.extend({
     this.confusingizer = rangy.createCssClassApplier("marked-as-confusing", {normalize: true});
 
     $('#content').on('mouseup', this.controlPopover.bind(this));
+    
+    $('#content').on('click', this.resize.bind(this));
+    $(window).resize(this.resize.bind(this));
     this.popoverShowing = false;
   },
 
@@ -16,6 +19,30 @@ App.Views.ResourceShow = Backbone.View.extend({
 
   events: {
   	"click #hide-table-of-contents": "hideTableOfContents",
+  },
+
+  resize: function ( e ) { // totally re write all this, better, somewhere else
+      // write a new class that controlls all showing/hiding/resizing
+      // but dont until MVP is completed
+    console.log("resizing");
+    $content = $('#content');
+    var windowHeight = $(window).height();
+    var windowWidth = $(window).width();
+    var navHeight = $('.top-nav').height();
+    var resourceWidth = $('.resource').width() + 7;
+
+    if ($('#show-table-of-contents').length && $('#show-social').length) {
+      $content.width(resourceWidth);
+    } else if ($('#show-table-of-contents').length) {
+      console.log("are we getting here");
+      $content.width(resourceWidth + $('#social-content').width() + 30);
+    } else if ($('#show-social').length) {
+      $content.width(resourceWidth + $('#table-of-contents').width() + 18);
+    } else {
+      $content.width(1350);
+    }
+
+    $('.resource').height(windowHeight - navHeight - 17);
   },
 
   displayHighlights: function () {
@@ -111,15 +138,20 @@ App.Views.ResourceShow = Backbone.View.extend({
 
   hideTableOfContents: function ( e ) {
     var that = this;
+    console.log("WHAT");
     $("#table-of-contents").slideUp("fast", function () {
       $(".resource").append('<span class="show" id="show-table-of-contents"></span>');
-      $("#show-table-of-contents").click(that.showTableOfContents);
+      $("#show-table-of-contents").click(that.showTableOfContents.bind(that));
+      that.resize();
     });
   },
 
   showTableOfContents: function ( e ) {
+    var that = this;
     $("#show-table-of-contents").remove();
-    $("#table-of-contents").slideDown("fast");
+    $("#table-of-contents").slideDown("fast", function () {
+      that.resize();
+    });
   },
 
   render: function () {
