@@ -3,6 +3,7 @@ App.Views.ResponseShow = Backbone.View.extend({
   initialize: function () {
     this.type = "Response"
     App.Modules.makeCommentable(this);
+    App.Modules.makeVoteable(this);
   },
 
   template: JST['responses/show'],
@@ -12,6 +13,7 @@ App.Views.ResponseShow = Backbone.View.extend({
     this.$el.html(renderedContent);
 
     this.renderComments(this.$el.find('.comments-wrapper'));
+    this.renderVotes(this.$el.find('.votes-wrapper'));
 
     return this;
   },
