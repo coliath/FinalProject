@@ -5,6 +5,7 @@ App.Views.QuestionShow = Backbone.View.extend({
   initialize: function ( options ) {
     this.type = "Question";
     App.Modules.makeCommentable(this);
+    App.Modules.makeVoteable(this);
   },
 
   template: JST['questions/show'],
@@ -30,16 +31,6 @@ App.Views.QuestionShow = Backbone.View.extend({
         $('.show-modal').append(answersIndex.render().$el);
         that.reveal();
       },
-    });
-  },
-
-  renderVotes: function ( $wrapper ) {
-    var votes = new App.Collections.Votes([], {voteable_id: this.model.get("id"), voteable_type: this.type });
-    votes.fetch({
-      success: function (collection, resp, opts) {
-        var voteView = new App.Views.Vote({ collection: votes });
-        $wrapper.append(voteView.render().$el);
-      }
     });
   },
 

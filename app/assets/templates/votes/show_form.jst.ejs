@@ -1,0 +1,31 @@
+
+
+<%
+var upvoteCount = votes.where({vote_type: "Up"}).length;
+var downvoteCount = votes.where({vote_type: "Down"}).length;
+
+var voteScore = upvoteCount - downvoteCount;
+
+var color;
+
+if ( voteScore < 0 ) {
+	color = "red";
+} else {
+	color = "";
+}
+%>
+
+
+
+
+
+
+<section class="votes">
+
+	<div class="glyphicon glyphicon-chevron-up vote upvote"></div>
+
+	<div class="vote-score <%= color %>"><%= voteScore %></div>
+
+	<div class="glyphicon glyphicon-chevron-down vote downvote"></div>
+
+</section>

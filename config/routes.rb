@@ -6,12 +6,16 @@ NewAuthDemo::Application.routes.draw do
 
   resources :comments, only: [:create, :index]
 
+  resources :votes, only: [:create, :index]
+
   resources :resources, only: [:create, :show, :index] do
 
     resources :highlights, only: [:create, :index]
 
     resources :discussions, only: [:create, :show, :index] do
+
       resources :responses, only: [:create, :show, :index]
+      
     end
 
     resources :notes, only: [:create, :index, :update]

@@ -7,9 +7,10 @@ if (answerCount === 1) {
 	var answers = "Answers";
 }
 %>
+<% if (answerCount) { %>
+	<h3> <%= answerCount + " " + answers %> </h3>
+	<ul class="answers">
 
-<h3> <%= answerCount + " " + answers %> </h3>
-<ul class="answers">
-
-</ul>
+	</ul>
+<% } %>
 <%= new App.Views.AnswerForm().render().$el.html() %>

@@ -3,9 +3,16 @@
 
 	<a class="close-reveal-modal">&#215</a>
 
-	<h1> <%= discussion.escape("title") %> </h1>
-	<div class="response-all">
-		<div class="response-wrapper">
+	<section class="post-wrapper">
+
+		<div class="votes-wrapper">
+
+		</div>
+
+		<div class="post-body">
+
+		<h1> <%= discussion.escape("title") %> </h1>
+
 		<% if (discussion.escape("body")) { %>
 
 			<div class="body-wrapper">
@@ -15,11 +22,12 @@
 	  	<% } %>
 	  	
 	  		<p class="add-comment"> add comment </p>
-	  	</div>
-	  	
-	  <div class="comments-wrapper">
 
-	  </div>
-	 </div>
+	  		<div class="comments-wrapper">
+
+	  		</div>
+	  	</div>
+	  
+	 </section>
 
 </section>

@@ -5,37 +5,35 @@
 
 	<a class="close-reveal-modal">&#215</a>
 
-	
+  <section class="post-wrapper">
+
+    
 
 
+      <div class="votes-wrapper">
 
-  <h1> <%= question.escape("title") %> </h1>
-
-
-
-  <div class="response-all">
-
-    <div class="votes-wrapper">
-
-    </div>
-
-    <div class="response-wrapper">
-
-    <% if (question.escape("body")) { %>
-
-      <div class="body-wrapper">
-    	  <p class="body"> <%= question.escape("body") %> </p>
       </div>
 
-    <% } %>
+      <div class="post-body">
+
+        <h1> <%= question.escape("title") %> </h1>
+
+        <% if (question.escape("body")) { %>
+
+        	  <p class="body"> <%= question.escape("body") %> </p>
+
+        <% } %>
 
 
-      <p class="add-comment"> add comment </p>
-    </div>
+        <p class="add-comment"> add comment </p>
 
-    <div class="comments-wrapper">
 
-    </div>
-  </div>
+        <div class="comments-wrapper">
+
+        </div>
+
+      </div>
+
+  </section>
 
 </section>

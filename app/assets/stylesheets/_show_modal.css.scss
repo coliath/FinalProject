@@ -1,0 +1,124 @@
+
+
+@import 'style';
+
+// all styles for show views within a modal
+
+
+.show-modal {
+
+  overflow-y: auto;
+  max-height: 90%;
+
+  .post-wrapper {
+  	@extend .group;
+  }
+
+  h1 {  // question/discussion title
+    font-size: 1.5em;
+    font-weight: bold;
+    padding-bottom: 2px;
+    border-bottom: 1px solid black;
+  }
+
+  h3 {  // num posts display
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 0px 0 2px 0;
+    margin-left: 5.5%;
+  }
+
+  .post-body {
+  	float: right;
+  	width: 94.5%;
+  	margin-bottom: 30px;
+  }
+
+  p.body, li.response {
+    font-size: 1.2em;
+    padding: 20px;
+    padding-top: 10px;
+    margin: 0;
+  }
+
+  p.body {
+    border-bottom: 1px solid black;
+  }
+
+  li.comment {
+    font-size: 14px;
+    border-bottom: 1px dotted $gray;
+    height: 30px;
+    font-weight: normal;
+    line-height: 30px;
+    padding-left: 20px;
+  }
+
+  li.comment:last-child {
+    border-bottom: $stn-border;
+  }
+
+  li.comment:hover {
+    background-color: lighten($lightest-gray, 5%);
+  }
+
+  p.add-comment {
+	  @extend .clickable;
+	  text-align: right;
+	  color: $gray;
+	  font-size: 1.1em;
+	  height: auto;
+	  padding: 0;
+	  margin: 0;
+	  margin-top: -21px;
+      margin-right: 5px;
+	}
+
+	.add-comment:hover {
+	  @extend .clickable;
+	  color: black;
+	}
+}
+
+.votes-wrapper {
+  float: left;
+}
+
+.votes {
+
+	text-align: center;
+	position: relative;
+	
+	.vote {
+		font-size: 25px;
+	}
+
+	.vote-score {
+		font-size: 16px;
+		padding: 0;
+	}
+
+	.red {
+		color: $red;
+	}
+
+	.upvote:hover {
+		color: $green;
+	}
+
+	.upvote {
+		position: relative;
+		left: 1px;
+		top: 3px;  // for whatever reason the up arrow seems about 3px smaller than the down arrow
+	}
+
+	.downvote:hover {
+		color: $red;
+	}
+}
+
+
+
+
+
+

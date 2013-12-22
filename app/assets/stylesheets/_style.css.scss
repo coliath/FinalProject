@@ -690,80 +690,6 @@ $top-nav-height: 30px;
 
 }
 
-.show-modal {
-
-  overflow-y: auto;
-  max-height: 90%;
-
-  h1 {  // question title
-    font-size: 1.5em;
-    font-weight: bold;
-    margin: 0;
-    border-bottom: 1px solid black;
-  }
-
-  h3 {  // num answers display
-    font-size: 1.3em;
-    font-weight: bold;
-    padding: 5px 0 2px 0;
-  }
-
-  p.body, li.response {
-    font-size: 1.2em;
-    padding: 20px;
-    padding-top: 10px;
-    margin: 0;
-  }
-
-  p.body {
-    border-bottom: 1px solid black;
-  }
-
-  li.comment {
-    font-size: 14px;
-    border-bottom: 1px dotted $gray;
-    height: 30px;
-    font-weight: normal;
-    line-height: 30px;
-    padding-left: 20px;
-  }
-
-  li.comment:last-child {
-    border-bottom: $stn-border;
-  }
-
-  li.comment:hover {
-    background-color: lighten($lightest-gray, 5%);
-  }
-
-  div.response-wrapper {
-
-    p.add-comment {
-      margin: 0;
-      margin-top: -21px;
-      margin-right: 5px;
-    }
-  }
-
-  div.response-all {
-    margin-bottom: 20px;
-  }
-}
-
-.add-comment {
-  @extend .clickable;
-  text-align: right;
-  color: $gray;
-  font-size: 1.1em;
-  height: auto;
-  margin: 0px 0px 25px 0px;
-  padding: 0;
-}
-
-.add-comment:hover {
-  @extend .clickable;
-  color: black;
-}
 
 .show-modal.question {
   li.answer { background-color: $faded-green; }
@@ -796,6 +722,10 @@ $top-nav-height: 30px;
 .comment-form {
 
   @extend .gray-form;
+
+  label {
+    margin-bottom: 0;
+  }
 
   input {  // these styles are hard tied to comment form for now, fix later but just note for now
     font-size: 14px;
@@ -973,12 +903,15 @@ $top-nav-height: 30px;
 }
 
 .glyphicon {
+  @extend .clickable;
   color: $dark-gray;
 }
 
 .glyphicon:hover {
   color: black;
 }
+
+
 
 
 

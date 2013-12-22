@@ -8,8 +8,10 @@ if (responseCount === 1) {
 }
 %>
 
-<h3> <%= responseCount + " " + responses %> </h3>
-<ul class="responses">
+<% if (responseCount) { %>
+	<h3> <%= responseCount + " " + responses %> </h3>
+	<ul class="responses">
 
-</ul>
+	</ul>
+<% } %>
 <%= new App.Views.ResponseForm().render().$el.html() %>
