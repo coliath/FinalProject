@@ -321,9 +321,9 @@ input[type=checkbox] {
 	background-color: $faded-blue;
 	width: 23px !important;
   height: 23px !important;
-	position: relative;
   float: left;
   margin-right: 5px;
+  position: relative;
   border: 1px solid white;
   border: 1px solid $blue;
 }
@@ -827,6 +827,8 @@ $top-nav-height: 30px;
 
 .check-label {
   float: left;
+  margin: 10px 0px;
+  line-height: 10px;
 }
 
 .green-form {

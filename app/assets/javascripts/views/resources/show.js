@@ -24,7 +24,6 @@ App.Views.ResourceShow = Backbone.View.extend({
   resize: function ( e ) { // totally re write all this, better, somewhere else
       // write a new class that controlls all showing/hiding/resizing
       // but dont until MVP is completed
-    console.log("resizing");
     $content = $('#content');
     var windowHeight = $(window).height();
     var windowWidth = $(window).width();
@@ -34,7 +33,6 @@ App.Views.ResourceShow = Backbone.View.extend({
     if ($('#show-table-of-contents').length && $('#show-social').length) {
       $content.width(resourceWidth);
     } else if ($('#show-table-of-contents').length) {
-      console.log("are we getting here");
       $content.width(resourceWidth + $('#social-content').width() + 30);
     } else if ($('#show-social').length) {
       $content.width(resourceWidth + $('#table-of-contents').width() + 18);
@@ -55,7 +53,6 @@ App.Views.ResourceShow = Backbone.View.extend({
           className: className
         });
       });
-
     });
   },
 

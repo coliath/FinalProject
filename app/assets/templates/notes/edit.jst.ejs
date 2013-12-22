@@ -23,10 +23,8 @@ if (note.get('private')) {
     </label>
 
     <div class="group">
-      <label class="check-label">
-        <input type="checkbox" name="note[private]" <%= checked %>>
-        Private?
-      </label>
+        <input id="note-private" type="checkbox" name="note[private]" <%= checked %>>
+        <label class="check-label" for="note-private">Private?</label>
     </div>
 
     <button class="submit-note btn-blue">Save</button>
