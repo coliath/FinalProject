@@ -12,6 +12,10 @@
   -moz-box-sizing: border-box; -webkit-box-sizing: border-box; box-sizing: border-box; // this is swell :)>-<
 }
 
+h1,h2,h3,ul {
+  margin:0;
+}
+
 @mixin border-radius($n) {
 	-webkit-border-radius: $n;
 	-moz-border-radius: $n;
@@ -100,6 +104,7 @@ body {
 	color: white;
 	padding: 5px 15px;
 	font-weight: bold;
+  display: block;
 }
 
 .btn-blue {
