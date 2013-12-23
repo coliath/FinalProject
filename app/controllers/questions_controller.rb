@@ -25,8 +25,8 @@ class QuestionsController < ApplicationController
 
   def index
     questions = Question.where({ resource_id: params[:resource_id] })
-
-    render json: questions
+    # eventually, once you know exactly what you need, write a query to fetch everything need on a resource in one swoop
+    render json: questions.to_json(include: {comments: {include: :user}, votes: {}, answers: {include: {comments: {include: :user}, votes:{}}}, user:{}})
   end
 
 end

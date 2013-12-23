@@ -1,0 +1,46 @@
+@import 'style';
+
+.social-list-item p {
+	margin: 0;
+}
+
+
+p.social-title {
+	padding: 5px;
+	border-bottom: 1px dotted $gray;
+}
+
+.social-data {
+	@extend .group;
+
+	p {
+		float: left;
+		width: 33%;
+		text-align: center;
+	}
+
+	p, p span {
+		padding: 0 3px;
+	}
+
+	p.social-vote-score-positive span {
+		color: $green;
+	}
+
+	p.vote-score-positive:hover {
+		color: $green;
+	}
+
+	p.social-post-count span {
+		color: black;
+	}
+
+	p.question-unanswered span{
+		color: $red;
+	}
+
+	p.question-unanswered span:hover {
+		color: $red;
+	}
+
+}

@@ -3,24 +3,13 @@ App.Collections.Notes = Backbone.Collection.extend({
   model: App.Models.Note,
 
   initialize: function (models, options) {
-    this.resource_id = options.resource_id; // would be different once notes are not only through resource
+    if ( options ) {
+      this.resource_id = options.resource_id;
+    }
   },
 
   url: function () {
     return "/resources/" + this.resource_id + "/notes"
   },
-
-  getUserResourceNotes: function ( resource_id ) { // this is redundent at this point in the project
-    $.ajax({
-      url: "/resources/" + resource_id + "/notes",
-      success: function (resp) {
-        console.log(resp);
-      },
-      error: function (resp) {
-        console.log(resp);
-      }
-    });
-  }
-
 
 });

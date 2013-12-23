@@ -27,8 +27,8 @@ App.Views.QuestionIndex = Backbone.View.extend({
   },
 
   showQuestion: function ( e ) {
-    var qId = $(e.target).data("question-id");
-    var question = App.CurrentState.resource.questions.get(qId);
+    var qId = $(e.target).closest('li').data("question-id");
+    var question = this.collection.get(qId);
     var showView = new App.Views.QuestionShow({model: question});
 
     showView.render();

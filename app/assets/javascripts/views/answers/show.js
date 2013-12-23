@@ -2,8 +2,8 @@ App.Views.AnswerShow = Backbone.View.extend({
 
   initialize: function () {
     this.type = "Answer";
-    App.Modules.makeCommentable(this);
     App.Modules.makeVoteable(this);
+    App.Modules.makeCommentable(this);
   },
 
   template: JST['answers/show'],
