@@ -8,7 +8,7 @@ App.Views.CommentIndex = Backbone.View.extend({
 
     e.preventDefault();
     e.stopPropagation();
-
+    this.blur();
     var attrs = $(e.target).closest('form').serializeJSON();
     attrs.comment.commentable_id = this.collection.commentableId;
     attrs.comment.commentable_type = this.collection.commentable_type;
@@ -30,6 +30,10 @@ App.Views.CommentIndex = Backbone.View.extend({
 
   focus: function () {
     this.$el.find('input').focus();
+  },
+
+  blur: function () {
+    this.$el.find('input').blur();
   },
 
   fadeInComment: function ( body ) {
