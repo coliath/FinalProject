@@ -8,7 +8,7 @@ class ResponsesController < ApplicationController
     response.discussion_id = params[:discussion_id]
 
     if response.save
-      render json: response
+      render json: response.to_json(include: :comments)
     else
       render_unprocessable(response)
     end
@@ -27,6 +27,6 @@ class ResponsesController < ApplicationController
   def index
     responses = Response.where({discussion_id: params[:discussion_id]})
 
-    render json: responses
+    render json: responses.to_json(include: :comments)
   end
 end

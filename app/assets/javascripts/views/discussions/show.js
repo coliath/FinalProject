@@ -24,7 +24,7 @@ App.Views.DiscussionShow = Backbone.View.extend({
     var responses = new App.Collections.Responses([], {resource_id: App.CurrentState.resource.get("id"), question_id: this.model.get("id")});
     responses.fetch({
       success: function (collection, resp, opts) {
-        var responsesView = new App.Views.ResponseIndex({ collection: responses });
+        var responsesView = new App.Views.ResponseIndex({ collection: responses, discussion: that.model });
         $('.show-modal').append(responsesView.render().$el);
         that.reveal();
       },

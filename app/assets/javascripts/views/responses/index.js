@@ -8,9 +8,11 @@ App.Views.ResponseIndex = Backbone.View.extend({
     e.preventDefault();
     var attrs = $(e.target).closest('form').serializeJSON();
     this.collection.create(attrs, {wait: true});
+    this.discussion.set({response_count: this.discussion.get("response_count") + 1});
   },
 
-  initialize: function () {
+  initialize: function ( options ) {
+    this.discussion = options.discussion;
   	var renderCB = this.render.bind(this);
 
     this.listenTo(this.collection, "add", renderCB);

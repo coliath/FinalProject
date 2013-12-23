@@ -13,10 +13,8 @@
   <%= discussionForm.render().$el.html() %>
   <h3> Discussions about <%= App.CurrentState.resource.get("title") %> </h3>
 
-  <ul>
-  <% _.each(discussions.models, function (discussion) { %>
-    <li class="discussion" data-discussion-id="<%= discussion.get('id') %>"><%= discussion.escape("title") %></li>
-  <% }) %>
+  <ul class="social-list">
+  
   </ul>
 
 </section>

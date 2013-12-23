@@ -1,0 +1,18 @@
+
+
+<li class='social discussion' data-discussion-id="<%= discussion.get('id') %>">
+  <div class="social-list-item">
+    <p class="social-title"><%= discussion.escape("title") %></p>
+    <div class="social-data discussion-data">
+      <%
+      if (discussion.get("vote_score") < 0) {
+        var scoreType = "negative";
+      } else {
+        var scoreType = "positive";
+      }
+      %>
+      <p class="social-vote-score-<%= scoreType %>"><span class="glyphicon glyphicon-star"></span> <%= discussion.escape("vote_score") %></p>
+      <p class="social-post-count"><span class="response-icon">&#588</span> <%= discussion.escape("response_count") %></p>
+    </div>
+  </div>
+</li>

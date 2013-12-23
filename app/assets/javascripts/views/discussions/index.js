@@ -22,7 +22,7 @@ App.Views.DiscussionIndex = Backbone.View.extend({
   },
 
   showDiscussion: function ( e ) {
-    var dId = $(e.target).data("discussion-id");
+    var dId = $(e.target).closest('li').data("discussion-id");
     var discussion = this.collection.get(dId);
     var discussionShow = new App.Views.DiscussionShow({ model: discussion });
     $('#content').append(discussionShow.render().$el);
@@ -40,7 +40,16 @@ App.Views.DiscussionIndex = Backbone.View.extend({
 
     this.$el.html(renderedContent);
 
+    this.renderListItems(this.$el.find('ul.social-list'));
+
     return this;
+  },
+
+  renderListItems: function ( $wrapper ) {
+    this.collection.each(function (discussion) {
+      var itemView = new App.Views.DiscussionListItem({ model: discussion });
+      $wrapper.append(itemView.render().$el);
+    });
   }
 
 });

@@ -4,7 +4,7 @@
 <li class='social question' data-question-id="<%= question.get('id') %>">
   <div class="social-list-item">
     <p class="social-title"><%= question.escape("title") %></p>
-    <div class="social-data">
+    <div class="social-data question-data">
       <%
       if (question.get("vote_score") < 0) {
         var scoreType = "negative";

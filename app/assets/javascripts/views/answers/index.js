@@ -23,7 +23,6 @@ App.Views.AnswerIndex = Backbone.View.extend({
 
     this.listenTo(this.collection, "add", renderCB);
     this.listenTo(this.collection, "remove", renderCB);
-    this.listenTo(this.collection, "change", renderCB);
   },
 
   template: JST['answers/index'],

@@ -657,6 +657,8 @@ $top-nav-height: 30px;
       float: left;
     }
 
+
+
   	@include placeholder {
   	    font-weight:100;
   	    color: $dark-gray;
@@ -667,6 +669,13 @@ $top-nav-height: 30px;
       bottom: 1px;
       right: 1px;
     }
+  }
+}
+.basic-question-form {
+  textarea:focus {
+    @extend .textarea-green;
+    border-width: 2px;
+    @include border-radius(2px);
   }
 }
 

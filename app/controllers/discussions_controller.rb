@@ -26,7 +26,7 @@ class DiscussionsController < ApplicationController
   def index
     discussions = Discussion.where({ resource_id: params[:resource_id] })
 
-    render json: discussions
+    render json: discussions.to_json(include: {comments: {include: :user}, votes: {}, responses: {include: {comments: {include: :user}, votes:{}}}, user:{}})
   end
 
 end

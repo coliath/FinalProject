@@ -13,12 +13,6 @@ p.social-title {
 .social-data {
 	@extend .group;
 
-	p {
-		float: left;
-		width: 33%;
-		text-align: center;
-	}
-
 	p, p span {
 		padding: 0 3px;
 	}
@@ -51,4 +45,24 @@ p.social-title {
 		color: $red;
 	}
 
+}
+
+.discussion-data {
+	p {
+		float: left;
+		width: 50%;
+		text-align: center;
+	}
+}
+
+.question-data {
+	p {
+		float: left;
+		width: 33%;
+		text-align: center;
+	}
+}
+
+.response-icon {
+	font-family: rockwell;
 }
