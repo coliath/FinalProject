@@ -1,5 +1,17 @@
 
 
+<%
+var color;
+if ( response.votes.get("vote_score") > 0 ) {
+	color = "faded-green";
+} else {
+	color = "faded-red"
+}
+%>
+
+
+
+
 <div class="post-wrapper">
 	
 
@@ -8,7 +20,7 @@
 	</div>
 
   <div class="post-body">
-    <li class="response"> <%= response.escape("body") %> </li>
+    <li class="response post-text"> <%= response.escape("body") %> </li>
     <p class="add-comment"> add comment </p>
   
 	  <div class="comments-wrapper">

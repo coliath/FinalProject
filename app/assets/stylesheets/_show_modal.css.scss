@@ -34,11 +34,23 @@
   	margin-bottom: 30px;
   }
 
-  p.body, li.response {
+  p.body, li.post-text {
     font-size: 1.2em;
     padding: 15px;
     padding-top: 8px;
     margin: 0;
+  }
+
+  li.answer {
+  	background-color: $faded-green;
+  }
+
+  li.faded-red {
+  	background-color: $faded-red;
+  }
+
+  li.response {
+  	background-color: $faded-blue;
   }
 
   p.body {

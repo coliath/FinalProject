@@ -87,7 +87,7 @@ body {
 
 .clickable:hover { cursor: pointer; }
 
-.group:after { // for containers that hold floating elements
+.group:after { 
   content: "";
   display: block;
   clear: both;
@@ -175,24 +175,60 @@ $small-height: 30px;
 
 .form-wrapper {
   display: inline-block;
-  min-width: 300px;
+  width: 22%;
+  float: left;
+  margin: 20px 10% 0 0;
 
   p {
     text-align: center;
   }
 }
 
+.landing-page {
+  .landing-info {
+    float:left;
+    margin-left: 10%;
+    width: 58%;
+
+    button {
+      @extend .stn-transition;
+      height: 40px;
+      width: 250px;
+      margin: 0 auto;
+      border: 1px solid transparent;
+      @include border-radius(2px);
+    }
+    button:hover {
+      @include border-radius(0px);
+    }
+
+    h1 {
+      font-size: 25px;
+      margin: 20px 0;
+    }
+
+    h3 {
+      font-size: 20px;
+      margin: 20px 0;
+    }
+  }
+}
+
 .form-box {
 	@extend .box;
 
+  padding: 20px;
+  
+
   input {
     @extend .stn-transition;
-    @include border-radius(4px);
-    border: 1px solid $stn-back-color;
+    @include border-radius(2px);
+    border: 1px solid transparent;
     display: block;
     padding: 7px;
     margin:  10px auto;
-    width: 90%;
+    height: 40px;
+    width: 100%;
   }
 
   input:hover {
@@ -205,9 +241,8 @@ $small-height: 30px;
   }
 
 	input[type=submit] {
-    @extend .btn;
-    width: 50%;
-    margin-top: 12px;
+    @extend .btn-blue;
+    height: 40px;
   }
 
 	input.error {
@@ -688,14 +723,6 @@ $top-nav-height: 30px;
     padding: 5px;
   }
 
-}
-
-
-.show-modal.question {
-  li.answer { background-color: $faded-green; }
-}
-.show-modal.discussion {
-  li.response { background-color: $faded-blue; }
 }
 
 .modal-form {

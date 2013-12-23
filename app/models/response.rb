@@ -6,6 +6,7 @@ class Response < ActiveRecord::Base
   belongs_to :discussion
 
   has_many :comments, as: :commentable
+  has_many :votes, as: :voteable
 
   # ****** Validations ****** #
   validates :user_id, :body, :discussion_id, presence: true

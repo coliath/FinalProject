@@ -68,7 +68,7 @@ s3.save!
 
 
 n1 = Note.new({
-  section_text: "content that will",
+  section_text: "When personal computers were first introduced, most of them came equipped with a simple programming language",
   body: "Im pretty sure this will be on the exam",
   private: true,
   section_id: 2,

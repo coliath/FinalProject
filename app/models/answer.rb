@@ -6,6 +6,7 @@ class Answer < ActiveRecord::Base
   belongs_to :question
 
   has_many :comments, as: :commentable
+  has_many :votes, as: :voteable
 
   # ****** Validations ****** #
   validates :user_id, :body, :question_id, presence: true

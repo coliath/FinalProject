@@ -7,6 +7,7 @@ App.Collections.Votes = Backbone.Collection.extend({
    this.voteable_id = options.voteable_id;
   },
 
+
   url: function () {
     return "/votes?type=" + this.voteable_type + "&id=" + this.voteable_id;
   }
