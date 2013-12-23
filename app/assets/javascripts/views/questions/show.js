@@ -25,7 +25,7 @@ App.Views.QuestionShow = Backbone.View.extend({
   },
 
   renderAnswers: function () {
-    var answersIndex = new App.Views.AnswerIndex({ collection: this.model.get("answers") });
+    var answersIndex = new App.Views.AnswerIndex({ collection: this.model.get("answers"), question: this.model });
     $('.show-modal').append(answersIndex.render().$el);
     this.reveal();
   },

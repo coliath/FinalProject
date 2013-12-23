@@ -7,5 +7,6 @@ App.Models.Answer = Backbone.Model.extend({
 
 		return json;
 	}
+	
 
 });

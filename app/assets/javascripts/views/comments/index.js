@@ -23,8 +23,6 @@ App.Views.CommentIndex = Backbone.View.extend({
   },
 
   initialize: function () {
-    console.log(this.collection);
-
   	var renderCB = this.render.bind(this);
 
     this.listenTo(this.collection, "remove", renderCB);

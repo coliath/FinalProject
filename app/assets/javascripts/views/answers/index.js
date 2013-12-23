@@ -11,16 +11,19 @@ App.Views.AnswerIndex = Backbone.View.extend({
     e.preventDefault();
     var attrs = $(e.target).closest('form').serializeJSON();
     this.collection.create(attrs, {wait: true});
+    this.question.set({answer_count: this.question.get("answer_count") + 1});
   },
 
-  initialize: function () {
+  initialize: function ( options ) {
 
-    console.log(this.collection);
+    this.question = options.question;
+    console.log(this.question);
 
   	var renderCB = this.render.bind(this);
 
     this.listenTo(this.collection, "add", renderCB);
     this.listenTo(this.collection, "remove", renderCB);
+    this.listenTo(this.collection, "change", renderCB);
   },
 
   template: JST['answers/index'],

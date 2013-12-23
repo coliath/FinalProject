@@ -10,6 +10,7 @@ App.Views.QuestionIndex = Backbone.View.extend({
 
     this.listenTo(this.collection, "add", renderCB);
     this.listenTo(this.collection, "remove", renderCB);
+    this.listenTo(this.collection, "change", renderCB);
   },
 
   submit: function ( e ) {
@@ -46,7 +47,23 @@ App.Views.QuestionIndex = Backbone.View.extend({
 
     this.$el.html(renderedContent);
 
+    this.renderListItems(this.$el.find('ul.social-list'));
+
     return this;
+  },
+
+  renderListItems: function ( $wrapper ) {
+    this.collection.each(function (question) {
+      var itemView = new App.Views.QuestionListItem({ model: question });
+      $wrapper.append(itemView.render().$el);
+    });
   }
+
+
+
+
+
+
+
 
 });

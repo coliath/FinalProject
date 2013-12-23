@@ -8,7 +8,7 @@ class AnswersController < ApplicationController
     answer.question_id = params[:question_id]
 
     if answer.save
-      render json: answer
+      render json: answer.to_json(include: :comments)
     else
       render_unprocessable(answer)
     end
@@ -27,7 +27,7 @@ class AnswersController < ApplicationController
   def index
     answers = Answer.where({question_id: params[:question_id] })
 
-    render json: answers
+    render json: answers.to_json(include: :comments)
   end
 
 end

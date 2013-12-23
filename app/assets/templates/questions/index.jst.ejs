@@ -1,11 +1,11 @@
 
 
 <%
-	if (hidden) {
-		var style = "display:none";
-	} else {
-		var style = "";
-	}
+if (hidden) {
+	var style = "display:none";
+} else {
+	var style = "";
+}
 %>
 
 
@@ -15,33 +15,8 @@
   <%= questionForm.render().$el.html() %>
   <h3> Questions on <%= App.CurrentState.resource.get("title") %> </h3>
 
-  <ul>
-  <% _.each(questions.models, function (q) { %>
-    <li class='social question' data-question-id="<%= q.get('id') %>">
-      <div class="social-list-item">
-        <p class="social-title"><%= q.escape("title") %></p>
-        <div class="social-data">
-          <%
-          if (q.get("vote_score") < 0) {
-            var scoreType = "negative";
-          } else {
-            var scoreType = "positive";
-          }
-          %>
-          <p class="social-vote-score-<%= scoreType %>"><span class="glyphicon glyphicon-star"> </span><%= q.escape("vote_score") %></p>
-          <p class="social-post-count"><span class="glyphicon glyphicon-font"> </span><%= q.escape("answer_count") %></p>
-          <%
-          if (q.get("answered")) {
-            var answered = "answered";
-          } else {
-            var answered = "unanswered";
-          }
-          %>
-          <p class="question-<%= answered %>"><span class="glyphicon glyphicon-ok"></span></p>
-        </div>
-      </div>
-    </li>
-  <% }) %>
+  <ul class="social-list">
+  
   </ul>
 
 </section>

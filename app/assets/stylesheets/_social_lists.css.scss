@@ -27,8 +27,16 @@ p.social-title {
 		color: $green;
 	}
 
-	p.vote-score-positive:hover {
+	p.social-vote-score-positive span:hover{
 		color: $green;
+	}
+
+	p.social-vote-score-negative span {
+		color: $red;
+	}
+
+	p.social-vote-score-negative span:hover {
+		color: $red;
 	}
 
 	p.social-post-count span {
