@@ -3,10 +3,11 @@ App.Modules.makeVoteable = function ( viewObj ) {
 	var voteFunctions = {
 
 		renderVotes: function ( $wrapper ) {
+			var subject = this.model;
 		    this.votes = new App.Collections.Votes([], {voteable_id: this.model.get("id"), voteable_type: this.type });
 		    this.votes.fetch({
 		        success: function (collection, resp, opts) {
-		        	var voteView = new App.Views.Vote({ collection: collection });
+		        	var voteView = new App.Views.Vote({ collection: collection, subject: subject });
 		        	$wrapper.append(voteView.render().$el);
 		        }
 		    });

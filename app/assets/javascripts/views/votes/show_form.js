@@ -7,7 +7,9 @@ App.Views.Vote = Backbone.View.extend({
   	"click .downvote": "downvote"
   },
 
-  initialize: function () {
+  initialize: function ( options ) {
+    this.subject = options.subject;
+
   	var renderCB = this.render.bind(this);
 
   	this.listenTo(this.collection, "add", renderCB);
@@ -44,7 +46,21 @@ App.Views.Vote = Backbone.View.extend({
   	if ( opposingVote ) { this.collection.remove(opposingVote); }
   },
 
+  voteScore: function () {
+    var voteScore = 0;
+    this.collection.each(function (vote) {
+      if (vote.get("vote_type") === "Up") {
+        voteScore++;
+      } else {
+        voteScore--;
+      }
+    });
+
+    return voteScore;
+  },
+
   render: function () {
+    this.subject.set({vote_score: this.voteScore()});
     var renderedContent = this.template({
     	votes: this.collection
     });

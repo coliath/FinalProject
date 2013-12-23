@@ -199,7 +199,6 @@ $small-height: 30px;
       @extend .stn-transition;
       height: 40px;
       width: 250px;
-      margin: 0 auto;
       border: 1px solid transparent;
       @include border-radius(2px);
     }
