@@ -726,6 +726,9 @@ $top-nav-height: 30px;
     li:hover {
       background-color: darken($lightest-gray, 5%);
     }
+    li.note {
+      padding: 5px;
+    }
   }
 
   h3 {

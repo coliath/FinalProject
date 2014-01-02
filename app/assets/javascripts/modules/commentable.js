@@ -2,6 +2,8 @@
 
 
 App.Modules.parseCommentable = function ( json, commentableType ) {
+	
+	if ( !json.comments ) { json.comments = []; }
 
 	json.comment_count = json.comments.length;
 	json.comments = new App.Collections.Comments(json.comments, {
