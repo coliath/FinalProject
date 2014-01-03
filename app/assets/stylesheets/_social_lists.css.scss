@@ -7,7 +7,7 @@
 
 p.social-title {
 	padding: 5px;
-	border-bottom: 1px dotted $gray;
+	border-bottom: 2px dotted $gray;
 }
 
 .social-data {
@@ -52,6 +52,7 @@ p.social-title {
 		float: left;
 		width: 50%;
 		text-align: center;
+		padding-top: 5px;
 	}
 }
 
@@ -60,6 +61,7 @@ p.social-title {
 		float: left;
 		width: 33%;
 		text-align: center;
+		padding-top: 5px;
 	}
 }
 

@@ -6,24 +6,32 @@
   background-color: $lighter-gray;
 }
 
+.selected-social-btn:hover {
+  text-decoration: none;
+  cursor: default;
+}
+
 .social-nav {
 
   position: relative;
   background-color: $gray;
 
   ul {
-    height: $top-height + 1px;
-    line-height: $top-height + 1px;
+    @extend .group;
   }
 
   li {
+    float: left;
     @extend .clickable;
     @extend .stn-transition;
     font-size: $stn-font;
     padding: 0px 10px;
+    height: $top-height;
+    line-height: $top-height;
+    border-top: 3px solid $gray;
   }
 
   li:hover {
-    @extend .selected-social-btn;
+    text-decoration: underline;
   }
 }

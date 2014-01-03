@@ -112,6 +112,10 @@ body {
   display: block;
 }
 
+.add-btn {
+  width: 100%;
+}
+
 .btn-blue {
   @extend .btn;
   background-color: $blue;
@@ -459,6 +463,7 @@ span.minimize:hover {
   height: 100%;
   overflow-y: scroll;
   background: white;
+  border-right: 3px solid $gray;
 
   .title-page {
 
@@ -597,25 +602,15 @@ span.minimize:hover {
   }
 }
 
-.notes, .questions, .discussions {
+.social-list-item {
+  @extend .clickable;
+  @extend .stn-transition;
+  border-bottom: 3px solid $gray;
+  padding: 5px;
+}
 
-  ul {
-    li {
-      @extend .clickable;
-      @extend .stn-transition;
-      border-bottom: 1px solid $gray;
-    }
-    li:hover {
-      background-color: $gray;
-    }
-    li.note {
-      padding: 5px;
-    }
-  }
-
-  h3 {
-    font-weight: bold;
-  }
+.social-list-item:hover {
+  background-color: $gray;
 }
 
 .modal-form {

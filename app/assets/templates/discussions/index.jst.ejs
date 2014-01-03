@@ -9,12 +9,10 @@
 
 <section class="discussions" style="<%= style %>">
 
-  <% var discussionForm = new App.Views.DiscussionForm() %>
-  <%= discussionForm.render().$el.html() %>
-  <h3> Discussions about <%= App.CurrentState.resource.get("title") %> </h3>
-
   <ul class="social-list">
   
   </ul>
+
+  <button class="btn-blue add-btn"> Post Discussion Topic </button>
 
 </section>

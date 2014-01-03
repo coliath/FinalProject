@@ -17,11 +17,11 @@ App.Views.SocialNav = Backbone.View.extend({
       $(view).hide();
     });
     _.each(this.buttons, function (button) {
-      $(button).removeClass("selected");
+      $(button).removeClass("selected-social-btn");
     });
 
     $(element_class).show();
-    $(button_id).addClass("selected");
+    $(button_id).addClass("selected-social-btn");
   },
 
   showNotes: function ( e ) {

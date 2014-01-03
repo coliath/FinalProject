@@ -9,11 +9,10 @@
   <% var noteCount = 0 %>
   <% _.each(notes.models, function (note) { %>
     <% noteCount++ %>
-    <li class="note" data-note-id="<%= note.get('id') %>"><span class="noteCount"><%= noteCount %>: </span><%= note.get("body") %></li>
+    <li class="note social-list-item" data-note-id="<%= note.get('id') %>"><span class="noteCount"><%= noteCount %>: </span><%= note.get("body") %></li>
   <% }) %>
   </ul>
 
-  <% var noteForm = new App.Views.NoteForm() %>
-  <%= noteForm.render().$el.html() %>
+  <button class="btn-blue add-btn"> Add Note </button>
 
 </section>

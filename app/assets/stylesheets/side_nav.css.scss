@@ -45,10 +45,6 @@
 				color: white;
 				font-size: $big-font;
 			}
-
-			span:hover {
-				
-			}
 		}
 
 		li:hover {
@@ -78,8 +74,12 @@
       		font-size: $stn-font;
     	}
 
-    li:hover {
-      background-color: white;
-    }
+    	li.current-section {
+    		background-color: white;
+    	}
+
+	    li:hover {
+	      text-decoration: underline;
+	    }
   }
 }
