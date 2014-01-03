@@ -6,7 +6,7 @@ App.Routers.Resources = Backbone.Router.extend({
   },
 
   initialize: function () {
-    this.$navEl = $('#side-nav');
+    this.$navEl = $('#left-nav');
     this.$resourceEl = $('#resource-content');
     this.$socialEl = $("#social-content");
   },
@@ -50,7 +50,6 @@ App.Routers.Resources = Backbone.Router.extend({
     var showView = new App.Views.ResourceShow({ model: App.CurrentState.resource });
     this._swapView(this.$resourceEl, showView);
     this.initHighlights(showView);
-    showView.resize();
   },
 
   initNotes: function () {
@@ -104,6 +103,7 @@ App.Routers.Resources = Backbone.Router.extend({
   addSocialNav: function () {
     App.socialNav = new App.Views.SocialNav();
     this.$socialEl.prepend(App.socialNav.render().$el);
+    $(document).trigger("loaded");
   },
 
   showReaderView: function ( id ) {

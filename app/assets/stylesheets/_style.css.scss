@@ -410,23 +410,17 @@ span.minimize:hover {
 }
 
 .show {
-  @extend .box;
   @extend .clickable;
-  display: inline-block;
+  @extend .stn-transition;
   position: absolute;
-  width: 30px;
-  font-size: 15px;
-  font-weight: bolder;
-  padding: 0px 4px 0px 9px;
-  color: $dark-gray;
+  top: 10px;
+  left: 13px;
+  font-size: $huge-font;
+  color: white;
 }
 
 .show:hover {
   color: black;
-}
-
-.show:after {
-  content: "✚";
 }
 
 #show-table-of-contents {
@@ -444,7 +438,7 @@ span.minimize:hover {
 #content {
   @extend .group;
   height: 100%;
-  width: 1350px;
+  //width: 1300px;
   overflow-y: hidden;
   transition: all .4s;
 }
@@ -525,8 +519,11 @@ span.minimize:hover {
 }
 
 #social-content {
+  @extend .stn-transition;
   float: left;
   width: 280px;
+  overflow: hidden;
+  position: relative;
 
   h1 {
     font-size: 1.2em;
@@ -600,17 +597,6 @@ span.minimize:hover {
     display: block;
     clear: both;
   }
-}
-
-.social-list-item {
-  @extend .clickable;
-  @extend .stn-transition;
-  border-bottom: 3px solid $gray;
-  padding: 5px;
-}
-
-.social-list-item:hover {
-  background-color: $gray;
 }
 
 .modal-form {
@@ -812,6 +798,14 @@ span.minimize:hover {
 .glyphicon {
   @extend .clickable;
 }
+
+.overlay {
+  @extend .stn-transition;
+  background-color: $gray;
+  z-index: 3;
+}
+
+
 
 
 

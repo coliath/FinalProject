@@ -8,7 +8,7 @@ App.Views.TableOfContents = Backbone.View.extend({
     
   },
 
-  template: JST['side_nav/table_of_contents'],
+  template: JST['left_nav/table_of_contents'],
 
   render: function () {
     var renderedContent = this.template({ resource: this.model });

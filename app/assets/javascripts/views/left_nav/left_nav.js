@@ -1,14 +1,18 @@
 App.Views.SiteNav = Backbone.View.extend({
 
   events: {
-    
+    "click #hide-site-nav": "hideSiteNav"
   },
 
   initialize: function () {
     
   },
 
-  template: JST['side_nav/site_nav'],
+  hideSiteNav: function ( e ) {
+    
+  },
+
+  template: JST['left_nav/left_nav'],
 
   render: function () {
     var renderedContent = this.template();

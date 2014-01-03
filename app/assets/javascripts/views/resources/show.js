@@ -7,9 +7,6 @@ App.Views.ResourceShow = Backbone.View.extend({
     this.confusingizer = rangy.createCssClassApplier("marked-as-confusing", {normalize: true});
 
     $('#content').on('mouseup', this.controlPopover.bind(this));
-    
-    $('#content').on('click', this.resize.bind(this));
-    $(window).resize(this.resize.bind(this));
     this.popoverShowing = false;
   },
 
@@ -19,28 +16,6 @@ App.Views.ResourceShow = Backbone.View.extend({
 
   events: {
   	"click #hide-table-of-contents": "hideTableOfContents",
-  },
-
-  resize: function ( e ) { // totally re write all this, better, somewhere else
-      // write a new class that controlls all showing/hiding/resizing
-      // but dont until MVP is completed
-    $content = $('#content');
-    var windowHeight = $(window).height();
-    var windowWidth = $(window).width();
-    var navHeight = $('.top-nav').height();
-    var resourceWidth = $('.resource').width() + 7;
-
-    if ($('#show-table-of-contents').length && $('#show-social').length) {
-      $content.width(resourceWidth);
-    } else if ($('#show-table-of-contents').length) {
-      $content.width(resourceWidth + $('#social-content').width() + 30);
-    } else if ($('#show-social').length) {
-      $content.width(resourceWidth + $('#table-of-contents').width() + 18);
-    } else {
-      $content.width(1350);
-    }
-
-    $('.resource').height(windowHeight - navHeight - 17);
   },
 
   displayHighlights: function () {

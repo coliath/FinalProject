@@ -4,7 +4,6 @@ App.Views.SocialNav = Backbone.View.extend({
     "click #show-notes": "showNotes",
     "click #show-questions": "showQuestions",
     "click #show-discussions": "showDiscussions",
-    "click #hide-social": "hideSocial",
   },
 
   initialize: function () {
@@ -22,6 +21,7 @@ App.Views.SocialNav = Backbone.View.extend({
 
     $(element_class).show();
     $(button_id).addClass("selected-social-btn");
+    $(document).trigger("resize");
   },
 
   showNotes: function ( e ) {
@@ -34,20 +34,6 @@ App.Views.SocialNav = Backbone.View.extend({
 
   showDiscussions: function ( e ) {
     this._swapView("#show-discussions", ".discussions");
-  },
-
-  hideSocial: function ( e ) {
-    var that = this;
-    $("#social-content").slideUp("fast", function () {
-      $(".resource-wrapper").append('<span class="show" id="show-social"></span>');
-      $("#show-social").click(that.showSocial);
-      $('#content').trigger('click');
-    });
-  },
-
-  showSocial: function ( e ) {
-    $("#show-social").remove();
-    $("#social-content").slideDown("fast");
   },
 
   template: JST['social_nav'],
