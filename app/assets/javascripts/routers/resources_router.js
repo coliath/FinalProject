@@ -6,6 +6,7 @@ App.Routers.Resources = Backbone.Router.extend({
   },
 
   initialize: function () {
+    this.$navEl = $('#side-nav');
     this.$resourceEl = $('#resource-content');
     this.$socialEl = $("#social-content");
   },
@@ -16,9 +17,23 @@ App.Routers.Resources = Backbone.Router.extend({
     App.CurrentState.resource.fetch({
       success: function (resp) {
         that.showResource();
+        that.showSiteNav();
         that.initNotes();
       }
     });
+  },
+
+  showSiteNav: function () {
+    var siteNav = new App.Views.SiteNav();
+    var renderedContent = siteNav.render().$el;
+    this.$navEl.append(renderedContent);
+    this.showTableOfContents();
+  },
+
+  showTableOfContents: function () {
+    var tableOfContents = new App.Views.TableOfContents({ model: App.CurrentState.resource });
+    var renderedContent = tableOfContents.render().$el;
+    this.$navEl.append(renderedContent);
   },
 
   initHighlights: function ( resourceView ) {

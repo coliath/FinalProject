@@ -1,16 +1,5 @@
 
-<section id="table-of-contents">
-  <nav class="table-of-contents-nav">
-    <ul>
-      <li class="tbl-header"> Table of Contents </li>
-      <li class="minimize" id="hide-table-of-contents"><span class="glyphicon glyphicon-minus"></span></li>
-    <ul>
-  </nav>
-  <ul class="list">
-    <% var contentsItem = new App.Views.TableOfContentsItem({ model: resource.firstSection() }) %>
-    <%= contentsItem.render().$el.html() %>
-  </ul>
-</section>
+
 
 <section class="resource" data-resource-id="<%= resource.get("id") %>">
 

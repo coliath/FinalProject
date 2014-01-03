@@ -73,7 +73,7 @@ $stn-border-color: $gray;
 $stn-border-width: 1px;
 $stn-border: $stn-border-width solid $stn-border-color;
 
-$stn-margin: 5px;
+$stn-margin: 0px;
 $stn-padding: 5px;
 
 .stn-border {
@@ -418,38 +418,6 @@ nav {
   @extend .group;
 }
 
-$top-nav-height: 30px;
-.top-nav {
-
-  width: 100%;
-  ul {
-    float: right;
-  }
-
-	li {
-    font-size: 14px;
-		line-height: $top-nav-height;
-		padding: 5px 10px;
-    border-left: $stn-border;
-	}
-
-  li:last-child {
-    border-right: $stn-border;
-  }
-
-}
-
-.app-name {
-  @extend .clickable;
-  padding: 7px 10px;
-  float: left;
-  font-size: 1.4em;
-	font-family: "Rockwell Extra Bold", "Rockwell Bold", monospace;
-	font-style: italic;
-	font-weight: bolder;
-  margin: 0;
-}
-
 .social-nav {
 
   li {
@@ -505,7 +473,6 @@ $top-nav-height: 30px;
 
 #content {
   @extend .group;
-	margin: 5px auto 0px auto;
   height: 100%;
   width: 1350px;
   overflow-y: hidden;
@@ -540,18 +507,6 @@ $top-nav-height: 30px;
   }
 }
 
-.table-of-contents-nav {
-  @extend .social-nav;
-
-  li {
-    border: none;
-  }
-
-  li.tbl-header:hover {
-    @extend .un-selected;
-  }
-}
-
 .resource-wrapper {
   @extend .group;
   float: left;
@@ -562,7 +517,6 @@ $top-nav-height: 30px;
   font-size: 14px;
   line-height: 30px;
   @extend .group;
-  @include box-shadow(0,3px,10px, $almost-black);
   width: 800px;
   margin: $stn-margin;
   border: none;

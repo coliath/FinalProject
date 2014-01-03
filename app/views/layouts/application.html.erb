@@ -16,29 +16,6 @@
 </head>
 <body>
 
-<% unless current_user.nil? %>
-    <nav class="top-nav">
-	  	<p class="app-name">Resource Root</p>
-
-      <ul>
-        <li class="right drop-down">Welcome, <%= current_user.username %> </li>
-        <li class="right drop-down">Circles </li>
-        <li class="right drop-down">Notes </li>
-        <li class="right drop-down">Discussions </li>
-        <li class="right drop-down">Questions </li>
-  	  	<li class="right link"><%= button_to "sign out", session_url, :method => :delete %></li>
-      </ul>
-    </nav>
-<% else %>
-    <nav class="top-nav">
-    	<p class="app-name">Resource Root</p>
-
-      <ul>
-        <li class="right link"><%= link_to "Sign In", new_session_url %></li>
-      </ul>
-    </nav>
-<% end %>
-
 <%= yield %>
 
 </body>
