@@ -1,0 +1,29 @@
+
+
+@import 'style';
+
+.selected-social-btn {
+  background-color: $lighter-gray;
+}
+
+.social-nav {
+
+  position: relative;
+  background-color: $gray;
+
+  ul {
+    height: $top-height + 1px;
+    line-height: $top-height + 1px;
+  }
+
+  li {
+    @extend .clickable;
+    @extend .stn-transition;
+    font-size: $stn-font;
+    padding: 0px 10px;
+  }
+
+  li:hover {
+    @extend .selected-social-btn;
+  }
+}

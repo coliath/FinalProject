@@ -56,7 +56,7 @@ $dark-blue: darken($blue, 5%);
 $light-blue: lighten($blue, 5%);
 $faded-blue: lighten($blue, 36%);
 
-$almost-white: darken(white, 3%);
+$almost-white: darken(white, 5%);
 $almost-black: lighten(black, 40%);
 
 $gray: #bdc3c7;
@@ -64,7 +64,7 @@ $dark-gray: darken($gray, 5%);
 $darker-gray: darken($gray, 10%);
 $darkest-gray: darken($gray, 25%);
 $light-gray: lighten($gray, 5%);
-$ligher-gray: lighten($gray, 10%);
+$lighter-gray: lighten($gray, 10%);
 $lightest-gray: lighten($gray, 15%);
 
 $stn-back-color: $lightest-gray;
@@ -76,6 +76,12 @@ $stn-border: $stn-border-width solid $stn-border-color;
 $stn-margin: 0px;
 $stn-padding: 5px;
 
+$stn-font: 14px;
+$big-font: 18px;
+$huge-font: 22px;
+
+$top-height: 50px;
+
 .stn-border {
   @include border-radius(2px);
   border: $stn-border;
@@ -83,10 +89,9 @@ $stn-padding: 5px;
 
 .stn-transition { transition: all .4s; }
 
-
 body {
   font-family: sans-serif;
-  background-color: $almost-white;
+  background-color: $lighter-gray;
 }
 
 .clickable:hover { cursor: pointer; }
@@ -376,41 +381,10 @@ input[type=checkbox]:checked:after {
   left: 5px;
 }
 
-.selected {
-  background: darken($lightest-gray, 5%);
-}
 
-.un-selected {
-  background-color: $lightest-gray;
-  background: -webkit-linear-gradient(lighten($lightest-gray, 5%), darken($lightest-gray, 10%));
-  color: black;
-  cursor: default;
-}
 
-nav {
-  @extend .group;
-  @extend .un-selected;
-  border-bottom: $stn-border;
-
-  ul {
-
-  }
-
-  li {
-    @extend .clickable;
-    @extend .stn-transition;
-    float: left;
-  }
-
-  li.drop-down:after {
-    content: " ▾";
-    color: $darkest-gray;
-    font-size: 13px;
-  }
-
-  li:hover {
-    @extend .selected;
-  }
+.selected-table-of-contents-btn {
+  background: white;
 }
 
 #resource-content {
@@ -418,25 +392,17 @@ nav {
   @extend .group;
 }
 
-.social-nav {
+span.minimize {
+  position: absolute;
+  top: -3px;
+  right: 5px;
+  @extend .stn-transition;
+  font-size: $big-font;
+  color: white;
+}
 
-  li {
-    font-size: 14px;
-    padding: 5px 13px;
-    border-right: 1px solid $gray;
-  }
-
-  li.minimize {
-    color: $dark-gray;
-    border-right: none;
-    float: right;
-  }
-
-  li.minimize:hover {
-    background-color: $lightest-gray;
-    background: -webkit-linear-gradient(lighten($lightest-gray, 5%), darken($lightest-gray, 10%));
-    color: black;
-  }
+span.minimize:hover {
+  color: black;
 }
 
 .show {
@@ -479,34 +445,6 @@ nav {
   transition: all .4s;
 }
 
-#table-of-contents {
-  float: left;
-  width: 200px;
-  text-align: center;
-  margin: 5px 10px;
-  @extend .box;
-
-  ul.list {
-
-    li {
-      @extend .clickable;
-      @extend .stn-transition;
-      text-align: left;
-      padding: 3px 5px;
-      border-bottom: $stn-border;
-      font-size: 13px;
-    }
-
-    li:last-child {
-      border-bottom: none;
-    }
-
-    li:hover {
-      background-color: darken($lightest-gray, 5%);
-    }
-  }
-}
-
 .resource-wrapper {
   @extend .group;
   float: left;
@@ -518,12 +456,9 @@ nav {
   line-height: 30px;
   @extend .group;
   width: 800px;
-  margin: $stn-margin;
-  border: none;
   height: 100%;
   overflow-y: scroll;
   background: white;
-  
 
   .title-page {
 
@@ -535,13 +470,13 @@ nav {
     }
 
     h1 {
-      margin: auto;
-      padding: 10px 0;
+      height: $top-height;
+      line-height: $top-height;
       text-align: center;
       font-size: 2em;
       font-weight: bold;
       letter-spacing: 4px;
-      border-bottom: 1px solid $gray;
+      border-bottom: 3px solid $gray;
       //position: fixed;
     }
 
@@ -585,9 +520,8 @@ nav {
 }
 
 #social-content {
-  @extend .box;
   float: left;
-  width: 300px;
+  width: 280px;
 
   h1 {
     font-size: 1.2em;
@@ -671,14 +605,8 @@ nav {
       @extend .stn-transition;
       border-bottom: 1px solid $gray;
     }
-    li:first-child {
-      border-top: 1px solid $gray;
-    }
-    li:last-child {
-      border-bottom: none;
-    }
     li:hover {
-      background-color: darken($lightest-gray, 5%);
+      background-color: $gray;
     }
     li.note {
       padding: 5px;
@@ -688,7 +616,6 @@ nav {
   h3 {
     font-weight: bold;
   }
-
 }
 
 .modal-form {
@@ -829,10 +756,10 @@ nav {
 }
 
 ::selection {
-	background: lighten($blue, 30%);
+	background: $lighter-gray;
 }
 ::-moz-selection {
-	background: lighten($blue, 30%);
+	background: $lighter-gray;
 }
 
 .highlighted {
@@ -851,31 +778,23 @@ nav {
 
 .popover {
   border-radius: 2px;
-  background: $almost-white;
+  background: $lighter-gray;
   max-width: 306px;
   min-width: 306px;
 }
 
 .popover.bottom .arrow:after {
-  border-bottom-color: $almost-white;
+  border-bottom-color: $lighter-gray;
 }
 
 .popover.top .arrow:after {
-  border-top-color: $almost-white;
+  border-top-color: $lighter-gray;
 }
 
 .popover-content {
 
   margin: 0;
   padding: 5px;
-
-  h2.popover-header {
-    margin-bottom: 5px;
-    padding-bottom: 5px;
-    font-size: 20px;
-    text-align:center;
-    border-bottom: $stn-border;
-  }
 
   ul.popover-buttons {
     @extend .group;
@@ -897,11 +816,6 @@ nav {
 
 .glyphicon {
   @extend .clickable;
-  color: $dark-gray;
-}
-
-.glyphicon:hover {
-  color: black;
 }
 
 

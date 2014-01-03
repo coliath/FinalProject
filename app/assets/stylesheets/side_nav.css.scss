@@ -9,3 +9,77 @@
 	width: 200px;
 	position: relative;
 }
+
+.logo-box {
+	position: relative;
+	background-color: $gray;
+
+	h1 {
+		font-size: $huge-font;
+		padding-left: 10px;
+		height: $top-height;
+		line-height: $top-height;
+	}
+	
+}
+
+#site-nav {
+	@extend .group;
+
+	ul {
+
+		$site-btn-height: 50px;
+		li {
+			@extend .clickable;
+			@extend .stn-transition;
+			width: 100px;
+			height: $site-btn-height;
+			line-height: $site-btn-height;
+			margin-left: auto;
+			margin-right: auto;
+			text-align: center;
+			float: left;
+
+			span {
+				@extend .stn-transition;
+				color: white;
+				font-size: $big-font;
+			}
+
+			span:hover {
+				
+			}
+		}
+
+		li:hover {
+			background-color: white;
+		}
+
+		li:hover span {
+			color: black;
+		}
+	}
+}
+
+#table-of-contents {
+
+	h3 {
+		padding: 10px;
+		font-size: $big-font;
+		background-color: $gray;
+	}
+
+	ul {
+
+        li {
+      		@extend .clickable;
+      		@extend .stn-transition;
+      		padding: 5px 15px;
+      		font-size: $stn-font;
+    	}
+
+    li:hover {
+      background-color: white;
+    }
+  }
+}
