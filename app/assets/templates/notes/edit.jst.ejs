@@ -1,10 +1,18 @@
 
 <%
-if (note.get('private')) {
+if ( note.get('private') ) {
   var checked = "checked";
 } else {
   var checked = "";
 }
+if ( note.isNew() ) {
+  var buttonLabel = "Add";
+  var header = "Create Note";
+} else {
+  var buttonLabel = "Save";
+  var header = "Edit Note";
+}
+
 %>
 
 <section class="edit-note-modal large reveal-modal">
@@ -12,11 +20,14 @@ if (note.get('private')) {
 	<a class="close-reveal-modal">&#215</a>
 
   <form class="edit-note-form">
-    <h1> Edit Note </h1>
+    <h1><%= header %></h1>
 
-    <label> Source Text
-      <textarea name="note[section_text]"><%= note.escape("section_text") %></textarea>
-    </label>
+    
+    <% console.log(note.get("section_text")) %>
+
+      <label> Source Text
+        <textarea name="note[section_text]"><%= note.escape("section_text") %></textarea>
+      </label>
 
     <label> My Note
       <textarea name="note[body]"><%= note.escape("body") %></textarea>
@@ -27,7 +38,7 @@ if (note.get('private')) {
         <label class="check-label" for="note-private">Private?</label>
     </div>
 
-    <button class="submit-note btn-blue">Save</button>
+    <button class="submit-note btn-blue"><%= buttonLabel %></button>
 
   </form>
 

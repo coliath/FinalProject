@@ -21,11 +21,11 @@ App.Views.NoteModalForm = Backbone.View.extend({
     $('.note-modal-form').trigger("reveal:close");
   },
 
-  template: JST['notes/modal-form'],
+  template: JST['notes/edit'],
 
   render: function () {
     var renderedContent = this.template({
-      selectionText: this.selectionText
+      note: this.model
     });
     this.$el.html(renderedContent);
     return this;

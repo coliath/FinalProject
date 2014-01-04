@@ -75,7 +75,8 @@ App.Views.ResourcePopover = Backbone.View.extend({
   // DRY THIS UP when you get the chance
   createNoteWithText: function ( e ) {
     App.socialNav.showNotes();
-    var noteModalForm = new App.Views.NoteModalForm({ selectionText: this.selectionText });
+    var note = new App.Models.Note({section_text: this.selectionText});
+    var noteModalForm = new App.Views.NoteModalForm({ model: note });
     $('#content').append(noteModalForm.render().$el);
     $('.note-modal-form').reveal();
     $(document).on('reveal:close', '.note-modal-form', function () { $(this).remove(); });

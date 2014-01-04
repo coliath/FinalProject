@@ -523,7 +523,7 @@ span.minimize:hover {
   @extend .stn-transition;
   float: left;
   width: 280px;
-  overflow: hidden;
+  overflow-x: hidden;
   position: relative;
 
   h1 {

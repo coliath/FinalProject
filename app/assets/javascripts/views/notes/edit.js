@@ -24,9 +24,7 @@ App.Views.NoteEdit = Backbone.View.extend({
     var renderedContent = this.template({
       note: this.model
     });
-
     this.$el.html(renderedContent);
-
     return this;
   }
 });
