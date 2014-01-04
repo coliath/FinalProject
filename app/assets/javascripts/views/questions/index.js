@@ -1,8 +1,8 @@
 App.Views.QuestionIndex = Backbone.View.extend({
 
   events: {
-    'click #submit-question': 'submit',
     'click .question': 'showQuestion',
+    'click #question-btn': 'createQuestion'
   },
 
   initialize: function () {
@@ -13,18 +13,12 @@ App.Views.QuestionIndex = Backbone.View.extend({
     this.listenTo(this.collection, "change", renderCB);
   },
 
-  submit: function ( e ) {
-    e.preventDefault();
-
-    var attrs = $(e.target).closest('form').serializeJSON(); // this is a good place for a view prototype getFormData Function
-    attrs.question.resource_id = App.CurrentState.resource.get("id");
-
-    this.collection.create(attrs, {
-      wait: true,
-      error: function (model, resp, opts) {
-        console.log(resp);
-      }
-    });
+  createQuestion: function () {
+    var question = new App.Models.Question();
+    var questionForm = new App.Views.QuestionForm({ model: question });
+    $('#content').append(questionForm.render().$el);
+    $('.question-modal-form').reveal();
+    $(document).on('reveal:close', '.question-modal-from', function () { $(this).remove(); });
   },
 
   showQuestion: function ( e ) {
@@ -59,12 +53,6 @@ App.Views.QuestionIndex = Backbone.View.extend({
     });
     $(window).trigger("resize");
   }
-
-
-
-
-
-
 
 
 });

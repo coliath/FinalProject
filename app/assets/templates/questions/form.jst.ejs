@@ -5,7 +5,13 @@
   <form>
     <h1> Ask Question </h1>
 
-    <label>Source Text<textarea name="question[section_text]" > <%= selectionText %></textarea></label>
+    <label> Source Text
+      <% if ( question.escape("section_text") ) { %>
+        <p class="section-text"><%= question.escape("section_text") %></p>
+      <% } else { %>
+        <p class="section-text">None. To add a question with source text, create the question using the highlighting tool.</p>
+      <% } %>    
+    </label>
 
     <label> Question Title
       <input type="text" name="question[title]" placeholder=" The brief version of your question."></input>

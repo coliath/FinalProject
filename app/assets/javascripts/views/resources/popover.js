@@ -76,7 +76,7 @@ App.Views.ResourcePopover = Backbone.View.extend({
   createNoteWithText: function ( e ) {
     App.socialNav.showNotes();
     var note = new App.Models.Note({section_text: this.selectionText});
-    var noteModalForm = new App.Views.NoteModalForm({ model: note });
+    var noteModalForm = new App.Views.NoteForm({ model: note });
     $('#content').append(noteModalForm.render().$el);
     $('.note-modal-form').reveal();
     $(document).on('reveal:close', '.note-modal-form', function () { $(this).remove(); });
@@ -84,8 +84,9 @@ App.Views.ResourcePopover = Backbone.View.extend({
 
   askQuestionOnText: function ( e ) {
     App.socialNav.showQuestions();
-    var questionModalForm = new App.Views.QuestionModalForm({ selectionText: this.selectionText });
-    $('#content').append(questionModalForm.render().$el);
+    var question = new App.Models.Question({ section_text: this.selectionText });
+    var questionForm = new App.Views.QuestionForm({ model: question });
+    $('#content').append(questionForm.render().$el);
     $('.question-modal-form').reveal();
     $(document).on('reveal:close', '.question-modal-form', function () { $(this).remove(); });
   },
