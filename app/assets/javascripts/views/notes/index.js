@@ -37,6 +37,7 @@ App.Views.NoteIndex = Backbone.View.extend({
       notes: this.collection
     });
     this.$el.html(renderedContent);
+    $(window).trigger("resize");
     return this;
   }
 

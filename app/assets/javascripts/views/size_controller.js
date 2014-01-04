@@ -103,25 +103,25 @@ $(document).on("loaded", function () {
 
 	});
 
-	var nav = new ResizableElement($("#left-nav"), [200,200,200,200], $("#table-of-contents").find("ul"), true);
-	var social = new ResizableElement($("#social-content"), [280, 300, 450, 600], $("#social-content").find(".social-list"), true, 33);
-	var resource = new ResizableElement($("#resource-content"), [420, 700, 900, 2000], $("#resource-content").find(".resource"), false);
-
-	var resizables = [resource, social, nav];
-
+	var Resize = {};
+	
 	var handleResize = function () {
+		Resize.nav = new ResizableElement($("#left-nav"), [200,200,200,200], $("#table-of-contents").find("ul"), true);
+		Resize.social = new ResizableElement($("#social-content"), [280, 300, 450, 600], $("#social-content").find(".social-list"), true, 33);
+		Resize.resource = new ResizableElement($("#resource-content"), [420, 700, 900, 2000], $("#resource-content").find(".resource"), false);
+		Resize.resizables = [Resize.resource, Resize.social, Resize.nav];
 		setHeights();
 		setWidths();
 	}
 
 	var setHeights = function () {
 		$("#content").height($(window).height());
-		_.each(resizables, function (resizable) { resizable.resizeHeight(); });
+		_.each(Resize.resizables, function (resizable) { resizable.resizeHeight(); });
 	}
 
 	var getTotalShowingWidth = function () {
 		var totalwidth = 0;
-		_.each(resizables, function (resizable) {
+		_.each(Resize.resizables, function (resizable) {
 			totalwidth += resizable.getWidth();
 		});
 		return totalwidth;
@@ -138,10 +138,10 @@ $(document).on("loaded", function () {
 	}
 
 	var increaseWidths = function ( amount ) {
-		if ( resource.nextWidthIdx() > social.nextWidthIdx() && social.showing() ) {
-			var elToIncrease = social;
+		if ( Resize.resource.nextWidthIdx() > Resize.social.nextWidthIdx() && Resize.social.showing() ) {
+			var elToIncrease = Resize.social;
 		} else {
-			var elToIncrease = resource;
+			var elToIncrease = Resize.resource;
 		}
 		if ( typeof elToIncrease.nextWidth() === "undefined" ) { return; }
 		if ( getTotalShowingWidth() >= $(window).width() ) { return; }
@@ -159,8 +159,8 @@ $(document).on("loaded", function () {
 	}
 
 	var decreaseWidths = function ( amount ) { // this is a quick fix, rewrite for smoother resizing
-		resource.resetWidth();
-		social.resetWidth();
+		Resize.resource.resetWidth();
+		Resize.social.resetWidth();
 	}
 
 	handleResize();

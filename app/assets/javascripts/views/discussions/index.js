@@ -50,6 +50,7 @@ App.Views.DiscussionIndex = Backbone.View.extend({
       var itemView = new App.Views.DiscussionListItem({ model: discussion });
       $wrapper.append(itemView.render().$el);
     });
+    $(window).trigger("resize");
   }
 
 });

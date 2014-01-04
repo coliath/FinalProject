@@ -57,6 +57,7 @@ App.Views.QuestionIndex = Backbone.View.extend({
       var itemView = new App.Views.QuestionListItem({ model: question });
       $wrapper.append(itemView.render().$el);
     });
+    $(window).trigger("resize");
   }
 
 
