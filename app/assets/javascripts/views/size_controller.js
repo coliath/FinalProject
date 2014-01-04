@@ -4,10 +4,12 @@
 
 $(document).on("loaded", function () {
 
+	// these are pretty random, do some typical screen size reseach and rethink
 	var minResourceWidth = 480;
 	var stnResourceWidth = 800;
 	var minNavWidth = 200;
 	var minSocialWidth = 280;
+	var maxSocialWidth = 600;
 
 	var $nav = $("#left-nav");
 	var $social = $("#social-content");
@@ -38,28 +40,43 @@ $(document).on("loaded", function () {
 	}
 
 	var setWidths = function () {
-
 		var viewportWidth = $(window).width();
-
-		var deltaWidth = viewportWidth - getTotalShowingWidth();
-
-		console.log(getTotalShowingWidth());
-
-		// make this a little less narly 
-		if ( deltaWidth > 0 ) { //things need to get bigger
-			if ( $social.width() > 50 ) { // try to increase social if showing
-				console.log("increase social size");
-			} else { // otherwise increase the resource size
-
-			}
-		} else { //things need to get smaller
-			if ( $social.width() > minSocialWidth ) {  // try to descrease social to min
-
-			}
-			if ( viewportWidth < getTotalShowingWidth() )  { // if decreasing social isnt enough, decrease resource
-				
-			}
+		var deltaWidth = viewportWidth - getTotalShowingWidth(); 
+		if ( deltaWidth > 0 ) { 
+			increaseWidth(deltaWidth);
+		} else { 
+			decreaseWidth(deltaWidth);
 		}
+	}
+
+	var increaseWidth = function ( amount ) {
+		console.log("increasing social width");
+		var socialIncAmount = 0;
+		var resourceIncAmount = 0;
+		while ( amount > 2 ) {
+			if ( $social.width() > 50 && $social.width() < maxSocialWidth ) {
+				socialIncAmount++;
+				amount--;
+			}
+			resourceIncAmount++;
+			amount--;
+		}
+
+		incrementElementWidth($social, socialIncAmount);
+		incrementElementWidth($resource, resourceIncAmount + amount);
+	}
+
+	var decreaseWidth = function ( amount ) {
+		// if ( $social.width() > minSocialWidth ) {  // try to descrease social to min
+
+		// }
+		// if ( viewportWidth < getTotalShowingWidth() )  { // if decreasing social isnt enough, decrease resource
+			
+		// }
+	}
+
+	var incrementElementWidth = function ( $el, amount ) {
+		$el.width($el.width() + amount);
 	}
 
 	var createOverlay = function ( $el ) {
@@ -85,13 +102,10 @@ $(document).on("loaded", function () {
 				$el.find(".overlay").width(showWidth);
 				$el.one("transitionend", function () { // this is a little funky, gets fired too much, think about going all JS
 				  $el.find(".overlay").remove();
-				  handleResize();
 				});
 				$el.width(showWidth);
 			});
 		});
-
-		handleResize();
 	}
 
 	bindMinizeAndShow($social, "#hide-social-content", 50, minSocialWidth);
@@ -99,6 +113,5 @@ $(document).on("loaded", function () {
 
 	handleResize();
 	$(window).resize(handleResize);
-
-
+	$(window).on("transitionend", handleResize);
 });

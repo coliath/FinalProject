@@ -92,6 +92,7 @@ $top-height: 50px;
 body {
   font-family: sans-serif;
   background-color: $lighter-gray;
+  overflow-y: hidden;
 }
 
 .clickable:hover { cursor: pointer; }
@@ -394,6 +395,8 @@ input[type=checkbox]:checked:after {
 #resource-content {
   float: left;
   @extend .group;
+  @extend .stn-transition;
+  width: 800px;
 }
 
 span.minimize {
@@ -439,7 +442,7 @@ span.minimize:hover {
   @extend .group;
   height: 100%;
   //width: 1300px;
-  overflow-y: hidden;
+  overflow: hidden;
   transition: all .4s;
 }
 
@@ -453,7 +456,7 @@ span.minimize:hover {
   font-size: 14px;
   line-height: 30px;
   @extend .group;
-  width: 800px;
+  width: 100%;
   height: 100%;
   overflow-y: scroll;
   background: white;
