@@ -53,16 +53,17 @@ $(document).on("loaded", function () {
 		console.log("increasing social width");
 		var socialIncAmount = 0;
 		var resourceIncAmount = 0;
+		var socialShowing = true;
+		if ( $social.width() < 279 ) { socialShowing = false; }
 		while ( amount > 2 ) {
-			if ( $social.width() > 50 && $social.width() < maxSocialWidth ) {
+			if ( socialShowing && $social.width() > 279 && $social.width() < maxSocialWidth ) {
 				socialIncAmount++;
 				amount--;
 			}
 			resourceIncAmount++;
 			amount--;
 		}
-
-		incrementElementWidth($social, socialIncAmount);
+		if ( socialShowing ) { incrementElementWidth($social, socialIncAmount); }
 		incrementElementWidth($resource, resourceIncAmount + amount);
 	}
 
