@@ -76,6 +76,7 @@ $stn-border: $stn-border-width solid $stn-border-color;
 $stn-margin: 0px;
 $stn-padding: 5px;
 
+$small-font: 12px;
 $stn-font: 14px;
 $big-font: 18px;
 $huge-font: 22px;
@@ -570,41 +571,31 @@ span.minimize:hover {
   }
 }
 
-.edit-note-form { // is this really neccessary???
-  h1 {
-    font-size: 1.5em;
-    border-bottom: $stn-border;
-    margin-top: 0;
-  }
-
-  label {
-    display: block;
-    margin-top: 10px;
-    font-size: 1.2em;
-  }
-
-  textarea {
-    display: block;
-    background-color: $faded-blue;
-    width: 100%;
-    min-height: 100px;
-    font-size: .9em;
-    font-weight: normal;
-  }
+.note-modal-form {
+  
+  @extend .modal-form;
+  @extend .blue-form;
 
   button {
-    @extend .btn;
-    margin-top: 10px;
-    display: block;
-    clear: both;
+    margin-top: 15px;
   }
 }
 
 .modal-form {
 
+  overflow-y: auto;
+  max-height: 90%;
+
   h1 {
     margin-top: 0;
     margin-bottom: 20px;
+  }
+
+  .section-text {
+    background-color: $lightest-gray;
+    font-size: $stn-font;
+    font-weight: normal;
+    padding: 10px;
   }
 
   textarea {
@@ -722,10 +713,7 @@ span.minimize:hover {
 
 }
 
-.note-modal-form {
-  @extend .modal-form;
-  @extend .blue-form;
-}
+
 
 .discussion-modal-form {
   @extend .modal-form;

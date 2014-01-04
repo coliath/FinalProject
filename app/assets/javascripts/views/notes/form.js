@@ -1,11 +1,11 @@
-App.Views.NoteEdit = Backbone.View.extend({
+App.Views.NoteForm = Backbone.View.extend({
 
 
   events: {
-    'click .submit-note': 'update',
+    'click .submit-note': 'saveNote',
   },
 
-  update: function ( e ) {
+  saveNote: function ( e ) {
     e.preventDefault();
     var attrs = $(e.target).closest('form').serializeJSON();
     if (attrs.note.private === "on") {
@@ -13,12 +13,17 @@ App.Views.NoteEdit = Backbone.View.extend({
     } else {
       attrs.note.private = false;
     }
-    this.model.save(attrs, {wait: true});
-    $('.edit-note-modal').trigger("reveal:close");
+    if ( this.model.isNew() ) {
+      this.model.set(attrs);
+      App.CurrentState.user.notes.create(this.model, {wait: true});
+    } else {
+      this.model.save(attrs, {wait: true});
+    }
+    $('.note-modal-form').trigger("reveal:close");
     this.remove();
   },
 
-  template: JST['notes/edit'],
+  template: JST['notes/form'],
 
   render: function () {
     var renderedContent = this.template({
@@ -27,4 +32,5 @@ App.Views.NoteEdit = Backbone.View.extend({
     this.$el.html(renderedContent);
     return this;
   }
+
 });

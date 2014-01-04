@@ -1,23 +1,25 @@
 App.Views.NoteIndex = Backbone.View.extend({
 
   events: {
-    'click .submit-note': 'submit',
-    'click .note': 'editNote'
+    'click .note': 'editNote',
+    'click #note-btn': 'createNote'
   },
 
-  submit: function ( e ) {
-    e.preventDefault();
-    var attrs = $(e.target).closest('form').serializeJSON(); // this is a good place for a view prototype getFormData Function
-    this.collection.create(attrs, {wait: true});
+  createNote: function () {
+    var note = new App.Models.Note();
+    var noteForm = new App.Views.NoteForm({ model: note });
+    $('#content').append(noteForm.render().$el);
+    $('.note-modal-form').reveal();
+    $(document).on('reveal:close', '.note-modal-from', function () { $(this).remove(); });
   },
 
   editNote: function ( e ) {
     var noteId = $(e.target).data("note-id");
     var note = App.CurrentState.user.notes.get(noteId);
-    var noteEdit = new App.Views.NoteEdit({ model: note });
+    var noteEdit = new App.Views.NoteForm({ model: note });
     $('#content').append(noteEdit.render().$el);
-    $('.edit-note-modal').reveal();
-    $(document).on('reveal:close', '.edit-note-modal', function () { $(this).remove(); });
+    $('.note-modal-form').reveal();
+    $(document).on('reveal:close', '.note-modal-from', function () { $(this).remove(); });
   },
 
   initialize: function () {
@@ -34,9 +36,7 @@ App.Views.NoteIndex = Backbone.View.extend({
     var renderedContent = this.template({
       notes: this.collection
     });
-
     this.$el.html(renderedContent);
-
     return this;
   }
 

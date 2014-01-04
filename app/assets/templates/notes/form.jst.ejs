@@ -15,18 +15,19 @@ if ( note.isNew() ) {
 
 %>
 
-<section class="edit-note-modal large reveal-modal">
+<section class="note-modal-form large reveal-modal">
 
 	<a class="close-reveal-modal">&#215</a>
 
   <form class="edit-note-form">
     <h1><%= header %></h1>
 
-    
-    <% console.log(note.get("section_text")) %>
-
       <label> Source Text
-        <textarea name="note[section_text]"><%= note.escape("section_text") %></textarea>
+        <% if ( note.get("section_text") ) { %>
+          <p class="section-text"><%= note.escape("section_text") %></p>
+        <% } else { %>
+          <p class="section-text">None. To add a note with source text, create the note using the highlighting tool.</p>
+        <% } %>    
       </label>
 
     <label> My Note
