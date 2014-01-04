@@ -5,6 +5,8 @@
 $(document).on("loaded", function () {
 
 	// there is probably a much more elegant and smooth solution to this, but im outa time!
+	// in fact, this most of this can be done in css... come back to this when you can
+	// look into using bootstraps grid system, this is way to funky, or any responsive framework
 
 	var ResizableElement = function ( $el, widthOptions, $heightEl, hidable, bottomOffset ) {
 		this.$el = $el;
@@ -82,6 +84,7 @@ $(document).on("loaded", function () {
 
 		hideAndBindShow: function () {
 			if ( !this.hidable ) { return; }
+			if ( !this.showing ) { return; }
 
 			var oldWidth = this.getWidth()
 			this.applyOverlay();
@@ -135,13 +138,13 @@ $(document).on("loaded", function () {
 	}
 
 	var increaseWidths = function ( amount ) {
-		if ( resource.nextWidthIdx() > social.nextWidthIdx() && social.canExpand() ) {
+		if ( resource.nextWidthIdx() > social.nextWidthIdx() && social.showing() ) {
 			var elToIncrease = social;
 		} else {
 			var elToIncrease = resource;
 		}
 		if ( typeof elToIncrease.nextWidth() === "undefined" ) { return; }
-		if ( getTotalShowingWidth() >= $(window).width() - 1) { return; }
+		if ( getTotalShowingWidth() >= $(window).width() ) { return; }
 		var widthDifference = elToIncrease.nextWidth() - elToIncrease.getWidth();
 		if ( widthDifference < amount ) {
 			elToIncrease.incrementWidth(widthDifference);
@@ -155,8 +158,7 @@ $(document).on("loaded", function () {
 		}
 	}
 
-	var decreaseWidths = function ( amount ) {
-		console.log("toosmall");
+	var decreaseWidths = function ( amount ) { // this is a quick fix, rewrite for smoother resizing
 		resource.resetWidth();
 		social.resetWidth();
 	}

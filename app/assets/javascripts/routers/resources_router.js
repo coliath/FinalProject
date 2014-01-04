@@ -120,7 +120,4 @@ App.Routers.Resources = Backbone.Router.extend({
   },
 
 
-
-
-
 });

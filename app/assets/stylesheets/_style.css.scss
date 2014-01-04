@@ -386,8 +386,6 @@ input[type=checkbox]:checked:after {
   left: 5px;
 }
 
-
-
 .selected-table-of-contents-btn {
   background: white;
 }
@@ -396,7 +394,7 @@ input[type=checkbox]:checked:after {
   float: left;
   @extend .group;
   @extend .stn-transition;
-  width: 700px;
+  width: 800px;
 }
 
 span.minimize {
