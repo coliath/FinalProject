@@ -6,7 +6,13 @@
 
     <h1> Post Discussion </h1>
 
-    <label>Source Text<textarea name="discussion[section_text]" > <%= selectionText %></textarea></label>
+    <label> Source Text
+      <% if ( discussion.escape("section_text") ) { %>
+        <p class="section-text"><%= discussion.escape("section_text") %></p>
+      <% } else { %>
+        <p class="section-text">None. To add a discussion with source text, create the discussion using the highlighting tool.</p>
+      <% } %>    
+    </label>
 
     <label> Discussion Topic
       <input type="text" name="discussion[title]" placeholder=" The basic topic of your discussion."></input>

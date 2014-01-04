@@ -1,8 +1,8 @@
 App.Views.DiscussionIndex = Backbone.View.extend({
 
   events: {
-    'click #submit-discussion': 'submit',
-    'click .discussion': 'showDiscussion'
+    'click .discussion': 'showDiscussion',
+    'click #discussion-btn': 'createDiscussion'
   },
 
   initialize: function () {
@@ -12,13 +12,12 @@ App.Views.DiscussionIndex = Backbone.View.extend({
     this.listenTo(this.collection, "remove", renderCB);
   },
 
-  submit: function ( e ) {
-    e.preventDefault();
-
-    var attrs = $(e.target).closest('form').serializeJSON();
-    attrs.discussion.resource_id = App.CurrentState.resource.get("id");
-
-    this.collection.create(attrs, {wait: true});
+  createDiscussion: function () {
+    var discussion = new App.Models.Discussion();
+    var discussionForm = new App.Views.DiscussionForm({ model: discussion });
+    $('#content').append(discussionForm.render().$el);
+    $('.discussion-modal-form').reveal();
+    $(document).on('reveal:close', '.discussion-modal-from', function () { $(this).remove(); });
   },
 
   showDiscussion: function ( e ) {
