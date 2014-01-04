@@ -13,6 +13,7 @@ App.Views.DiscussionForm = Backbone.View.extend({
     } else {
       this.model.save(attrs, {wait: true});
     }
+    
     this.remove();
     $('.discussion-modal-form').trigger("reveal:close");
   },

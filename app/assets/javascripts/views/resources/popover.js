@@ -93,8 +93,9 @@ App.Views.ResourcePopover = Backbone.View.extend({
 
   postDiscussionOnText: function ( e ) {
     App.socialNav.showDiscussions();
-    var discussionModalForm = new App.Views.DiscussionModalForm({ selectionText: this.selectionText });
-    $('#content').append(discussionModalForm.render().$el);
+    var discussion = new App.Models.Discussion({ section_text: this.selectionText });
+    var discussionForm = new App.Views.DiscussionForm({ model: discussion });
+    $('#content').append(discussionForm.render().$el);
     $('.discussion-modal-form').reveal();
     $(document).on('reveal:close', '.discussion-modal-form', function () { $(this).remove(); });
   },
