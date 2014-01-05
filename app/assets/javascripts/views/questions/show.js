@@ -14,25 +14,16 @@ App.Views.QuestionShow = Backbone.View.extend({
 
     var renderedContent = this.template({ question: this.model });
     this.$el.html(renderedContent);
-
     this.renderComments(this.$el.find('.comments-wrapper'));
     this.renderVotes(this.$el.find('.votes-wrapper'));
-
-    $('#content').append(this.$el);
-    this.renderAnswers();
+    this.renderAnswers(this.$el.find('.show-modal'));
 
     return this;
   },
 
-  renderAnswers: function () {
+  renderAnswers: function ( wrapper ) {
     var answersIndex = new App.Views.AnswerIndex({ collection: this.model.get("answers"), question: this.model });
-    $('.show-modal').append(answersIndex.render().$el);
-    this.reveal();
-  },
-
-  reveal: function () {
-    $('.show-modal').reveal();
-    $(document).on('reveal:close', '.show-modal', function () { $(this).remove(); });
+    wrapper.append(answersIndex.render().$el);
   }
 
 });

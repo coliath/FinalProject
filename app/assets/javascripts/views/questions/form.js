@@ -26,4 +26,5 @@ App.Views.QuestionForm = Backbone.View.extend({
     this.$el.html(renderedContent);
     return this;
   }
+  
 });

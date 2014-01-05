@@ -25,6 +25,8 @@ App.Views.DiscussionIndex = Backbone.View.extend({
     var discussion = this.collection.get(dId);
     var discussionShow = new App.Views.DiscussionShow({ model: discussion });
     $('#content').append(discussionShow.render().$el);
+    $('#discussion-show-modal').modal();
+    $('#discussion-show-modal').on('hidden.bs.modal', function (e) { discussionShow.remove(); });
   },
 
   template: JST['discussions/index'],

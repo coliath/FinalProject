@@ -548,8 +548,6 @@ span.minimize:hover {
       float: left;
     }
 
-
-
   	@include placeholder {
   	    font-weight:100;
   	    color: $dark-gray;
@@ -562,22 +560,10 @@ span.minimize:hover {
     }
   }
 }
-.basic-question-form {
-  textarea:focus {
-    @extend .textarea-green;
-    border-width: 2px;
-    @include border-radius(2px);
-  }
-}
 
 .note-modal-form {
-  
   @extend .modal-form;
   @extend .blue-form;
-
-  button {
-    margin-top: 15px;
-  }
 }
 
 .modal-form {
@@ -712,8 +698,6 @@ span.minimize:hover {
 
 }
 
-
-
 .discussion-modal-form {
   @extend .modal-form;
   @extend .blue-form;
@@ -725,10 +709,10 @@ span.minimize:hover {
 }
 
 ::selection {
-	background: $lighter-gray;
+	background: $blue;
 }
 ::-moz-selection {
-	background: $lighter-gray;
+	background: $blue;
 }
 
 .highlighted {
@@ -793,8 +777,13 @@ span.minimize:hover {
   z-index: 3;
 }
 
+.modal-dialog {
+  width: 800px;
+}
+
 .modal-content {
   @include border-radius(0px);
+  
 }
 
 .modal-title {

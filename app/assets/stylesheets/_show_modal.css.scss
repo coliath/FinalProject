@@ -7,8 +7,7 @@
 
 .show-modal {
 
-  overflow-y: auto;
-  max-height: 90%;
+  padding: 25px;
 
   .post-wrapper {
   	@extend .group;

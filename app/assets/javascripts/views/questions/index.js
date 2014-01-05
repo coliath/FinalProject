@@ -24,9 +24,12 @@ App.Views.QuestionIndex = Backbone.View.extend({
   showQuestion: function ( e ) {
     var qId = $(e.target).closest('li').data("question-id");
     var question = this.collection.get(qId);
-    var showView = new App.Views.QuestionShow({model: question});
+    var questionShow = new App.Views.QuestionShow({model: question});
 
-    showView.render();
+
+    $('#content').append(questionShow.render().$el);
+    $('#question-show-modal').modal();
+    $('#question-show-modal').on('hidden.bs.modal', function (e) { questionShow.remove(); });
   },
 
   template: JST['questions/index'],

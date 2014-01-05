@@ -9,34 +9,19 @@ App.Views.DiscussionShow = Backbone.View.extend({
   template: JST['discussions/show'],
 
   render: function () {
+
     var renderedContent = this.template({ discussion: this.model });
     this.$el.html(renderedContent);
-
     this.renderComments(this.$el.find('.comments-wrapper'));
     this.renderVotes(this.$el.find('.votes-wrapper'));
-    this.renderResponses();
+    this.renderResponses(this.$el.find('.show-modal'));
 
     return this;
   },
 
-  renderResponses: function () {
-    var that = this;
-    var responses = new App.Collections.Responses([], {resource_id: App.CurrentState.resource.get("id"), question_id: this.model.get("id")});
-    responses.fetch({
-      success: function (collection, resp, opts) {
-        var responsesView = new App.Views.ResponseIndex({ collection: responses, discussion: that.model });
-        $('.show-modal').append(responsesView.render().$el);
-        that.reveal();
-      },
-      error: function (collectio, resp, opts) {
-        console.log(resp);
-      }
-    });
+  renderResponses: function ( wrapper ) {
+    var responsesIndex = new App.Views.ResponseIndex({ collection: this.model.get('responses'), discussion: this.model });
+    $(wrapper).append(responsesIndex.render().$el);
   },
-
-  reveal: function () {
-    $('.show-modal').reveal();
-    $(document).on('reveal:close', '.show-modal', function () { $(this).remove(); });
-  }
 
 });

@@ -1,33 +1,36 @@
 
-<section class="show-modal discussion xlarge reveal-modal">
+<div class="modal fade" id="discussion-show-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-body show-modal">
+		<section class="post-wrapper">
 
-	<a class="close-reveal-modal">&#215</a>
+			<div class="votes-wrapper">
 
-	<section class="post-wrapper">
+			</div>
 
-		<div class="votes-wrapper">
+			<div class="post-body">
 
-		</div>
+			<h1> <%= discussion.escape("title") %> </h1>
 
-		<div class="post-body">
+			<% if (discussion.escape("body")) { %>
 
-		<h1> <%= discussion.escape("title") %> </h1>
+				<div class="body-wrapper">
+			    	<p class="body"><%= discussion.escape("body") %></p>
+			  	</div>
 
-		<% if (discussion.escape("body")) { %>
+		  	<% } %>
+		  	
+		  		<p class="add-comment"> add comment </p>
 
-			<div class="body-wrapper">
-		    	<p class="body"><%= discussion.escape("body") %></p>
+		  		<div class="comments-wrapper">
+
+		  		</div>
+		  		
 		  	</div>
-
-	  	<% } %>
-	  	
-	  		<p class="add-comment"> add comment </p>
-
-	  		<div class="comments-wrapper">
-
-	  		</div>
-	  	</div>
-	  
-	</section>
-
-</section>
+		  
+		</section>
+	  </div>
+    </div>
+  </div>
+</div>
