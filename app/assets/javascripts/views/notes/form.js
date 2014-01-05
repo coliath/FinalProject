@@ -2,13 +2,13 @@ App.Views.NoteForm = Backbone.View.extend({
 
 
   events: {
-    'click .submit-note': 'saveNote',
+    'click .submit-note': 'save',
   },
 
-  saveNote: function ( e ) {
+  save: function ( e ) {
     e.preventDefault();
     var attrs = $(e.target).closest('form').serializeJSON();
-    if (attrs.note.private === "on") {
+    if (attrs.note.private === 'on') {
       attrs.note.private = true;
     } else {
       attrs.note.private = false;
@@ -19,16 +19,15 @@ App.Views.NoteForm = Backbone.View.extend({
     } else {
       this.model.save(attrs, {wait: true});
     }
-    $('.note-modal-form').trigger("reveal:close");
-    this.remove();
+    $('#note-form-modal').modal('hide');
+    var that = this;
+    $('#note-form-modal').on('hidden.bs.modal', function (e) { that.remove(); });
   },
 
   template: JST['notes/form'],
 
   render: function () {
-    var renderedContent = this.template({
-      note: this.model
-    });
+    var renderedContent = this.template({ note: this.model });
     this.$el.html(renderedContent);
     return this;
   }

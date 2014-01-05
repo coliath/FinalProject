@@ -78,8 +78,7 @@ App.Views.ResourcePopover = Backbone.View.extend({
     var note = new App.Models.Note({section_text: this.selectionText});
     var noteModalForm = new App.Views.NoteForm({ model: note });
     $('#content').append(noteModalForm.render().$el);
-    $('.note-modal-form').reveal();
-    $(document).on('reveal:close', '.note-modal-form', function () { $(this).remove(); });
+    $('#note-form-modal').modal();
   },
 
   askQuestionOnText: function ( e ) {

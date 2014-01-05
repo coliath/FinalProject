@@ -15,30 +15,41 @@ if ( note.isNew() ) {
 
 %>
 
-<section class="note-modal-form large reveal-modal">
+<div class="modal fade" id="note-form-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
 
-  <form class="edit-note-form">
-    <h1><%= header %></h1>
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"><%= header %></h4>
+      </div>
+      <form>
+        <div class="modal-body note-modal-form">
+          
+            <label> Source Text
+              <% if ( note.get("section_text") ) { %>
+                <p class="section-text"><%= note.escape("section_text") %></p>
+              <% } else { %>
+                <p class="section-text">None. To add a note with source text, create the note using the highlighting tool.</p>
+              <% } %>    
+            </label>
 
-      <label> Source Text
-        <% if ( note.get("section_text") ) { %>
-          <p class="section-text"><%= note.escape("section_text") %></p>
-        <% } else { %>
-          <p class="section-text">None. To add a note with source text, create the note using the highlighting tool.</p>
-        <% } %>    
-      </label>
+            <label> My Note
+              <textarea name="note[body]"><%= note.escape("body") %></textarea>
+            </label>
 
-    <label> My Note
-      <textarea name="note[body]"><%= note.escape("body") %></textarea>
-    </label>
+            <div class="group">
+                <input id="note-private" type="checkbox" name="note[private]" <%= checked %>>
+                <label class="check-label" for="note-private">Private?</label>
+            </div>
+          
+        </div>
 
-    <div class="group">
-        <input id="note-private" type="checkbox" name="note[private]" <%= checked %>>
-        <label class="check-label" for="note-private">Private?</label>
+        <div class="modal-footer">
+          <button type="button" class="submit-note btn-blue"><%= buttonLabel %></button>
+        </div>
+      </form>
+
     </div>
-
-    <button class="submit-note btn-blue"><%= buttonLabel %></button>
-
-  </form>
-
-</section>
+  </div>
+</div>

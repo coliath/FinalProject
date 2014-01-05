@@ -18,8 +18,7 @@ App.Views.NoteIndex = Backbone.View.extend({
     var note = App.CurrentState.user.notes.get(noteId);
     var noteEdit = new App.Views.NoteForm({ model: note });
     $('#content').append(noteEdit.render().$el);
-    $('.note-modal-form').reveal();
-    $(document).on('reveal:close', '.note-modal-from', function () { $(this).remove(); });
+    $('#note-form-modal').modal();
   },
 
   initialize: function () {

@@ -281,8 +281,7 @@ label {
   @extend .clickable;
   display: block;
   margin-bottom: 20px;
-  font-size: 1.2em;
-  font-weight: bold;
+  font-size: $big-font;
 }
 
 input[type=text] {
@@ -794,7 +793,18 @@ span.minimize:hover {
   z-index: 3;
 }
 
+.modal-content {
+  @include border-radius(0px);
+}
 
+.modal-title {
+  font-size: $huge-font;
+  font-weight: bold;
+}
+
+.modal-footer {
+  margin: 0;
+}
 
 
 
