@@ -27,6 +27,13 @@
     margin-left: 5.5%;
   }
 
+  h4 {
+    font-size: 1.3em;
+    font-weight: bold;
+    padding: 15px 0 2px 0;
+    margin: 0;
+  }
+
   .post-body {
   	float: right;
   	width: 94.5%;
@@ -38,6 +45,10 @@
     padding: 15px;
     padding-top: 8px;
     margin: 0;
+  }
+
+  p.section-text {
+    background-color: $lightest-gray;
   }
 
   li.answer {

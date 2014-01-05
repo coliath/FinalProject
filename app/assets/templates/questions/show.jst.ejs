@@ -19,6 +19,12 @@
 
               <% } %>
 
+              <% if (question.escape("section_text")) { %>
+                  <h4> Source Text </h4>
+                  <p class="section-text body"> <%= question.escape("section_text") %> </p>
+
+              <% } %>
+
 
               <p class="add-comment"> add comment </p>
 

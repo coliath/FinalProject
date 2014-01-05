@@ -60,7 +60,7 @@ App.Views.ResourcePopover = Backbone.View.extend({
   },
 
   createHighlight: function ( type ) {
-    var attrs = {}
+    var attrs = {};
     attrs.section_id = this.sectionId;
     attrs.full_text = this.selectionText;
     attrs.highlight_type = type;
@@ -75,7 +75,9 @@ App.Views.ResourcePopover = Backbone.View.extend({
   // DRY THIS UP when you get the chance
   createNoteWithText: function ( e ) {
     App.socialNav.showNotes();
-    var note = new App.Models.Note({section_text: this.selectionText});
+    var attrs = {};
+    attrs.section_text = this.selectionText;
+    var note = new App.Models.Note(attrs);
     var noteForm = new App.Views.NoteForm({ model: note });
     $('#content').append(noteForm.render().$el);
     $('#note-form-modal').modal();
@@ -84,7 +86,9 @@ App.Views.ResourcePopover = Backbone.View.extend({
 
   askQuestionOnText: function ( e ) {
     App.socialNav.showQuestions();
-    var question = new App.Models.Question({ section_text: this.selectionText });
+    var attrs = {};
+    attrs.section_text = this.selectionText;
+    var question = new App.Models.Question(attrs);
     var questionForm = new App.Views.QuestionForm({ model: question });
     $('#content').append(questionForm.render().$el);
     $('#question-form-modal').modal();
@@ -93,7 +97,9 @@ App.Views.ResourcePopover = Backbone.View.extend({
 
   postDiscussionOnText: function ( e ) {
     App.socialNav.showDiscussions();
-    var discussion = new App.Models.Discussion({ section_text: this.selectionText });
+    var attrs = {};
+    attrs.section_text = this.selectionText;
+    var discussion = new App.Models.Discussion(attrs);
     var discussionForm = new App.Views.DiscussionForm({ model: discussion });
     $('#content').append(discussionForm.render().$el);
     $('#discussion-form-modal').modal();

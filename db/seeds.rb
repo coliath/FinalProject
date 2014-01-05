@@ -78,7 +78,6 @@ n1.user_id = 1
 n1.save!
 
 q1 = Question.new({
-  section_text: "content that will",
   title: "Can anyone explain closures a little better???",
   body: "I am having a great deal of trouble wrapping my head around what is being set and whether or not it holds reference.  Does each function closure return create new objects or are they held by the same reference??? HELP ME!!!",
   section_id: 2,
@@ -106,7 +105,6 @@ a2.user_id = 1
 a2.save!
 
 d1 = Discussion.new({
-  section_text: "content that will",
   title: "Javascript VS Coffee Script: Thoughts?",
   body: "I've recently learned about Coffee Script, it looks way better than JS from first glance, can this be true?",
   section_id: 2,

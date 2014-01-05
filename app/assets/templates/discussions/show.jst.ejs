@@ -20,13 +20,19 @@
 			  	</div>
 
 		  	<% } %>
+
+		  	<% if (discussion.escape("section_text")) { %>
+	              <h4> Source Text </h4>
+	              <p class="section-text body"> <%= discussion.escape("section_text") %> </p>
+
+	        <% } %>
 		  	
 		  		<p class="add-comment"> add comment </p>
 
 		  		<div class="comments-wrapper">
 
 		  		</div>
-		  		
+
 		  	</div>
 		  
 		</section>

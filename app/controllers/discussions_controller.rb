@@ -5,6 +5,7 @@ class DiscussionsController < ApplicationController
   def create
     discussion = Discussion.new(params[:discussion])
     discussion.user_id = current_user.id
+    discussion.resource_id = params[:resource_id]
 
     if discussion.save
       render json: discussion

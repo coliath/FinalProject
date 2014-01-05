@@ -14,10 +14,10 @@ App.Views.NoteForm = Backbone.View.extend({
       attrs.note.private = false;
     }
     if ( this.model.isNew() ) {
-      this.model.set(attrs);
+      this.model.set(attrs.note);
       App.CurrentState.user.notes.create(this.model, {wait: true});
     } else {
-      this.model.save(attrs, {wait: true});
+      this.model.save(attrs.note, {wait: true});
     }
     $('#note-form-modal').modal('hide');
   },
