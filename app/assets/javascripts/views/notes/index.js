@@ -9,8 +9,8 @@ App.Views.NoteIndex = Backbone.View.extend({
     var note = new App.Models.Note();
     var noteForm = new App.Views.NoteForm({ model: note });
     $('#content').append(noteForm.render().$el);
-    $('.note-modal-form').reveal();
-    $(document).on('reveal:close', '.note-modal-from', function () { $(this).remove(); });
+    $('#note-form-modal').modal();
+    $('#note-form-modal').on('hidden.bs.modal', function (e) { noteForm.remove(); });
   },
 
   editNote: function ( e ) {
@@ -19,6 +19,7 @@ App.Views.NoteIndex = Backbone.View.extend({
     var noteEdit = new App.Views.NoteForm({ model: note });
     $('#content').append(noteEdit.render().$el);
     $('#note-form-modal').modal();
+    $('#note-form-modal').on('hidden.bs.modal', function (e) { noteEdit.remove(); });
   },
 
   initialize: function () {

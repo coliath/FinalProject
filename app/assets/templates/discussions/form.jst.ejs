@@ -1,27 +1,35 @@
-<section class="discussion-modal-form large reveal-modal">
 
-  <form>
+<div class="modal fade" id="discussion-form-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"> Post Discussion </h4>
+      </div>
 
-    <h1> Post Discussion </h1>
+      <form class="discussion-modal-form">
+        <div class="modal-body">
+          <label> Source Text
+            <% if ( discussion.escape("section_text") ) { %>
+              <p class="section-text"><%= discussion.escape("section_text") %></p>
+            <% } else { %>
+              <p class="section-text">None. To add a discussion with source text, create the discussion using the highlighting tool.</p>
+            <% } %>    
+          </label>
 
-    <label> Source Text
-      <% if ( discussion.escape("section_text") ) { %>
-        <p class="section-text"><%= discussion.escape("section_text") %></p>
-      <% } else { %>
-        <p class="section-text">None. To add a discussion with source text, create the discussion using the highlighting tool.</p>
-      <% } %>    
-    </label>
+          <label> Discussion Topic
+            <input type="text" name="discussion[title]" placeholder=" The basic topic of your discussion."></input>
+          </label>
 
-    <label> Discussion Topic
-      <input type="text" name="discussion[title]" placeholder=" The basic topic of your discussion."></input>
-    </label>
+          <label> Discussion Prompt
+            <textarea name="discussion[body]" placeholder=" A more detailed explaination of what you would like to discuss."></textarea>
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button class="submit-discussion">Post</button>
+        </div>
+      </form>
 
-    <label> Discussion Prompt
-      <textarea name="discussion[body]" placeholder=" A more detailed explaination of what you would like to discuss."></textarea>
-    </label>
-
-    <button class="submit-discussion">Post</button>
-
-  </form>
-
-</section>
+    </div>
+  </div>
+</div>

@@ -20,8 +20,6 @@ App.Views.NoteForm = Backbone.View.extend({
       this.model.save(attrs, {wait: true});
     }
     $('#note-form-modal').modal('hide');
-    var that = this;
-    $('#note-form-modal').on('hidden.bs.modal', function (e) { that.remove(); });
   },
 
   template: JST['notes/form'],

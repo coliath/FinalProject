@@ -16,8 +16,8 @@ App.Views.DiscussionIndex = Backbone.View.extend({
     var discussion = new App.Models.Discussion();
     var discussionForm = new App.Views.DiscussionForm({ model: discussion });
     $('#content').append(discussionForm.render().$el);
-    $('.discussion-modal-form').reveal();
-    $(document).on('reveal:close', '.discussion-modal-from', function () { $(this).remove(); });
+    $('#discussion-form-modal').modal();
+    $('#discussion-form-modal').on('hidden.bs.modal', function (e) { discussionForm.remove(); });
   },
 
   showDiscussion: function ( e ) {

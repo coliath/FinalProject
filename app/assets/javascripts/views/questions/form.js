@@ -14,8 +14,7 @@ App.Views.QuestionForm = Backbone.View.extend({
       this.model.save(attrs, {wait: true});
     }
 
-    $('.question-modal-form').trigger("reveal:close");
-    this.remove();
+    $('#question-form-modal').modal('hide');
   },
 
   template: JST['questions/form'],

@@ -17,8 +17,8 @@ App.Views.QuestionIndex = Backbone.View.extend({
     var question = new App.Models.Question();
     var questionForm = new App.Views.QuestionForm({ model: question });
     $('#content').append(questionForm.render().$el);
-    $('.question-modal-form').reveal();
-    $(document).on('reveal:close', '.question-modal-from', function () { $(this).remove(); });
+    $('#question-form-modal').modal();
+    $('#question-form-modal').on('hidden.bs.modal', function (e) { questionForm.remove(); });
   },
 
   showQuestion: function ( e ) {

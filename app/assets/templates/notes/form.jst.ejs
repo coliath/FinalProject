@@ -23,8 +23,8 @@ if ( note.isNew() ) {
         <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
         <h4 class="modal-title"><%= header %></h4>
       </div>
-      <form>
-        <div class="modal-body note-modal-form">
+      <form class="note-modal-form">
+        <div class="modal-body">
           
             <label> Source Text
               <% if ( note.get("section_text") ) { %>
@@ -46,7 +46,7 @@ if ( note.isNew() ) {
         </div>
 
         <div class="modal-footer">
-          <button type="button" class="submit-note btn-blue"><%= buttonLabel %></button>
+          <button type="button" class="submit-note"><%= buttonLabel %></button>
         </div>
       </form>
 

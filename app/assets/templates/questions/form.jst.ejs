@@ -1,26 +1,34 @@
-<section class="question-modal-form large reveal-modal">
+<div class="modal fade" id="question-form-modal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+        <h4 class="modal-title"> Ask Question </h4>
+      </div>
 
-  <form>
-    <h1> Ask Question </h1>
+      <form class="question-modal-form">
+        <div class="modal-body">
+          <label> Source Text
+            <% if ( question.escape("section_text") ) { %>
+              <p class="section-text"><%= question.escape("section_text") %></p>
+            <% } else { %>
+              <p class="section-text">None. To add a question with source text, create the question using the highlighting tool.</p>
+            <% } %>    
+          </label>
 
-    <label> Source Text
-      <% if ( question.escape("section_text") ) { %>
-        <p class="section-text"><%= question.escape("section_text") %></p>
-      <% } else { %>
-        <p class="section-text">None. To add a question with source text, create the question using the highlighting tool.</p>
-      <% } %>    
-    </label>
+          <label> Question Title
+            <input type="text" name="question[title]" placeholder=" The brief version of your question."></input>
+          </label>
 
-    <label> Question Title
-      <input type="text" name="question[title]" placeholder=" The brief version of your question."></input>
-    </label>
+          <label> Additional Information
+            <textarea name="question[body]" placeholder=" A more detailed explaination of your problem and what you would like to know."></textarea>
+          </label>
+        </div>
+        <div class="modal-footer">
+          <button class="submit-question">Ask</button>
+        </div>
+      </form>
 
-    <label> Additional Information
-      <textarea name="question[body]" placeholder=" A more detailed explaination of your problem and what you would like to know."></textarea>
-    </label>
-
-    <button class="submit-question">Ask</button>
-
-  </form>
-
-</section>
+    </div>
+  </div>
+</div>

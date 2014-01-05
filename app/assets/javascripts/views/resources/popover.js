@@ -76,9 +76,10 @@ App.Views.ResourcePopover = Backbone.View.extend({
   createNoteWithText: function ( e ) {
     App.socialNav.showNotes();
     var note = new App.Models.Note({section_text: this.selectionText});
-    var noteModalForm = new App.Views.NoteForm({ model: note });
-    $('#content').append(noteModalForm.render().$el);
+    var noteForm = new App.Views.NoteForm({ model: note });
+    $('#content').append(noteForm.render().$el);
     $('#note-form-modal').modal();
+    $('#note-form-modal').on('hidden.bs.modal', function (e) { noteForm.remove(); });
   },
 
   askQuestionOnText: function ( e ) {
@@ -86,8 +87,8 @@ App.Views.ResourcePopover = Backbone.View.extend({
     var question = new App.Models.Question({ section_text: this.selectionText });
     var questionForm = new App.Views.QuestionForm({ model: question });
     $('#content').append(questionForm.render().$el);
-    $('.question-modal-form').reveal();
-    $(document).on('reveal:close', '.question-modal-form', function () { $(this).remove(); });
+    $('#question-form-modal').modal();
+    $('#question-form-modal').on('hidden.bs.modal', function (e) { questionForm.remove(); });
   },
 
   postDiscussionOnText: function ( e ) {
@@ -95,8 +96,8 @@ App.Views.ResourcePopover = Backbone.View.extend({
     var discussion = new App.Models.Discussion({ section_text: this.selectionText });
     var discussionForm = new App.Views.DiscussionForm({ model: discussion });
     $('#content').append(discussionForm.render().$el);
-    $('.discussion-modal-form').reveal();
-    $(document).on('reveal:close', '.discussion-modal-form', function () { $(this).remove(); });
+    $('#discussion-form-modal').modal();
+    $('#discussion-form-modal').on('hidden.bs.modal', function (e) { discussionForm.remove(); });
   },
 
   template: JST['resources/popup'],
