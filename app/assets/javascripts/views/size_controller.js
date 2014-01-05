@@ -8,11 +8,10 @@ $(document).on("loaded", function () {
 	// in fact, this most of this can be done in css... come back to this when you can
 	// look into using bootstraps grid system, this is way to funky, or any responsive framework
 
-	var ResizableElement = function ( $el, widthOptions, $heightEl, hidable, bottomOffset ) {
+	var ResizableElement = function ( $el, widthOptions, hidable, bottomOffset ) {
 		this.$el = $el;
 		this.widthOptions = widthOptions;
 		this.hidable = hidable;
-		this.$heightEl = $heightEl;
 		if ( typeof bottomOffset != "number" ) { bottomOffset = 0; }
 		this.bottomOffset = bottomOffset;
 		this.showBtnId = "show-" + $el.attr("id");
@@ -55,7 +54,7 @@ $(document).on("loaded", function () {
 		resizeHeight: function () {
 			var viewportHeight = $(window).height();
 			var that = this;
-			_.each(this.$heightEl, function (el) {
+			_.each(this.$el.find(".height-el"), function (el) {
 				$(el).height(viewportHeight - $(el).position().top - that.bottomOffset);
 			});
 		},
@@ -92,7 +91,7 @@ $(document).on("loaded", function () {
 			this.$el.find(".overlay").width(50);
 
 			var that = this;
-			$("#" + this.showBtnId).one("click", function () {
+			$("#" + this.showBtnId).on("click", function () {
 				that.$el.find(".overlay").width(oldWidth);
 				that.setWidth(oldWidth);
 				that.$el.one("transitionend", function () { // this is a little funky, gets fired for both and is hard to specify, think about going all JS
@@ -103,25 +102,24 @@ $(document).on("loaded", function () {
 
 	});
 
-	var Resize = {};
+	nav = new ResizableElement($("#left-nav"), [200,200,200,200], true);
+	social = new ResizableElement($("#social-content"), [280, 300, 450, 600], true, 33);
+	resource = new ResizableElement($("#resource-content"), [420, 700, 900, 2000], false);
+	resizables = [resource, social, nav];
 	
 	var handleResize = function () {
-		Resize.nav = new ResizableElement($("#left-nav"), [200,200,200,200], $("#table-of-contents").find("ul"), true);
-		Resize.social = new ResizableElement($("#social-content"), [280, 300, 450, 600], $("#social-content").find(".social-list"), true, 33);
-		Resize.resource = new ResizableElement($("#resource-content"), [420, 700, 900, 2000], $("#resource-content").find(".resource"), false);
-		Resize.resizables = [Resize.resource, Resize.social, Resize.nav];
 		setHeights();
 		setWidths();
 	}
 
 	var setHeights = function () {
 		$("#content").height($(window).height());
-		_.each(Resize.resizables, function (resizable) { resizable.resizeHeight(); });
+		_.each(resizables, function (resizable) { resizable.resizeHeight(); });
 	}
 
 	var getTotalShowingWidth = function () {
 		var totalwidth = 0;
-		_.each(Resize.resizables, function (resizable) {
+		_.each(resizables, function (resizable) {
 			totalwidth += resizable.getWidth();
 		});
 		return totalwidth;
@@ -138,10 +136,10 @@ $(document).on("loaded", function () {
 	}
 
 	var increaseWidths = function ( amount ) {
-		if ( Resize.resource.nextWidthIdx() > Resize.social.nextWidthIdx() && Resize.social.showing() ) {
-			var elToIncrease = Resize.social;
+		if ( resource.nextWidthIdx() > social.nextWidthIdx() && social.showing() ) {
+			var elToIncrease = social;
 		} else {
-			var elToIncrease = Resize.resource;
+			var elToIncrease = resource;
 		}
 		if ( typeof elToIncrease.nextWidth() === "undefined" ) { return; }
 		if ( getTotalShowingWidth() >= $(window).width() ) { return; }
@@ -159,8 +157,8 @@ $(document).on("loaded", function () {
 	}
 
 	var decreaseWidths = function ( amount ) { // this is a quick fix, rewrite for smoother resizing
-		Resize.resource.resetWidth();
-		Resize.social.resetWidth();
+		resource.resetWidth();
+		social.resetWidth();
 	}
 
 	handleResize();
