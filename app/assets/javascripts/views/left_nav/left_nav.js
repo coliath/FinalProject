@@ -1,15 +1,20 @@
 App.Views.SiteNav = Backbone.View.extend({
 
   events: {
-    "click #hide-site-nav": "hideSiteNav"
+    'click #home-btn': "home",
+    'click #sign-out-btn': "signOut"
   },
 
-  initialize: function () {
-    
+  home: function () {
+    window.location.hash= "home";
   },
 
-  hideSiteNav: function ( e ) {
-    
+  signOut: function () {
+    $.ajax({
+      url: "/session",
+      type: "DELETE",
+    });
+    window.location.href = "/session/new"
   },
 
   template: JST['left_nav/left_nav'],

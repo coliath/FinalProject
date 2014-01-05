@@ -6,10 +6,11 @@ window.App = {
   CurrentData: {},
   CurrentState: {
     user: {}
-  }, // i am not how sure if this is the best way to handle this
+  },
   Modules: {}, // better name for this?
   initialize: function() {
 
+    // use of these currently unimplemented
     App.CurrentData.users = new App.Collections.Users();
     App.CurrentData.resources = new App.Collections.Resources();
     App.CurrentData.sections = new App.Collections.Sections();

@@ -30,6 +30,6 @@ NewAuthDemo::Application.routes.draw do
 
   end
 
-  root :to => "users#new"
+  root :to => "sessions#new"
 
 end

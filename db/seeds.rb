@@ -3,7 +3,7 @@
 
 # Demo User
 
-User.create!({username: "Coleman", password: "password"})
+User.create!({username: "Demo", password: "password"})
 User.create!({username: "Coliath", password: "password"})
 
 # Demo Resource

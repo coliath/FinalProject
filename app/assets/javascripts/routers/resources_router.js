@@ -1,14 +1,24 @@
 App.Routers.Resources = Backbone.Router.extend({
 
   routes: {
-    "": "index",
+    "": "demo",
+    "home": "home",
     "resources/:id": "showReaderView",
   },
 
   initialize: function () {
+    this.$content = $("#content");
     this.$navEl = $('#left-nav');
     this.$resourceEl = $('#resource-content');
     this.$socialEl = $("#social-content");
+    this.$homeEl = $("#home");
+  },
+
+  home: function () {
+    var home = new App.Views.Home();
+    this.$content.hide();
+    this.$homeEl.html(home.render().$el);
+    this.$homeEl.show();
   },
 
   initResource: function ( id ) {
@@ -103,16 +113,17 @@ App.Routers.Resources = Backbone.Router.extend({
   addSocialNav: function () {
     App.socialNav = new App.Views.SocialNav();
     this.$socialEl.prepend(App.socialNav.render().$el);
+    this.$homeEl.hide();
+    this.$content.show();
     $(document).trigger("loaded");
+  },
+
+  demo: function () {
+    this.initResource(1);
   },
 
   showReaderView: function ( id ) {
     this.initResource(id);
-  },
-
-  index: function () {
-    // ONLY FOR NOW!!
-    this.initResource(1);
   },
 
   _swapView: function ( el, view ) {

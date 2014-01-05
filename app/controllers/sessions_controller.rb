@@ -1,4 +1,5 @@
 class SessionsController < ApplicationController
+
   before_filter :require_no_current_user!, :only => [:create, :new]
   before_filter :require_current_user!, :only => [:destroy]
 
@@ -24,7 +25,6 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_current_user!
-    redirect_to new_session_url
   end
 
   def new

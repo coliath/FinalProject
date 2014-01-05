@@ -4,7 +4,7 @@
   <section class="landing-info">
     <h1> Welcome to Resource Root, a place for ever growing knowledge </h1>
     <h3> Sign In on the right, or give us a try first by clicking below </h3>
-    <button class="btn-green">Click Here For a Demo</button>
+    <button class="btn-green" id="demo-btn">Click Here For a Demo</button>
   </section>
 
 
@@ -15,7 +15,7 @@
 
     <h1 class="form-title">Sign In</h1>
 
-    <form action="<%= session_url %>" method="post">
+    <form action="<%= session_url %>" method="post" id="sign-in-form">
 
       <input
          name="authenticity_token"
@@ -45,3 +45,21 @@
   <p> Don't have an account yet? <%=  link_to "Sign Up", new_user_url %></p>
 
 </div>
+
+<script>
+  $("#demo-btn").click(function () {
+    $('#user_username').val("Demo");
+    $("#user_password").val("password");
+    $("#sign-in-form").submit();
+  });
+</script>
+
+
+
+
+
+
+
+
+
+

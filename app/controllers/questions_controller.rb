@@ -5,6 +5,7 @@ class QuestionsController < ApplicationController
   def create
     question = Question.new(params[:question])
     question.user_id = current_user.id
+    question.resource_id = params[:resource_id]
 
     if question.save
       render json: question

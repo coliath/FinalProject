@@ -796,6 +796,24 @@ span.minimize:hover {
 }
 
 
+#home-page {
+  text-align: center;
+  height: 100%;
+  h1 {
+    margin: 20px 0;
+  }
+  img {
+    @extend .clickable;
+    margin-bottom: 20px;
+  }
+  img:hover {
+    @include box-shadow(0, 0, 15px, black);
+  }
+  img:active {
+    box-shadow: none;
+  }
+}
+
 
 
 
