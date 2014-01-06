@@ -10,7 +10,7 @@ The goal is to build an E-reader that supports groups of people reading the same
 
 When people read together, everyone can benefit from shared ideas and alternate viewpoints.
 
-Also, writers are able to gain valuable insight into how readers consume the their content.  They learn what they find helpful, what they find confusing, as well as any errors they may spot.
+Also, writers are able to gain valuable insight into how readers consume the their content.  Writers learn what readers find helpful, what they find confusing, as well as any errors they may spot.
 
 Resource Root is about **reading, writing and learning, better, together.**
 
