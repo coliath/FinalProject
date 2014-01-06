@@ -1,51 +1,79 @@
-<section class="landing-page">
 
 
-  <section class="landing-info">
-    <h1> Welcome to Resource Root, a place for ever growing knowledge </h1>
-    <h3> Sign In on the right, or give us a try first by clicking below </h3>
-    <button class="btn-green" id="demo-btn">Click Here For a Demo</button>
-  </section>
+<div id="landing-page">
 
+  <div class="container">
 
-</section>
-<div class="form-wrapper">
+      <div class="row spaced">
+        <div class="col-lg-6 col-lg-offset-3">
+          <h1>Resource Root</h1>
+          <h3>Read, Write, and Learn Together</h3>
+        </div>
+      </div>
+      
+      <div class="row spaced">
 
-  <div class="form-box">
+        <div class="col-lg-4">
+          <img src="http://th06.deviantart.net/fs71/PRE/f/2013/198/7/0/chrome_flat_by_packrobottom-d6dyj4l.png" width="180" height="180" alt="">
+          <h4>All in your Browser...</h4>
+          <p>Your resources are are always just one click away.   </p>
+        </div>
 
-    <h1 class="form-title">Sign In</h1>
+        <div class="col-lg-4">
+          <img src="http://www.clker.com/cliparts/N/1/F/L/L/i/highlighter-icon-white-border-md.png" width="180" height="180" alt="">
+          <h4>With Highlighting Tools...</h4>
+          <p>Highlight text to remember important phrases and give feedback to the writer.</p>
+        </div>
 
-    <form action="<%= session_url %>" method="post" id="sign-in-form">
+        <div class="col-lg-4">
+          <img src="https://cdn3.iconfinder.com/data/icons/social-and-media/37/Social_and_communication-09-512.png" width="180" height="180" alt="">
+          <h4>While Engaging Others!!!</h4>
+          <p>Take notes, ask/answer questions, and engage in text driven discussion.</p>
+        </div>
 
-      <input
-         name="authenticity_token"
-         type="hidden"
-         value="<%= form_authenticity_token %>">
-
-          <input
-             id="user_username"
-             name="user[username]"
-             type="text"
-             placeholder="Enter Username"
-          >
-
-          <input
-             id="user_password"
-             name="user[password]"
-             type="password"
-             placeholder="Enter Password"
-          >
-
-      <input type="submit" value="Sign In">
-
-    </form>
+      </div>
 
   </div>
 
-  <p> Don't have an account? Sorry, this site is currently for demo purposes only :(</p>
+  <button id="demo-btn" class="btn-green">Demo</button>
 
+  <div class="form-wrapper spaced">
+
+    <div class="form-box">
+
+      <h1 class="form-title">Sign In</h1>
+
+      <form action="<%= session_url %>" method="post" id="sign-in-form">
+
+        <input
+           name="authenticity_token"
+           type="hidden"
+           value="<%= form_authenticity_token %>">
+
+            <input
+               id="user_username"
+               name="user[username]"
+               type="text"
+               placeholder="Enter Username"
+            >
+
+            <input
+               id="user_password"
+               name="user[password]"
+               type="password"
+               placeholder="Enter Password"
+            >
+
+        <input type="submit" value="Sign In">
+
+      </form>
+
+    </div>
+
+    <p> Don't have an account? Sorry, this site is currently for demo purposes only :(</p>
+
+  </div>
 </div>
-
 <script>
   $("#demo-btn").click(function () {
     $('#user_username').val("Demo");

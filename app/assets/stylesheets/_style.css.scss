@@ -189,93 +189,7 @@ $small-height: 30px;
 	background-color: $stn-back-color;
 }
 
-.form-wrapper {
-  display: inline-block;
-  width: 22%;
-  float: left;
-  margin: 20px 10% 0 0;
 
-  p {
-    text-align: center;
-  }
-}
-
-.landing-page {
-  .landing-info {
-    float:left;
-    margin-left: 10%;
-    width: 58%;
-
-    button {
-      @extend .stn-transition;
-      height: 40px;
-      width: 250px;
-      border: 1px solid transparent;
-      @include border-radius(2px);
-    }
-    button:hover {
-      @include border-radius(0px);
-    }
-
-    h1 {
-      font-size: 25px;
-      margin: 20px 0;
-    }
-
-    h3 {
-      font-size: 20px;
-      margin: 20px 0;
-    }
-  }
-}
-
-.form-box {
-	@extend .box;
-
-  padding: 20px;
-  
-
-  input {
-    @extend .stn-transition;
-    @include border-radius(2px);
-    border: 1px solid transparent;
-    display: block;
-    padding: 7px;
-    margin:  10px auto;
-    height: 40px;
-    width: 100%;
-  }
-
-  input:hover {
-    border: $stn-border;
-  }
-
-  input:focus {
-    outline: 0;
-    @include box-shadow(0,0,5px, $darkest-gray);
-  }
-
-	input[type=submit] {
-    @extend .btn-blue;
-    height: 40px;
-  }
-
-	input.error {
-		border: 3px solid $red;
-	}
-
-	@include placeholder {
-	    font-weight:100;
-	    text-align: center;
-	    color: $dark-gray;
-	}
-
-	.form-title {
-		margin-bottom: 12px;
-		text-align: center;
-		font-size: 1.4em;
-	}
-}
 
 label {
   @extend .clickable;
@@ -812,6 +726,122 @@ span.minimize:hover {
   img:active {
     box-shadow: none;
   }
+}
+
+#landing-page {
+
+    background-color: #f2f2f2;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    color: #555;
+
+    -webkit-font-smoothing: antialiased;
+    -webkit-overflow-scrolling: touch;
+
+    h1, h2, h3, h4, h5, h6 {
+        font-weight: 300;
+        color: #333;
+    }
+
+    h1 {
+      font-size: 40px;
+    }
+
+    h3 {
+      color: #95a5a6;
+      font-weight: 400;
+    }
+
+    h4 {
+      color: #95a5a6;
+      font-weight: 400;
+      font-size: 20px;
+    }
+
+    p {
+      line-height: 28px;
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+
+    .spaced {
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    #demo-btn {
+      margin-left:auto;
+      margin-right: auto;
+      width: 300px;
+      @include border-radius(2px);
+      height: 40px;
+    }
+
+    .form-wrapper {
+        background:$lighter-gray;
+        text-align: center;
+        padding-top: 20px;
+
+      p {
+        text-align: center;
+      }
+    }
+    .form-box {
+      @extend .box;
+      width: 300px;
+      margin-left: auto;
+      margin-right: auto;
+      background:#f2f2f2;
+
+      
+      text-align: center;
+      padding: 20px;
+        
+
+      input {
+        @extend .stn-transition;
+        @include border-radius(2px);
+        border: 1px solid transparent;
+        display: block;
+        padding: 7px;
+        margin:  10px auto;
+        height: 40px;
+        width: 100%;
+        font-size: 16px;
+      }
+
+      input:hover {
+        border: $stn-border;
+      }
+
+      input:focus {
+        outline: 0;
+        @include box-shadow(0,0,5px, $darkest-gray);
+      }
+
+      input[type=submit] {
+        @extend .btn-blue;
+        height: 40px;
+      }
+
+      input.error {
+        border: 3px solid $red;
+      }
+
+      @include placeholder {
+          font-weight:100;
+          text-align: center;
+          color: $dark-gray;
+      }
+
+      .form-title {
+        margin-bottom: 12px;
+        text-align: center;
+        font-size: 1.4em;
+      }
+    }
 }
 
 

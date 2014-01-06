@@ -1,6 +1,4 @@
-# App Academy Final Project
-
-## Resource Root
+# Resource Root
 
 ### Overview
 
