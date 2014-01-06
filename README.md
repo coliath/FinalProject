@@ -16,7 +16,7 @@ Resource Root is about **reading, writing and learning, better, together.**
 
 ### Tech Stack
 
-I am trying to have Resource Root emulate a native application as much as possible.
+I want Resource Root emulate a native application as much as possible.
 
 With this in mind, I made heavy use of Ajax, and front end MV-*.
 
