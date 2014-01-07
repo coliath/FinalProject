@@ -90,10 +90,16 @@ $top-height: 50px;
 
 .stn-transition { transition: all .4s; }
 
+html {
+  height: 100%;
+  background-color: $lighter-gray;
+}
+
 body {
   font-family: 'Lato', sans-serif;
   background-color: $lighter-gray;
   overflow-y: hidden;
+  height: 100%;
 }
 
 a {
@@ -730,6 +736,8 @@ span.minimize:hover {
     font-weight: 300;
     font-size: 16px;
     color: #555;
+    overflow-y: scroll;
+    height: 100%;
 
     -webkit-font-smoothing: antialiased;
     -webkit-overflow-scrolling: touch;
@@ -778,9 +786,11 @@ span.minimize:hover {
         background:$lighter-gray;
         text-align: center;
         padding-top: 20px;
+        margin-bottom: 0;
 
       p {
         text-align: center;
+        margin: 0;
       }
     }
     .form-box {
