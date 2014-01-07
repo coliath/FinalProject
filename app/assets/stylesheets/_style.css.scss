@@ -91,7 +91,7 @@ $top-height: 50px;
 .stn-transition { transition: all .4s; }
 
 body {
-  font-family: sans-serif;
+  font-family: 'Lato', sans-serif;
   background-color: $lighter-gray;
   overflow-y: hidden;
 }
@@ -727,7 +727,6 @@ span.minimize:hover {
 #landing-page {
 
     background-color: #f2f2f2;
-    font-family: 'Lato', sans-serif;
     font-weight: 300;
     font-size: 16px;
     color: #555;
@@ -789,7 +788,7 @@ span.minimize:hover {
       width: 300px;
       margin-left: auto;
       margin-right: auto;
-      background:#f2f2f2;
+      background:$lightest-gray;
 
       
       text-align: center;

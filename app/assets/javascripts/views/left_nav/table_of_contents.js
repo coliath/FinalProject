@@ -12,7 +12,7 @@ App.Views.TableOfContents = Backbone.View.extend({
     var id = "section-" + $(e.target).data("section-id");
     $(".tbl-contents-link").removeClass("selected-tbl-contents-link");
     $(e.target).addClass("selected-tbl-contents-link");
-    $('.resource').animate({scrollTop:  $(".resource").scrollTop() + $("#"+id).position().top },'fast');
+    $('.resource').animate({scrollTop:  $(".resource").scrollTop() + $("#"+id).position().top - 10 },'fast');
   },
 
   template: JST['left_nav/table_of_contents'],
