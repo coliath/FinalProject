@@ -13,8 +13,10 @@ App.Views.SiteNav = Backbone.View.extend({
     $.ajax({
       url: "/session",
       type: "DELETE",
+      success: function () {
+        window.location.href = "/session/new";
+      }
     });
-    window.location.href = "/session/new"
   },
 
   template: JST['left_nav/left_nav'],

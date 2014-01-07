@@ -25,6 +25,7 @@ class SessionsController < ApplicationController
 
   def destroy
     logout_current_user!
+    head :ok
   end
 
   def new
