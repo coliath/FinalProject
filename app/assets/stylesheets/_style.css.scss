@@ -96,6 +96,16 @@ body {
   overflow-y: hidden;
 }
 
+a {
+  color: black;
+}
+
+a:hover {
+  color: black;
+  text-decoration: none;
+}
+
+
 .clickable:hover { cursor: pointer; }
 
 .group:after { 
@@ -300,9 +310,7 @@ input[type=checkbox]:checked:after {
   left: 5px;
 }
 
-.selected-table-of-contents-btn {
-  background: white;
-}
+
 
 #resource-content {
   float: left;
@@ -338,18 +346,6 @@ span.minimize:hover {
   color: black;
 }
 
-#show-table-of-contents {
-  top: 0;
-  left: 0px;
-}
-
-#show-social {
-  top: -1px;
-  right: 0px;
-  height: 33px;
-  padding-top: 5px;
-}
-
 #content {
   @extend .group;
   height: 100%;
@@ -361,7 +357,6 @@ span.minimize:hover {
 .resource-wrapper {
   @extend .group;
   float: left;
-  position: relative;
 }
 
 .resource {
@@ -373,6 +368,7 @@ span.minimize:hover {
   overflow-y: scroll;
   background: white;
   border-right: 3px solid $gray;
+  position: relative;
 
   .title-page {
 

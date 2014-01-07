@@ -3,7 +3,7 @@ App.Routers.Resources = Backbone.Router.extend({
   routes: {
     "": "demo",
     "home": "home",
-    "resources/:id": "showReaderView",
+    "resources/:id": "showReaderView"
   },
 
   initialize: function () {

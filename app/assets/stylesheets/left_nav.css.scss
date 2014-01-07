@@ -60,6 +60,10 @@
 
 #table-of-contents {
 
+	.selected-tbl-contents-link {
+	  background: white;
+	}
+
 	h3 {
 		padding: 10px;
 		font-size: $big-font;
@@ -82,7 +86,7 @@
     	}
 
 	    li:hover {
-	      text-decoration: underline;
+	      @extend .selected-tbl-contents-link;
 	    }
   }
 }
