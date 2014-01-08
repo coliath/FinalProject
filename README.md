@@ -10,7 +10,7 @@ When people read together, everyone can benefit from shared ideas and alternate 
 
 Also, writers are able to gain valuable insight into how readers consume the their content.  Writers learn what readers find helpful, what they find confusing, as well as any errors they may spot.
 
-Resource Root is about **reading, writing and learning, better, together.**
+Resource Root is about **Writing, Reading and Learning Together.**
 
 ### Tech Stack
 
