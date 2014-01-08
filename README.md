@@ -18,7 +18,7 @@ I want Resource Root emulate a native application as much as possible.
 
 With this in mind, I made heavy use of Ajax, and front end MV-*.
 
-The front end technologies are as follows…
+The front-end technologies are as follows…
 * Javascript
 * Backbone.js
 * Underscore.js
@@ -27,7 +27,7 @@ The front end technologies are as follows…
 * CSS/SASS
 * HTML
 
-And the backend is a Ruby on Rails application with PostgreSQL as the data store.
+And the back-end is a Ruby on Rails application with PostgreSQL as the data store.
 
 ### Contact
 
