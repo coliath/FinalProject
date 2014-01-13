@@ -1,5 +1,24 @@
 @import 'style';
 
+#social-content {
+  @extend .stn-transition;
+  float: left;
+  width: 280px;
+  overflow-x: hidden;
+  position: relative;
+
+  h1 {
+    font-size: 1.2em;
+    padding: 5px;
+  }
+
+  h3 {
+    font-size: 1.1em;
+    padding: 5px;
+    border-top: 1px solid $gray;
+  }
+}
+
 .social-list {
 	overflow-y: auto;
 }
