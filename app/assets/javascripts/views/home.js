@@ -17,5 +17,4 @@ App.Views.Home = Backbone.View.extend({
    		return this;
     }
 
-
 });

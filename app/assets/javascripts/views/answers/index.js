@@ -14,9 +14,8 @@ App.Views.AnswerIndex = Backbone.View.extend({
   },
 
   initialize: function ( options ) {
-
     this.question = options.question;
-
+    
   	var renderCB = this.render.bind(this);
 
     this.listenTo(this.collection, "add", renderCB);

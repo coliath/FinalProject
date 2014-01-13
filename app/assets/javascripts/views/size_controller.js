@@ -6,7 +6,7 @@ $(document).on("loaded", function () {
 
 	// there is probably a much more elegant and smooth solution to this, but im outa time!
 	// in fact, this most of this can be done in css... come back to this when you can
-	// look into using bootstraps grid system, this is way to funky, or any responsive framework
+	// look into using bootstraps grid system, this is way to0 funky, or any responsive framework
 
 	var ResizableElement = function ( $el, widthOptions, hidable, bottomOffset ) {
 		this.$el = $el;

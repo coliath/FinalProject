@@ -10,7 +10,7 @@ window.App = {
   Modules: {}, // better name for this?
   initialize: function() {
 
-    // use of these currently unimplemented
+    // use of these currently unimplemented, modify backbone collection to add fetchOrFind method
     App.CurrentData.users = new App.Collections.Users();
     App.CurrentData.resources = new App.Collections.Resources();
     App.CurrentData.sections = new App.Collections.Sections();
